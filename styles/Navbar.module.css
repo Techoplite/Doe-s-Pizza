@@ -1,0 +1,18 @@
+.navbar {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-items: right;
+    position: absolute;
+    height: 2rem;
+    left: 0;
+    right: 0;
+    padding: 3rem 1rem;
+}
+
+.logo {
+    grid-column: 2 / 3;
+}
+
+.hamburger {
+    grid-column: 4 / 5;
+}

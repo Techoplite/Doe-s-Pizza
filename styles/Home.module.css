@@ -1,22 +1,8 @@
-.container {
-    padding: 0 2rem;
-}
-
 .main {
     min-height: 100vh;
-    padding: 4rem 0;
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer {
-    display: flex;
-    flex: 1;
-    padding: 2rem 0;
-    border-top: 1px solid #eaeaea;
     justify-content: center;
     align-items: center;
 }
@@ -32,10 +18,12 @@
     mix-blend-mode: multiply;
     background-repeat: no-repeat;
     opacity: 0.95;
+    z-index: -1;
 }
 
 .overlayLanding {
     background-color: black;
     height: 100%;
     width: 100%;
+    opacity: 0.5;
 }
