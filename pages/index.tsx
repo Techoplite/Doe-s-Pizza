@@ -19,7 +19,9 @@ export default function Home() {
         <Section
           styleName={styles.sectionLanding}
           overlayName={styles.overlayLanding}
-        ></Section>
+        >
+          <h1>LIKE MAMMA USED TO MAKE...</h1>
+        </Section>
       </main>
     </div>
   );
