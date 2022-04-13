@@ -10,8 +10,8 @@ export default function Navbar() {
                 <Image
                     src="/../public/logo-small.png"
                     alt="Landscape picture"
-                    width={200}
-                    height={32}
+                    width={190}
+                    height={30}
 
                 />
             </div>
@@ -19,8 +19,8 @@ export default function Navbar() {
                 <Image
                     src="/../public/hamburger.png"
                     alt="Landscape picture"
-                    width={22}
-                    height={16}
+                    width={25}
+                    height={20}
                 />
             </div>
         </nav>
