@@ -17,3 +17,9 @@ a {
 .section {
     min-height: 100vh;
 }
+
+.section-content {
+    position: relative;
+    left: 0;
+    top: 0;
+}

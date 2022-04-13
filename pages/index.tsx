@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Section from "./components/Section";
 import Navbar from "./components/Navbar"
+import Landing from "./components/Landing";
 
 export default function Home() {
   return (
@@ -14,14 +15,10 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar/>
+      <Navbar />
       <main className={styles.main}>
-        <Section
-          styleName={styles.sectionLanding}
-          overlayName={styles.overlayLanding}
-        >
-          <h1>LIKE MAMMA USED TO MAKE...</h1>
-        </Section>
+        <Landing/>
+        <Landing/>
       </main>
     </div>
   );

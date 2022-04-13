@@ -3,7 +3,7 @@
     grid-template-columns: auto auto auto auto;
     justify-items: right;
     align-items: center;
-    position: absolute;
+    position: fixed;
     height: 2rem;
     left: 0;
     right: 0;

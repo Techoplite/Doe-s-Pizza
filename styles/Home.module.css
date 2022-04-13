@@ -6,24 +6,3 @@
     justify-content: center;
     align-items: center;
 }
-
-.sectionLanding {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    left: 0px;
-    top: 0px;
-    background: url(../public/background-images/landing.jpg);
-    background-size: cover;
-    mix-blend-mode: multiply;
-    background-repeat: no-repeat;
-    opacity: 0.95;
-    z-index: -1;
-}
-
-.overlayLanding {
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    opacity: 0.5;
-}
