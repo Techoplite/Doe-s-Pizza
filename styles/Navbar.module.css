@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-items: right;
+    align-items: center;
     position: absolute;
     height: 2rem;
     left: 0;
@@ -15,4 +16,5 @@
 
 .hamburger {
     grid-column: 4 / 5;
+    margin-top: 0.5rem;
 }

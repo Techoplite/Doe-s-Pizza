@@ -19,8 +19,8 @@ export default function Navbar() {
                 <Image
                     src="/../public/hamburger.png"
                     alt="Landscape picture"
-                    width={32}
-                    height={32}
+                    width={22}
+                    height={16}
                 />
             </div>
         </nav>
