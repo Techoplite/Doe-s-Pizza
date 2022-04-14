@@ -18,10 +18,27 @@
         font-weight: bolder;
         font-size: 32px;
         line-height: 40px;
-        color: #ffffff;
+        color: $white;
         margin-top: 3rem;
         max-width: 18rem;
         margin-bottom: 3rem;
+    }
+    h2 {
+        font-family: "Andika New Basic";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 35px;
+        color: $white;
+        margin: 0;
+    }
+    h3 {
+        font-family: "Arvo";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $white;
     }
     button {
         background-color: transparent;
@@ -39,5 +56,10 @@
             background-color: $transparent-yellow;
         }
         cursor: pointer;
+    }
+    .business-info {
+        display: flex;
+        justify-items: center;
+        align-items: center;
     }
 }
