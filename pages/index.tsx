@@ -1,6 +1,5 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import Section from "./components/Section";
+import styles from "../styles/Home.module.scss";
 import Navbar from "./components/Navbar"
 import Landing from "./components/Landing";
 
@@ -17,8 +16,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className={styles.main}>
-        <Landing/>
-        <Landing/>
+        <Landing />
       </main>
     </div>
   );

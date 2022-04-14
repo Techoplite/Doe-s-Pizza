@@ -1,14 +1,15 @@
 import React from 'react'
-import styles from "../../styles/Landing.module.css";
+import styles from "../../styles/Landing.module.scss";
+import LandingBtn from './LandingBtn';
 
 
 
 export default function Landing() {
     return (
         <section className={styles.sectionLanding}>
-            {/* <div className={styles.overlayLanding}> */}
-            <div className="section-content">Landing</div>
-            {/* </div> */}
+            <h1>LIKE MAMMA USED TO MAKE...</h1>
+                <LandingBtn label="Book Now" />
+                <LandingBtn label="Order Online*" />
         </section>
 
 
