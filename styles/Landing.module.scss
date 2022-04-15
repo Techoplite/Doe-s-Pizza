@@ -5,7 +5,6 @@
     left: 0px;
     top: 0px;
     background: url(../public/background-images/landing.jpg);
-    mix-blend-mode: multiply;
     background-size: cover;
     z-index: -1;
     display: flex;
@@ -51,7 +50,7 @@
         padding: 0.8rem 1rem;
         width: 11.5rem;
         margin-bottom: 3rem;
-        z-index: 99;
+        z-index: 1;
         &:hover {
             background-color: $transparent-yellow;
         }

@@ -1,8 +1,12 @@
 import Head from "next/head";
 import Navbar from "./components/Navbar"
 import Landing from "./components/Landing";
+import Menu from "./components/Menu";
+import { useState } from "react";
+
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false)
   return (
     <div>
       <Head>
@@ -13,7 +17,8 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      <Menu menuOpen={menuOpen} />
+      <Navbar setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
       <Landing />
     </div>
   );

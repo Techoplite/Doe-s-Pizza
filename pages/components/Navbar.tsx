@@ -3,7 +3,7 @@ import React from 'react'
 import styles from "../../styles/Navbar.module.scss";
 
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
@@ -15,7 +15,9 @@ export default function Navbar() {
 
                 />
             </div>
-            <div className={styles.hamburger}>
+            <div
+                className={styles.hamburger}
+                onClick={() => props.setMenuOpen(!props.menuOpen)}>
                 <Image
                     src="/../public/hamburger.png"
                     alt="Landscape picture"
