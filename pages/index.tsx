@@ -17,8 +17,8 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Menu menuOpen={menuOpen} />
-      <Navbar setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
+      <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Landing />
     </div>
   );
