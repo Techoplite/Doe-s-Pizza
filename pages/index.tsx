@@ -9,6 +9,16 @@ import PopularPizzas from "./components/PopularPizzas";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrollDown, setScrollDown] = useState(false)
+  const [navBackground, setNavBackground] = useState(false)
+  const handleScroll = () => {
+    window.scrollY === 0 ? setNavBackground(false) : setNavBackground(true)
+  }
+  const getStyle = () => {
+    return navBackground ? 'normal blur' : 'normal'
+  }
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  })
   useEffect(() =>
     // On page refresh should reset to top
     window.scrollTo({ top: 0 }), []
@@ -32,6 +42,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <div className={getStyle()}>
+      </div>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Landing setScrollDown={setScrollDown} />
       <div>
