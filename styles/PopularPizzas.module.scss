@@ -1,0 +1,23 @@
+@import "globals.scss";
+.section-popular-pizzas {
+    height: 100vh;
+    min-width: 100vw;
+    // background: url(../public/background-images/landing.jpg);
+    background-size: cover;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1 {
+        font-family: "Arvo", serif;
+        font-style: normal;
+        font-weight: bolder;
+        font-size: 32px;
+        line-height: 40px;
+        color: $white;
+        margin-top: 3rem;
+        max-width: 18rem;
+        margin-bottom: 3rem;
+    }
+}

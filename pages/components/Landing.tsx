@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "../../styles/Landing.module.scss";
 import LandingBtn from './LandingBtn';
 import Image from 'next/image'
@@ -6,9 +6,10 @@ import Image from 'next/image'
 
 
 
-export default function Landing() {
+export default function Landing(props) {
+    const [style, setStyle] = useState(styles['section-landing'])
     return (
-        <section className={styles.sectionLanding}>
+        <section className={style}>
             <h1>LIKE MAMMA USED TO MAKE...</h1>
             <LandingBtn label="Book Now" />
             <LandingBtn label="Order Online*" />
@@ -17,7 +18,10 @@ export default function Landing() {
                 <h2>Tuesday closed</h2>
                 <h3>*Account required</h3>
             </div>
-            <div className={styles.downChevrons}>
+            <div
+                className={styles.downChevrons}
+                onClick={() => props.setScrollDown(true)}
+            >
                 <Image
                     src="/../public/down-chevrons.png"
                     alt="Landscape picture"

@@ -2,11 +2,29 @@ import Head from "next/head";
 import Navbar from "./components/Navbar"
 import Landing from "./components/Landing";
 import Menu from "./components/Menu";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import PopularPizzas from "./components/PopularPizzas";
 
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrollDown, setScrollDown] = useState(false)
+  const [firstRender, setFirstRender] = useState(true)
+  const popularPizzas = useRef<null | HTMLDivElement>(null)
+  useEffect(() => {
+    if (scrollDown && popularPizzas.current && !firstRender) {
+      popularPizzas.current.scrollIntoView({ behavior: "smooth" })
+    } 
+    setFirstRender(false)
+
+    return () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+      });
+    }
+  }, [scrollDown, firstRender])
+
   return (
     <div>
       <Head>
@@ -19,7 +37,10 @@ export default function Home() {
       </Head>
       <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <Landing />
-    </div>
+        <Landing setScrollDown={setScrollDown} />
+      <div ref={popularPizzas}>
+        <PopularPizzas />
+      </div>
+    </div >
   );
 }
