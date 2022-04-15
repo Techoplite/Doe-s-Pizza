@@ -12,7 +12,7 @@ export default function Landing() {
             <h1>LIKE MAMMA USED TO MAKE...</h1>
             <LandingBtn label="Book Now" />
             <LandingBtn label="Order Online*" />
-            <div>
+            <div className={styles.businessInfo}>
                 <h2>Open from 11am to 11pm</h2>
                 <h2>Tuesday closed</h2>
                 <h3>*Account required</h3>
@@ -23,11 +23,8 @@ export default function Landing() {
                     alt="Landscape picture"
                     width={30}
                     height={30}
-
                 />
             </div>
         </section>
-
-
     )
 }
