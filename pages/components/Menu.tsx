@@ -12,10 +12,8 @@ export default function Menu(props) {
   }
   return (
     <section className={getStyleName()}>
-      <div
-        className={styles.hamburger}
-        onClick={() => props.setMenuOpen(!props.menuOpen)}>
-        <div className={styles.row}>
+      <div className={styles['menu-content']}>
+        <div className={styles.row} onClick={() => props.setMenuOpen(!props.menuOpen)}>
           <div className={styles['left-chevrons']}>
             <Image
               src="/../public/left-chevrons.png"
@@ -25,6 +23,17 @@ export default function Menu(props) {
             />
           </div>
           <h1 className={styles.h1}>Home</h1>
+        </div>
+        <div>
+          <div className={styles['br']} />
+          <h1 className={styles['nav-link']}>Log In</h1>
+          <h1 className={styles['nav-link']}>Sign Up</h1>
+        </div>
+        <div>
+          <div className={styles['br']} />
+          <h1 className={styles['nav-link']}>About Us</h1>
+          <h1 className={styles['nav-link']}>Contact Us</h1>
+          <div className={styles['br']} />
         </div>
       </div>
     </section>
