@@ -1,7 +1,8 @@
 $yellow: #fff59e;
 $transparent-yellow: #fff59e46;
 $red: #810000;
-$white:#ffffff;
+$white: #ffffff;
+$black: rgba(0, 0, 0, 0.322);
 .main-container {
     width: 100vw;
 }
@@ -20,4 +21,8 @@ $white:#ffffff;
     &.blur {
         top: 0;
     }
+}
+
+.top-spacer {
+    height: 8rem
 }
