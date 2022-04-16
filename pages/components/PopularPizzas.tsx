@@ -11,22 +11,28 @@ export default function PopularPizzas() {
             {/* TODO: pizza items data below will have to be fetched from DB */}
             <PopPizzaItem
                 imageUrl='/../public/pizzas/margherita.png' name="Margherita"
-                price="7.99" />
+                price="7.99"
+                fadeDirection='fade-left' />
             <PopPizzaItem
                 imageUrl='/../public/pizzas/margherita.png' name="Margherita"
-                price="7.99" />
+                price="7.99"
+                fadeDirection='fade-right' />
             <PopPizzaItem
                 imageUrl='/../public/pizzas/margherita.png' name="Margherita"
-                price="7.99" />
+                price="7.99"
+                fadeDirection='fade-left' />
             <PopPizzaItem
                 imageUrl='/../public/pizzas/margherita.png' name="Margherita"
-                price="7.99" />
+                price="7.99"
+                fadeDirection='fade-right' />
             <PopPizzaItem
                 imageUrl='/../public/pizzas/margherita.png' name="Margherita"
-                price="7.99" />
+                price="7.99"
+                fadeDirection='fade-left' />
             <PopPizzaItem
                 imageUrl='/../public/pizzas/margherita.png' name="Margherita"
-                price="7.99" />
+                price="7.99"
+                fadeDirection='fade-right' />
         </section>
     )
 }
