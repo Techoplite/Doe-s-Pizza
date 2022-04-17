@@ -4,6 +4,7 @@ import Landing from "./components/Landing";
 import Menu from "./components/Menu";
 import { useEffect, useState } from "react";
 import PopularPizzas from "./components/PopularPizzas";
+import AboutUs from "./components/AboutUs";
 
 
 export default function Home() {
@@ -46,9 +47,8 @@ export default function Home() {
       </div>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Landing setScrollDown={setScrollDown} />
-      <div>
-        <PopularPizzas />
-      </div>
+      <PopularPizzas />
+      <AboutUs />
     </div >
   );
 }

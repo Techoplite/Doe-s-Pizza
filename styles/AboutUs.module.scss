@@ -1,0 +1,38 @@
+@import "globals.scss";
+.section-about-us {
+    min-height: 100vh;
+    width: 100%;
+    background: url(../public/background-images/about-us.png);
+    background-size: cover;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .main-content {
+        padding: 0 2rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 3rem 0;
+        h1 {
+            font-family: "Arvo", serif;
+            font-style: normal;
+            font-weight: bolder;
+            font-size: 32px;
+            line-height: 40px;
+            color: $yellow;
+            max-width: 18rem;
+            text-align: center;
+        }
+        p {
+            font-family: "Alegreya Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 26px;
+            color: $white;
+            margin: 2rem 0;
+        }
+    }
+}
