@@ -7,9 +7,8 @@ import Image from 'next/image'
 
 
 export default function Landing(props) {
-    const [style, setStyle] = useState(styles['section-landing'])
     return (
-        <section className={style}>
+        <section className={styles['section-landing']}>
             <h1>LIKE MAMMA USED TO MAKE...</h1>
             <LandingBtn label="Book Now" />
             <LandingBtn label="Order Online*" />

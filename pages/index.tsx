@@ -5,6 +5,7 @@ import Menu from "./components/Menu";
 import { useEffect, useState } from "react";
 import PopularPizzas from "./components/PopularPizzas";
 import AboutUs from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
 
 
 export default function Home() {
@@ -49,6 +50,7 @@ export default function Home() {
       <Landing setScrollDown={setScrollDown} />
       <PopularPizzas />
       <AboutUs />
+      <ContactUs/>
     </div >
   );
 }
