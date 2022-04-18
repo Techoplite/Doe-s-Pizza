@@ -1,0 +1,43 @@
+@import "globals.scss";
+.section-footer {
+    background: $red;
+    height: 16rem;
+    .logo-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 6rem;
+    }
+    p {
+        font-family: 'Alegreya Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 14px;
+        color: $yellow;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .license {
+        text-align: center;
+        font-size: 12px;
+        &:hover {
+            cursor: default;
+        }
+    }
+    .left {
+        text-align: right;
+    }
+    .right {
+        text-align: left;
+    }
+    .links-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 8rem;
+        margin: auto;
+    }
+}
