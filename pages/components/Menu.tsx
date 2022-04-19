@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from "../../styles/Menu.module.scss";
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 export default function Menu(props) {
@@ -26,7 +27,9 @@ export default function Menu(props) {
         </div>
         <div>
           <div className={styles['br']} />
-          <h1 className={styles['nav-link']}>Log In</h1>
+          <Link href="/login" passHref>
+            <h1 className={styles['nav-link']}>Log In</h1>
+          </Link>
           <h1 className={styles['nav-link']}>Sign Up</h1>
         </div>
         <div>

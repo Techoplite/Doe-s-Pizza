@@ -1,0 +1,25 @@
+@import "globals.scss";
+.btn {
+    border: 2px solid $yellow;
+    width: 100%;
+    background-color: transparent;
+    font-family: "Arvo";
+    font-style: normal;
+    font-size: 20px;
+    line-height: 25px;
+    color: $yellow;
+    border: 2px solid $yellow;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    margin-top: 2rem;
+    &:hover {
+        background-color: $transparent-yellow;
+    }
+    cursor: pointer;
+    .icon {
+        color: $yellow;
+    }
+}

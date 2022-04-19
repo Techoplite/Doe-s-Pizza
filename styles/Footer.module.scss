@@ -2,6 +2,8 @@
 .section-footer {
     background: $red;
     height: 16rem;
+    border-top: 2px solid $yellow;
+    width: 100%;
     .logo-wrapper {
         width: 100%;
         display: flex;

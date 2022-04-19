@@ -15,6 +15,10 @@ class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&wght500&display=swap" rel="stylesheet" />
                     <link href="https://fonts.googleapis.com/css2?family=Andika+New+Basic:wght@700&display=swap" rel="stylesheet" />
                     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700;800&display=swap" rel="stylesheet" />
+                    <link
+                        rel="stylesheet"
+                        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+                    />
                 </Head>
                 <body style={{
                     padding: 0,
