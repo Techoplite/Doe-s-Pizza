@@ -13,12 +13,12 @@ const TextInput = styled(TextField)({
   '& .MuiFilledInput-root': {
     color: yellow[200],
     overflow: 'hidden',
-    backgroundColor: 'transparent',
+    backgroundColor: '#935e5e4d',
     '&:hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: '#935e5e4d',
     },
     '&.Mui-focused': {
-      backgroundColor: 'transparent',
+      backgroundColor: '#935e5e4d',
       borderColor: yellow[200],
     },
     "& .MuiFilledInput-underline": {
