@@ -1,24 +1,23 @@
 import Head from "next/head";
 import Navbar from "./components/Navbar"
 import Landing from "./components/Landing";
-import Menu from "./components/Menu";
 import { useEffect, useState } from "react";
 import PopularPizzas from "./components/PopularPizzas";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
+import { useAppDispatch } from "./redux/hooks";
+import { setNavBackground } from './redux/navBackground/navBackgroundSlice'
+
 
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false)
   const [scrollDown, setScrollDown] = useState(false)
-  const [navBackground, setNavBackground] = useState(false)
+  const dispatch = useAppDispatch()
   const handleScroll = () => {
-    window.scrollY === 0 ? setNavBackground(false) : setNavBackground(true)
+    window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
   }
-  const getStyle = () => {
-    return navBackground ? 'normal blur' : 'normal'
-  }
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   })
@@ -35,7 +34,7 @@ export default function Home() {
   }, [scrollDown])
 
   return (
-    <div>
+    <>
       <Head>
         <title>Doe&apos;s Pizza</title>
         <meta
@@ -44,15 +43,12 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <div className={getStyle()}>
-      </div>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar />
       <Landing setScrollDown={setScrollDown} />
       <PopularPizzas />
       <AboutUs />
       <ContactUs />
-      <Footer/>
-    </div >
+      <Footer />
+    </>
   );
 }

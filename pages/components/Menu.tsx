@@ -2,45 +2,50 @@ import React from 'react'
 import styles from "../../styles/Menu.module.scss";
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { toggle } from '../redux/menu/menuSlice'
 
-
-export default function Menu(props) {
+export default function Menu() {
+  const menuOpen = useAppSelector(state => state.menu.open)
+  const dispatch = useAppDispatch()
   const getStyleName = () => {
-    if (props.menuOpen) {
+    if (menuOpen) {
       return `${styles['section-menu']} ${styles['slide-in']}`
     }
     return styles['section-menu']
   }
   return (
-    <section className={getStyleName()}>
-      <div className={styles['menu-content']}>
-        <div className={styles.row} onClick={() => props.setMenuOpen(!props.menuOpen)}>
-          <div className={styles['left-chevrons']}>
-            <Image
-              src="/../public/left-chevrons.png"
-              alt="Landscape picture"
-              width={30}
-              height={30}
-            />
+      <section className={getStyleName()}>
+        <div className={styles['menu-content']}>
+          <Link href="/" passHref >
+            <div className={styles.row} onClick={() => dispatch(toggle())}>
+              <div className={styles['left-chevrons']}>
+                <Image
+                  src="/../public/left-chevrons.png"
+                  alt="Landscape picture"
+                  width={30}
+                  height={30}
+                />
+              </div>
+              <h1 className={styles.h1}>Home</h1>
+            </div>
+          </Link>
+          <div>
+            <div className={styles['br']} />
+            <Link href="/login" passHref >
+              <h1 className={styles['nav-link']} onClick={() => dispatch(toggle())}>Log In</h1>
+            </Link>
+            <Link href="/signup" passHref>
+              <h1 className={styles['nav-link']} onClick={() => dispatch(toggle())}>Sign Up</h1>
+            </Link>
           </div>
-          <h1 className={styles.h1}>Home</h1>
+          <div>
+            <div className={styles['br']} />
+            <h1 className={styles['nav-link']}>About Us</h1>
+            <h1 className={styles['nav-link']}>Contact Us</h1>
+            <div className={styles['br']} />
+          </div>
         </div>
-        <div>
-          <div className={styles['br']} />
-          <Link href="/login" passHref>
-            <h1 className={styles['nav-link']}>Log In</h1>
-          </Link>
-          <Link href="/signup" passHref>
-            <h1 className={styles['nav-link']}>Sign Up</h1>
-          </Link>
-        </div>
-        <div>
-          <div className={styles['br']} />
-          <h1 className={styles['nav-link']}>About Us</h1>
-          <h1 className={styles['nav-link']}>Contact Us</h1>
-          <div className={styles['br']} />
-        </div>
-      </div>
-    </section>
+      </section>
   )
 }

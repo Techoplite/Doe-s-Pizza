@@ -7,6 +7,8 @@ import DefaultBtn from '../components/DefaultBtn';
 import LoginIcon from '@mui/icons-material/Login';
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
+import { store } from '../redux/store'
+import { Provider } from 'react-redux'
 
 
 const TextInput = styled(TextField)({
@@ -38,36 +40,38 @@ const TextInput = styled(TextField)({
     "&.Mui-focused": {
       color: 'white'
     },
-    
+
   }
 });
 
 export default function LogIn() {
   return (
-    <div className={styles['container']}>
-      <Navbar />
-      <div className={styles['card']}>
-        <LoginIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
-        <div className={styles['input']}>
-          <TextInput
-            id="email"
-            label="Email"
-            variant="filled"
-          />
+    <Provider store={store}>
+      <div className={styles['container']}>
+        <Navbar />
+        <div className={styles['card']}>
+          <LoginIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
+          <div className={styles['input']}>
+            <TextInput
+              id="email"
+              label="Email"
+              variant="filled"
+            />
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              id="password"
+              label="Password"
+              variant="filled"
+              type="password"
+            />
+          </div>
+          <DefaultBtn label="Log In" className={styles['icon']} />
         </div>
-        <div className={styles['input']}>
-          <TextInput
-            id="password"
-            label="Password"
-            variant="filled"
-            type="password"
-          />
+        <div className={styles['footer-wrapper']}>
+          <Footer />
         </div>
-        <DefaultBtn label="Log In" className={styles['icon']} />
       </div>
-      <div className={styles['footer-wrapper']}>
-        <Footer />
-      </div>
-    </div>
+    </Provider>
   )
 }
