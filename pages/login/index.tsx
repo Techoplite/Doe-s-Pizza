@@ -26,21 +26,19 @@ const TextInput = styled(TextField)({
     }
   },
   '& .MuiFilledInput-root:before': {
-    borderBottomColor: yellow[200],
+    borderBottomColor: "white",
 
   },
   '& .MuiFilledInput-root:after': {
-    borderBottomColor: yellow[200],
+    borderBottomColor: "white",
 
   },
   "& label": {
-    color: yellow[200],
+    color: 'white',
     "&.Mui-focused": {
-      color: yellow[200]
+      color: 'white'
     },
-    "&.MuiFilledInput-underline:before": {
-      borderBottomColor: yellow[200]
-    }
+    
   }
 });
 
@@ -62,6 +60,7 @@ export default function LogIn() {
             id="password"
             label="Password"
             variant="filled"
+            type="password"
           />
         </div>
         <DefaultBtn label="Log In" className={styles['icon']} />
