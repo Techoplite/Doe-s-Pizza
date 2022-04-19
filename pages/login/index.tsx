@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import styles from "../../styles/LogIn.module.scss";
+import styles from "../../styles/Login.module.scss";
 import Footer from '../components/Footer';
 import TextField from '@mui/material/TextField';
-import DefaultBtn from '../components/defaultBtn';
+import DefaultBtn from '../components/DefaultBtn';
 import LoginIcon from '@mui/icons-material/Login';
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';

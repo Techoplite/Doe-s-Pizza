@@ -30,7 +30,9 @@ export default function Menu(props) {
           <Link href="/login" passHref>
             <h1 className={styles['nav-link']}>Log In</h1>
           </Link>
-          <h1 className={styles['nav-link']}>Sign Up</h1>
+          <Link href="/signup" passHref>
+            <h1 className={styles['nav-link']}>Sign Up</h1>
+          </Link>
         </div>
         <div>
           <div className={styles['br']} />
