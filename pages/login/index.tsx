@@ -47,7 +47,7 @@ export default function LogIn() {
     <div className={styles['container']}>
       <Navbar />
       <div className={styles['card']}>
-        <LoginIcon sx={{ color: yellow[200], fontSize: 50 }} />
+        <LoginIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
         <div className={styles['input']}>
           <TextInput
             id="email"
