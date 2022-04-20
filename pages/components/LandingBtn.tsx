@@ -1,10 +1,13 @@
 import React from 'react'
+import Link from 'next/link'
 
-export default function LandingBtn(props) {
-    function handleClick() {
-        console.log('btn clicked...');
-    }
+
+export default function LandingBtn(props: {
+    linkRef: string,
+    label: string
+}) {
     return (
-        <button onClick={handleClick} >{props.label}</button>
-    )
+        <Link href={props.linkRef} passHref >
+            <button>{props.label}</button>
+        </Link>)
 }
