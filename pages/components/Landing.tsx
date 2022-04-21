@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from "../../styles/Landing.module.scss";
 import LandingBtn from './LandingBtn';
 import Image from 'next/image'

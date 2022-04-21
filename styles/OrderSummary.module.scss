@@ -1,0 +1,47 @@
+@import "globals.scss";
+.container {
+    background-color: $white;
+    border-radius: 5px;
+    padding: 2rem;
+}
+
+.h1 {
+    font-family: "Alegreya Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.h2 {
+    font-family: "Alegreya Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0;
+}
+
+.hr {
+    border: 1px solid #b1b1b1;
+    width: 100%;
+}
+
+.price-summary-entry {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p {
+    font-family: "Alegreya Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+    margin: 0.2rem 0;
+}

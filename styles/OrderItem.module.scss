@@ -1,49 +1,36 @@
 @import "globals.scss";
-.item-container {
-    background-color: $white;
-    border-radius: 5px;
+.container {
+    margin: 1rem 0;
     display: flex;
-    flex-direction: column;
-    margin: 1rem 2rem;
-    padding: 1rem;
-    justify-content: center;
-    text-align: right;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.h1 {
-    font-family: "Alegreya Sans";
-    font-style: normal;
-    font-weight: 800;
-    font-size: 20px;
-    line-height: 24px;
-    color: $red;
-    margin: 0;
-}
-
-.h2 {
-    font-family: "Alegreya Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17px;
-    color: $red;
-}
-
-.p {
+.quantity {
+    background-color: $red;
+    border-radius: 50%;
     font-family: "Alegreya Sans";
     font-style: normal;
     font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
-    color: $red;
-}
-
-.top {
+    font-size: 20px;
+    line-height: 24px;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    color: $white;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.details {
-    width: 50%;
-    padding: 1rem 0.5rem;
+.item-info {
+    margin-left: 1rem;
+    font-family: 'Alegreya Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
 }
