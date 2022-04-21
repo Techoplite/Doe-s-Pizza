@@ -1,0 +1,38 @@
+@import "globals.scss";
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item {
+    margin: 0 0.5rem;
+    text-align: center;
+    font-family: "Alegreya Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $red;
+    background-color: $yellow;
+    border-radius: 50%;
+    padding: 0.3rem 0;
+    border: 2px solid $darkYellow;
+    width: 3rem;
+}
+
+.symbol {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: $red;
+    color: $white;
+    border: none;
+    &:hover {
+        background-color: $lightRed;
+    }
+}

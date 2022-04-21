@@ -4,7 +4,6 @@ import styles from "../../styles/OnlineOrder.module.scss";
 import Footer from '../components/Footer';
 import TextField from '@mui/material/TextField';
 import DefaultBtn from '../components/DefaultBtn';
-import LoginIcon from '@mui/icons-material/Login';
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { store } from '../redux/store'
@@ -55,9 +54,12 @@ export default function LogIn() {
                     <OrderItem />
                     <OrderItem />
                 </div>
-            <div className={styles['footer-wrapper']}>
-                <Footer />
-            </div>
+                <div className={styles['btn']}>
+                    <DefaultBtn label="Checkout" />
+                </div>
+                <div className={styles['footer-wrapper']}>
+                    <Footer />
+                </div>
             </div>
         </Provider>
     )
