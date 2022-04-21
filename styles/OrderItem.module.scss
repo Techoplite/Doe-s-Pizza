@@ -1,0 +1,51 @@
+@import "globals.scss";
+.item-container {
+    background-color: $white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 2rem;
+    padding: 0.5rem 0;
+}
+
+.h1 {
+    font-family: "Alegreya Sans";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: $red;
+    margin: 0;
+}
+
+.h2 {
+    font-family: "Alegreya Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: $red;
+    margin: 0 0 0.5rem 0;
+}
+
+.p {
+    font-family: 'Alegreya Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: $red;
+    margin: 0;
+}
+
+.left,
+.right {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    width: 50%;
+}
