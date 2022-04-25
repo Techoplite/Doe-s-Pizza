@@ -17,13 +17,12 @@ export default function Home(props) {
   const [scrollDown, setScrollDown] = useState(false)
   const dispatch = useAppDispatch()
   const handleScroll = () => {
+    // Toggles the navbar background if page has been scrolled down from top
     window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
   }
-
   useEffect(() => {
-     dispatch(setPizzas(props.pizzas))
+    dispatch(setPizzas(props.pizzas))
   }, [props.pizzas, dispatch])
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   })

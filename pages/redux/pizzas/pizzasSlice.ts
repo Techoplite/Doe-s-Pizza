@@ -1,21 +1,28 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../store";
 
-interface PizzasState {
-  open: boolean
+export interface Pizza {
+  title: string;
+}
+interface Data {
+  nodes: Pizza[] | [];
+}
+
+export interface PizzasState {
+  data: Data;
 }
 const initialState: PizzasState = {
-  open: false
-}
+  data: { nodes: [] } as Data,
+};
 export const pizzasSlice = createSlice({
-  name: 'pizzas',
+  name: "pizzas",
   initialState,
   reducers: {
-    setPizzas: (state, action: PayloadAction<boolean>) => {
-      state.open = action.payload
-    }
-  }
-})
-export const { setPizzas } = pizzasSlice.actions
-export const pizzasState = (state: RootState) => state.pizzas
-export default pizzasSlice.reducer
+    setPizzas: (state: PizzasState, action: PayloadAction<Data>) => {
+      state.data = action.payload;
+    },
+  },
+});
+export const { setPizzas } = pizzasSlice.actions;
+export const pizzasState = (state: RootState) => state.pizzas;
+export default pizzasSlice.reducer;

@@ -24,7 +24,7 @@ async function fetchAPI(query, { variables } = {}) {
 
 export async function getPizzas() {
     const data = await fetchAPI(
-        `query allPizzas {
+        `query NewQuery {
           pizzas {
             nodes {
               data {
@@ -32,6 +32,12 @@ export async function getPizzas() {
                 price
               }
               title
+              featuredImage {
+                node {
+                  sourceUrl
+                  id
+                }
+              }
             }
           }
         }
