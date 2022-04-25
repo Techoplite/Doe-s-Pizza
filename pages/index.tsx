@@ -8,10 +8,11 @@ import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import { useAppDispatch } from "./redux/hooks";
 import { setNavBackground } from './redux/navBackground/navBackgroundSlice'
+import { getPizzas } from "./api"
 
 
 
-export default function Home() {
+export default function Home(props) {
   const [scrollDown, setScrollDown] = useState(false)
   const dispatch = useAppDispatch()
   const handleScroll = () => {
@@ -51,4 +52,13 @@ export default function Home() {
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  let pizzas = await getPizzas();
+  return {
+    props: {
+      pizzas
+    }
+  }
 }
