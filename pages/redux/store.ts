@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import menuSlice from './menu/menuSlice'
 import navBackgroundSlice from './navBackground/navBackgroundSlice'
+import pizzasSlice from './pizzas/pizzasSlice'
 // ...
 
 export const store = configureStore({
   reducer: {
     menu: menuSlice,
-    navBackground: navBackgroundSlice
+    navBackground: navBackgroundSlice,
+    pizzas: pizzasSlice
   }
 })
 

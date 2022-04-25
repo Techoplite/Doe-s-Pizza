@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import { useAppDispatch } from "./redux/hooks";
 import { setNavBackground } from './redux/navBackground/navBackgroundSlice'
 import { getPizzas } from "./api"
+import { setPizzas } from "./redux/pizzas/pizzasSlice";
 
 
 
@@ -18,6 +19,10 @@ export default function Home(props) {
   const handleScroll = () => {
     window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
   }
+
+  useEffect(() => {
+     dispatch(setPizzas(props.pizzas))
+  }, [props.pizzas, dispatch])
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
