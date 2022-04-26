@@ -6,10 +6,6 @@ import PopPizzaItem from './PopPizzaItem';
 
 export default function PopularPizzas() {
     const pizzas = useAppSelector(state => state.pizzas)
-    useEffect(() => {
-        console.log('pizzas', pizzas)
-    }, [pizzas])
-
     return (
         <section className={styles['section-popular-pizzas']}>
             <>
