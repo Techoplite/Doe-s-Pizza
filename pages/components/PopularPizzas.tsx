@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from "../../styles/PopularPizzas.module.scss";
 import { useAppSelector } from '../redux/hooks';
 import PopPizzaItem from './PopPizzaItem';
@@ -13,12 +13,13 @@ export default function PopularPizzas() {
                 <h1>Popular Pizzas</h1>
                 <ul>
                     {pizzas.data.nodes && pizzas.data.nodes.map(pizza =>
+
                         <li key={pizza.title}>
                             <PopPizzaItem
                                 name={pizza.title}
                                 price={pizza.data.price}
-                                fadeDirection='left'
-                                imageUrl={ pizza.featuredImage.node.sourceUrl} />
+                                fadeDirection={`fade-right`}
+                                imageUrl={pizza.featuredImage.node.sourceUrl} />
                         </li>
                     )}
 
