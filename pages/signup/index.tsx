@@ -171,7 +171,7 @@ export default function index() {
         <Provider store={store}>
             <div className={styles['container']}>
                 <StyledDialog
-                    openDialog={true}
+                    openDialog={openDialog}
                     setOpenDialog={setOpenDialog}
                     title="Subscription Confirm"
                     message="You have successfully signed up."
