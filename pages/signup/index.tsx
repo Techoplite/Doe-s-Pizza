@@ -79,51 +79,72 @@ export default function index() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const dispatch = useAppDispatch()
     const isFormValid = () => {
-        //TODO: it displays error only for confirm password, the order should be correct but for some reason other fields don't get validated
         let isValid = true
         if (!form.username) {
             isValid = false
             // Username cannot be empty
-            setErrors({ ...errors, username: 'This field is required.' })
+            setErrors(prevErrors => {
+                return { ...prevErrors, username: 'This field is required.' }
+            })
         } else {
-            setErrors({ ...errors, username: '' })
+            setErrors((prevErrors => {
+                return { ...prevErrors, username: '' }
+            }))
         }
         // Password cannot be empty
         if (!form.password) {
             isValid = false
-            setErrors({ ...errors, password: 'This field is required.' })
+            setErrors(prevErrors => {
+                return { ...prevErrors, password: 'This field is required.' }
+            })
         } else {
-            setErrors({ ...errors, password: '' })
-            
+            setErrors(prevErrors => {
+                return { ...prevErrors, password: '' }
+            })
         }
         if (!form.confirmPassword) {
             isValid = false
-            setErrors({
-                ...errors, confirmPassword: 'This field is required.'
+            setErrors(prevErrors => {
+                return {
+                    ...prevErrors,
+                    confirmPassword: 'This field is required.'
+                }
+            })
+
+        } else {
+            setErrors(prevErrors => {
+                return {
+                    ...prevErrors,
+                    confirmPassword: ''
+                }
+            })
+        }
+        if (form.password.length < 8) {
+            isValid = false
+            // Password must be at least 8 characters
+            setErrors(prevErrors => {
+                return {
+                    ...prevErrors,
+                    password: 'Passwords must be at least 8 characters.',
+                }
             })
         } else {
-            setErrors({
-                ...errors, confirmPassword: ''
+            setErrors(prevErrors => {
+                return {
+                    ...prevErrors,
+                    password: '',
+                }
             })
         }
         if (form.password !== form.confirmPassword) {
             isValid = false
             // Passwords must be same
-            setErrors({ ...errors, password: 'Passwords must match.' })
-            setErrors({ ...errors, confirmPassword: 'Passwords must match.' })
-        } else {
-            setErrors({ ...errors, password: '' })
-            setErrors({ ...errors, confirmPassword: '' })
-        }
-        if (form.password.length < 8) {
-            isValid = false
-            // Password must be at least 8 characters
-            setErrors({
-                ...errors, password: 'Password must be at least 8 characters.'
-            })
-        } else {
-            setErrors({
-                ...errors, password: ''
+            setErrors(prevErrors => {
+                return {
+                    ...prevErrors,
+                    password: 'Passwords must match.',
+                    confirmPassword: 'Passwords must match.'
+                }
             })
         }
         isValid && setOpenDialog(true)
@@ -134,7 +155,7 @@ export default function index() {
             if (key === inputId && value !== '') {
                 return true
             }
-          }
+        }
     }
     const handleSubmitForm = () => {
         isFormValid() && dispatch(setIsAuthenticated(true))
