@@ -17,7 +17,7 @@
 }
 
 .h3 {
-    font-family: 'Alegreya Sans';
+    font-family: "Alegreya Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -32,4 +32,6 @@
 .image {
     box-shadow: 0 0 12px $black;
     border-radius: 50%;
+    width: fit-content;
+    display: flex;
 }
