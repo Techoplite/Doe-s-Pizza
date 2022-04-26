@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useRouter } from 'next/router';
 
 export default function AlertDialog(props) {
   const [open, setOpen] = React.useState(false);
@@ -13,9 +14,12 @@ export default function AlertDialog(props) {
     props.openDialog && setOpen(true)
   }, [props.openDialog])
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
   const handleClose = () => {
     setOpen(false);
     props.setOpenDialog(false)
+        router.push(props.successRedirect);
   };
 
   return (

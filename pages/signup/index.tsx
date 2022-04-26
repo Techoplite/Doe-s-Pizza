@@ -168,6 +168,7 @@ export default function index() {
                     setOpenDialog={setOpenDialog}
                     title="Subscription Confirm"
                     message="You have successfully signed up."
+                    successRedirect='/'
                 />
                 <Navbar />
                 <div className={styles['card']}>
