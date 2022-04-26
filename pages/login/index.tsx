@@ -9,7 +9,7 @@ import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { store } from '../redux/store'
 import { Provider } from 'react-redux'
-
+import Link from 'next/link'
 
 const TextInput = styled(TextField)({
   '& .MuiFilledInput-root': {
@@ -67,6 +67,13 @@ export default function LogIn() {
             />
           </div>
           <DefaultBtn label="Log In" className={styles['icon']} />
+          <div className={styles['wrapper']}>
+            <Link href="/signup" passHref >
+              <a className={styles['a']}>
+                Or go to sign up.
+              </a>
+            </Link>
+          </div>
         </div>
         <div className={styles['footer-wrapper']}>
           <Footer />

@@ -8,8 +8,6 @@
 }
 
 .footer-wrapper {
-    position: absolute;
-    bottom: 0;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -28,4 +26,15 @@
 
 .input {
     margin: 1rem 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.a {
+    color: $white
 }
