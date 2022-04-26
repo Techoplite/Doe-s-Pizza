@@ -52,6 +52,12 @@ const TextInput = styled(TextField)({
     },
     '& .MuiFormHelperText-root.Mui-error': {
         color: 'orange'
+    },
+});
+// TODO: AlertDialog background color not working 
+const StyledDialog = styled(AlertDialog)({
+    '& .MuiDialog-paper': {
+        backgroundColor: yellow[200]
     }
 });
 
@@ -164,8 +170,8 @@ export default function index() {
     return (
         <Provider store={store}>
             <div className={styles['container']}>
-                <AlertDialog
-                    openDialog={openDialog}
+                <StyledDialog
+                    openDialog={true}
                     setOpenDialog={setOpenDialog}
                     title="Subscription Confirm"
                     message="You have successfully signed up."
