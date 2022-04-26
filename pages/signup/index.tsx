@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/SignUp.module.scss";
 import Footer from '../components/Footer';
@@ -44,6 +44,19 @@ const TextInput = styled(TextField)({
 });
 
 export default function index() {
+    const initialState = {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    }
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [form, setForm] = useState(initialState)
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const name = event.target.id;
+        const value = event.target.value;
+        setForm(values => ({ ...values, [name]: value }))
+    }
     return (
         <Provider store={store}>
             <div className={styles['container']}>
@@ -52,9 +65,20 @@ export default function index() {
                     <AccountCircleIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
                     <div className={styles['input']}>
                         <TextInput
+                            id="username"
+                            label="Username"
+                            variant="filled"
+                            value={form.username}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className={styles['input']}>
+                        <TextInput
                             id="email"
                             label="Email"
                             variant="filled"
+                            value={form.email}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className={styles['input']}>
@@ -63,14 +87,18 @@ export default function index() {
                             label="Password"
                             variant="filled"
                             type="password"
+                            value={form.password}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className={styles['input']}>
                         <TextInput
-                            id="confirm-password"
+                            id="confirmPassword"
                             label="Confirm Password"
                             variant="filled"
                             type="password"
+                            value={form.confirmPassword}
+                            onChange={handleChange}
                         />
                     </div>
                     <DefaultBtn label="Log In" className={styles['icon']} />
