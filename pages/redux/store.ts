@@ -1,16 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-import menuSlice from './menu/menuSlice'
-import navBackgroundSlice from './navBackground/navBackgroundSlice'
-import pizzasSlice from './pizzas/pizzasSlice'
-// ...
+import { configureStore } from "@reduxjs/toolkit";
+import menuSlice from "./menu/menuSlice";
+import navBackgroundSlice from "./navBackground/navBackgroundSlice";
+import pizzasSlice from "./pizzas/pizzasSlice";
+import authSlice from "./auth/authSlice";
 
 export const store = configureStore({
   reducer: {
     menu: menuSlice,
     navBackground: navBackgroundSlice,
-    pizzas: pizzasSlice
-  }
-})
+    pizzas: pizzasSlice,
+    auth: authSlice,
+  },
+});
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
