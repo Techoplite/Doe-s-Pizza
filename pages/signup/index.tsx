@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/SignUp.module.scss";
 import Footer from '../components/Footer';
@@ -12,6 +12,7 @@ import { store } from '../redux/store'
 import { Provider } from 'react-redux'
 import { setIsAuthenticated } from '../redux/auth/authSlice';
 import { useAppDispatch } from '../redux/hooks';
+import Link from 'next/link'
 
 const TextInput = styled(TextField)({
     '& .MuiFilledInput-root': {
@@ -214,6 +215,13 @@ export default function index() {
                         className={styles['icon']}
                         handler={handleSubmitForm}
                     />
+                    <div className={styles['wrapper']}>
+                        <Link href="/login" passHref >
+                            <a className={styles['a']}>
+                                Or go to login.
+                            </a>
+                        </Link>
+                    </div>
                 </div>
                 <div className={styles['footer-wrapper']}>
                     <Footer />
