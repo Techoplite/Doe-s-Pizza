@@ -8,16 +8,13 @@ export default function OrderController(props: {
   title: string
 }) {
   const dispatch = useAppDispatch()
-  const [quantity, setQuantity] = useState(0)
   const order = useAppSelector(state => state.order)
   const handleClick: React.MouseEventHandler<HTMLParagraphElement> = (event) => {
     switch ((event.target as HTMLParagraphElement).id) {
       case 'decrease':
-        setQuantity((prevQuantity) => prevQuantity > 0 ? prevQuantity - 1 : 0)
         dispatch(removeItem(props.title))
         break
       case 'increase':
-        setQuantity((prevQuantity) => prevQuantity + 1)
         dispatch(addItem({
           title: props.title,
           price: parseFloat(props.price)
@@ -26,13 +23,11 @@ export default function OrderController(props: {
     }
   }
   const getQuantity = () => {
-    let quantity: number
+    let quantity = 0
     order.items.map(item => {
       if (item.title === props.title) {
         quantity = item.quantity
-      } else {
-        quantity = 0
-      }
+      } 
     })
     return quantity
   }
