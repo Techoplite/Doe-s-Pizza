@@ -62,7 +62,6 @@ export default function LogIn() {
   const initialState = {
     username: '',
     password: '',
-    confirmPassword: '',
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [form, setForm] = useState(initialState)
