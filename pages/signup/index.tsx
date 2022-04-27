@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
 import Navbar from '../components/Navbar'
-import styles from "../../styles/SignUp.module.scss";
+import styles from "../../styles/AuthForms.module.scss";
 import Footer from '../components/Footer';
 import TextField from '@mui/material/TextField';
 import DefaultBtn from '../components/DefaultBtn';
@@ -98,8 +98,8 @@ export default function index() {
                 return { ...prevErrors, username: '' }
             }))
         }
-        // Password cannot be empty
         if (!form.password) {
+            // Password cannot be empty
             isValid = false
             setErrors(prevErrors => {
                 return { ...prevErrors, password: 'This field is required.' }
@@ -154,7 +154,6 @@ export default function index() {
                 }
             })
         }
-        isValid && setOpenDialog(true)
         return isValid
     }
     const getInputError = (inputId: string) => {
