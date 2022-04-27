@@ -5,6 +5,7 @@ import OrderItem from './OrderItem';
 
 
 export default function OrderSummary() {
+  // TODO: on item click should redirect to order online page
   const items = useAppSelector(state => state.order.items)
   const getSubtotal = () => {
     let subtotal = 0

@@ -9,9 +9,8 @@ import MenuItem from '../components/MenuItem';
 import Link from 'next/link'
 import { useAppSelector } from '../redux/hooks';
 
-
-
 export default function LogIn() {
+  // TODO: on mount should populate with redux store order data
   const pizzas = useAppSelector(state => state.pizzas)
   return (
     <Provider store={store}>
