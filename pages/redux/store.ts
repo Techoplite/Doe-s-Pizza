@@ -3,6 +3,7 @@ import menuSlice from "./menu/menuSlice";
 import navBackgroundSlice from "./navBackground/navBackgroundSlice";
 import pizzasSlice from "./pizzas/pizzasSlice";
 import authSlice from "./auth/authSlice";
+import orderSlice from "./order/orderSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     navBackground: navBackgroundSlice,
     pizzas: pizzasSlice,
     auth: authSlice,
+    order: orderSlice,
   },
 });
 
