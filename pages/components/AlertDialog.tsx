@@ -7,7 +7,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useRouter } from 'next/router';
 
-export default function AlertDialog(props) {
+export default function AlertDialog(props: {
+  openDialog: boolean,
+  setOpenDialog: Function
+  title: string
+  message: string
+  successRedirect: string | null
+}) {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -19,7 +25,7 @@ export default function AlertDialog(props) {
   const handleClose = () => {
     setOpen(false);
     props.setOpenDialog(false)
-    router.push(props.successRedirect);
+    props.successRedirect && router.push(props.successRedirect);
   };
 
   return (

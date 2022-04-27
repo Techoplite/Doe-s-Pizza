@@ -3,15 +3,19 @@ import Link from 'next/link'
 
 
 export default function LandingBtn(props: {
-    linkRef: string,
-    label: string
+    linkRef: string | null,
+    label: string,
+    handler: Function | null
 }) {
     function handleClick() {
-        console.log('btn clicked...');
+        props.handler && props.handler()
     }
     return (
-        <Link href={props.linkRef} passHref >
+        props.linkRef ?
+            <Link href={props.linkRef} passHref >
+                <button >{props.label}</button>
+            </Link> :
             <button onClick={handleClick} >{props.label}</button>
-        </Link>
+
     )
 }
