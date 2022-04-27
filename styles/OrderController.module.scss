@@ -2,9 +2,9 @@
 .container {
     display: grid;
     grid-template-columns: auto auto auto;
-    width: 100%;
     align-items: center;
     justify-content: center;
+    padding: 1rem
 }
 
 .grid-item {
@@ -18,20 +18,19 @@
     justify-content: center;
     align-items: center;
     color: $red;
-    background-color: $yellow;
-    border-radius: 50%;
+    border-radius: 5px;
     padding: 0.3rem 0;
-    border: 2px solid $darkYellow;
     width: 3rem;
 }
 
 .symbol {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
+    font-weight: 800;
     cursor: pointer;
-    background-color: $red;
-    color: $white;
+    color: $red;
+    background: $yellow;
+    background: linear-gradient(270deg, rgba(229, 235, 25, 0.6222689759497548) 4%, rgba(255, 171, 0, 1) 100%);
     border: none;
+    box-shadow: 1px 1px 1px grey;
     &:hover {
         background-color: $lightRed;
     }
