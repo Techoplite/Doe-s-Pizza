@@ -165,7 +165,14 @@ export default function index() {
         }
     }
     const handleSubmitForm = () => {
-        isFormValid() && dispatch(setIsAuthenticated(true))
+        const authData = {
+            isAuthenticated: true,
+            credentials: {
+                username: form.username,
+                password: form.password,
+            }
+        }
+        isFormValid() && dispatch(setIsAuthenticated(authData))
     }
     return (
         <Provider store={store}>
