@@ -29,7 +29,7 @@ export default function MenuItem(props: {
         </div>
       </div>
       <div >
-        <OrderController />
+        <OrderController price={props.price} title={props.title}/>
       </div>
     </div>
   )
