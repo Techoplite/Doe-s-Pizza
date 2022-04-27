@@ -50,6 +50,13 @@ const TextInput = styled(TextField)({
   '& .MuiFormHelperText-root.Mui-error': {
     color: 'orange'
   },
+
+  // TODO: setting the correct padding here will prevent inputs from bumping layout, but custom setting not working
+  '& .MuiFormControl-root': {
+    '&.MuiTextField-root': {
+      minHeight: '700px'
+    }
+  },
 });
 // TODO: AlertDialog background color not working 
 const StyledDialog = styled(AlertDialog)({
