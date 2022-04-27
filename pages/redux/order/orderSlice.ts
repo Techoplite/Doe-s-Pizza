@@ -4,6 +4,7 @@ import type { RootState } from "../store";
 interface OrderItem {
   title: string;
   quantity: number;
+  price: number
 }
 
 export interface OrderState {
@@ -16,19 +17,20 @@ export const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<string>) => {
+    addItem: (state, action: PayloadAction<{title: string, price: number}>) => {
       if (state.items.length === 0) {
         // If the array of items is empty initialize the array only with the item from payload
         state.items = [
           {
-            title: action.payload,
+            title: action.payload.title,
             quantity: 1,
+            price: action.payload.price
           },
         ];
       } else {
         let exists = false;
         state.items.map((item) => {
-          if (item.title === action.payload) {
+          if (item.title === action.payload.title) {
             // If the item is already in the array increase quantity
             item.quantity += 1;
             exists = true;
@@ -39,8 +41,9 @@ export const orderSlice = createSlice({
           (state.items = [
             ...state.items,
             {
-              title: action.payload,
+              title: action.payload.title,
               quantity: 1,
+              price: action.payload.price
             },
           ]);
       }

@@ -17,7 +17,10 @@ export default function OrderController(props: {
         break
       case 'increase':
         setQuantity((prevQuantity) => prevQuantity + 1)
-        dispatch(addItem(props.title))
+        dispatch(addItem({
+          title: props.title,
+          price: parseFloat(props.price)
+        }))
         break
     }
   }

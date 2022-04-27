@@ -9,5 +9,6 @@
         "Vercel"
     ],
     "editor.tabSize": 2,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "editor.fontSize": 12
 }
