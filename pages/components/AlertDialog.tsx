@@ -19,7 +19,7 @@ export default function AlertDialog(props) {
   const handleClose = () => {
     setOpen(false);
     props.setOpenDialog(false)
-        router.push(props.successRedirect);
+    router.push(props.successRedirect);
   };
 
   return (

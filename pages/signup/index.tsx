@@ -172,7 +172,10 @@ export default function index() {
                 password: form.password,
             }
         }
-        isFormValid() && dispatch(setIsAuthenticated(authData))
+        isFormValid() &&
+            dispatch(setIsAuthenticated(authData)) &&
+            setOpenDialog(true)
+
     }
     return (
         <Provider store={store}>
@@ -180,7 +183,7 @@ export default function index() {
                 <StyledDialog
                     openDialog={openDialog}
                     setOpenDialog={setOpenDialog}
-                    title="Subscription Confirm"
+                    title="Sign Up Successful"
                     message="You have successfully signed up."
                     successRedirect='/'
                 />

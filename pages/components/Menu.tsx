@@ -9,6 +9,7 @@ import { setIsAuthenticated } from '../redux/auth/authSlice';
 export default function Menu() {
   const menuOpen = useAppSelector(state => state.menu.open)
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
+  const credentials = useAppSelector(state => state.auth.credentials)
   const dispatch = useAppDispatch()
   const getStyleName = () => {
     if (menuOpen) {
@@ -58,7 +59,10 @@ export default function Menu() {
                 <h1
                   className={styles['nav-link']}
                   onClick={() =>
-                    dispatch(toggle()) && dispatch(setIsAuthenticated(false))}>
+                    dispatch(toggle()) && dispatch(setIsAuthenticated({
+                      isAuthenticated: false,
+                      credentials
+                    }))}>
                   Log Out
                 </h1>
               </Link>
