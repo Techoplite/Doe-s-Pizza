@@ -13,7 +13,6 @@ export default function PopularPizzas() {
                 <h1>Popular Pizzas</h1>
                 <ul>
                     {pizzas.data.nodes && pizzas.data.nodes.map(pizza =>
-
                         <li key={pizza.title}>
                             <PopPizzaItem
                                 name={pizza.title}

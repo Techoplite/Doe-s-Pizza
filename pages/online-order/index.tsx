@@ -13,7 +13,6 @@ import { useAppSelector } from '../redux/hooks';
 
 export default function LogIn() {
   const pizzas = useAppSelector(state => state.pizzas)
-
   return (
     <Provider store={store}>
       <div className={styles['container']}>
