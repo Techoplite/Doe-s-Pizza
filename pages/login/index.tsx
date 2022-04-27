@@ -81,6 +81,7 @@ export default function LogIn() {
       dispatch(setIsAuthenticated(authData)) && setOpenDialog(true)
     }
   }
+  // TODO: add validation
   return (
     <Provider store={store}>
       <div className={styles['container']}>
