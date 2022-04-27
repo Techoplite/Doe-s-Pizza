@@ -11,7 +11,7 @@ import { setNavBackground } from './redux/navBackground/navBackgroundSlice'
 import { getPizzas } from "./api"
 import { setPizzas } from "./redux/pizzas/pizzasSlice";
 
-
+// TODO: Add page to inform the user that needs authorization to reach the given url
 
 export default function Home(props) {
   const [scrollDown, setScrollDown] = useState(false)
