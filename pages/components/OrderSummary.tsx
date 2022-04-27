@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import styles from "../../styles/OrderSummary.module.scss";
 import { useAppSelector } from '../redux/hooks';
@@ -51,6 +52,7 @@ export default function OrderSummary() {
         <h2 className={styles['h2']}>Total</h2>
         <p className={styles['p']}>£{getTotal().toFixed(2)}</p>
       </div>
+      <Link href="/online-order" passHref >Go back to order</Link>
     </div>
   )
 }

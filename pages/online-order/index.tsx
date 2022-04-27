@@ -9,7 +9,7 @@ import MenuItem from '../components/MenuItem';
 import Link from 'next/link'
 import { useAppSelector } from '../redux/hooks';
 
-export default function LogIn() {
+export default function OnlineOrder() {
   // TODO: on mount should populate with redux store order data
   const pizzas = useAppSelector(state => state.pizzas)
   return (
@@ -25,6 +25,7 @@ export default function LogIn() {
                   title={pizza.title}
                   ingredients={pizza.data.ingredients}
                   price={pizza.data.price}
+
                 />
               </li>
             )}
