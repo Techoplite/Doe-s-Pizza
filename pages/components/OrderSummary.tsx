@@ -21,10 +21,13 @@ export default function OrderSummary() {
   const getTotal = () => {
     return getSubtotal() + deliveryFee + serviceCharge
   }
+  
+  
   return (
     <>
-        <div className={styles['main-content']}>
-      <div className={styles['container']}>
+      <div className={styles['main-content']}>
+        
+        <div className={styles['container']}>
           <h1 className={styles['h1']}>Order Summary</h1>
           <hr className={styles['hr']} />
           <ul className={styles['ul']}>
@@ -57,7 +60,7 @@ export default function OrderSummary() {
           </div>
           <Link href="/online-order" passHref >Go back to order</Link>
         </div>
-      <OrderDetails />
+        <OrderDetails />
       </div>
     </>
   )

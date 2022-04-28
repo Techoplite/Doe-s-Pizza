@@ -4,7 +4,7 @@ import type { RootState } from "../store";
 interface OrderDetails 
   {
     lastName: string;
-    dateTime: string;
+    time: string;
     isDelivery: boolean;
     address: string | null;
   }
@@ -23,7 +23,7 @@ const initialState: OrderState = {
   items: [],
   details: {
     lastName: "",
-    dateTime: "",
+    time: "",
     isDelivery: true,
     address: null,
   },

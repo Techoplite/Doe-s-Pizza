@@ -3,12 +3,16 @@ import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import styles from "../../styles/AuthForms.module.scss";
-import Switch, { SwitchProps } from '@mui/material/Switch';
+import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { setDetails } from '../redux/order/orderSlice';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
+import { times } from '../../utils/constants';
 
-
+const CustomSelect = styled(Select)({})
 
 const TextInput = styled(TextField)({
   '& .MuiFilledInput-root': {
@@ -79,6 +83,15 @@ export default function OrderDetails() {
     }
     dispatch(setDetails(details))
   }
+  const handleSelectChange = (event: SelectChangeEvent<string>) => {
+    const value = event.target.value;
+    const details = {
+      ...orderDetails,
+      time: value
+    }
+    dispatch(setDetails(details))
+  }
+
   return (
     <>
       <div className={styles['wrapper']}>
@@ -87,7 +100,7 @@ export default function OrderDetails() {
           inputProps={{ 'aria-label': 'ant design' }}
           checked={orderDetails.isDelivery}
           onChange={toggleDelivery}
-          color="default" 
+          color="default"
         />
         <Typography color={'white'}>Delivery</Typography>
       </div>
@@ -100,14 +113,19 @@ export default function OrderDetails() {
         />
       </div>
       <div className={styles['input']}>
-        <TextInput
-          id="dateTime"
-          label="Date and Time"
-          variant="filled"
-          type="datetime-local"
-          defaultValue="2017-05-24T10:30"
-          onChange={handleChange}
-        />
+        <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+          <CustomSelect
+            labelId="Time"
+            id="time"
+            value={orderDetails.time}
+            label="Age"
+            onChange={handleSelectChange}
+          >
+            {times.map(time => {
+              return <MenuItem value={time} key={time}>{time}</MenuItem>
+            })}
+          </CustomSelect>
+        </FormControl>
       </div>
     </>
   )
