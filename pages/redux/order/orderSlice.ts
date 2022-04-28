@@ -1,30 +1,48 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
+interface OrderDetails 
+  {
+    lastName: string;
+    dateTime: string;
+    isDelivery: boolean;
+    address: string | null;
+  }
+
 interface OrderItem {
   title: string;
   quantity: number;
-  price: number
+  price: number;
 }
 
 export interface OrderState {
   items: OrderItem[];
+  details: OrderDetails;
 }
 const initialState: OrderState = {
   items: [],
+  details: {
+    lastName: "",
+    dateTime: "",
+    isDelivery: true,
+    address: null,
+  },
 };
 export const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<{title: string, price: number}>) => {
+    addItem: (
+      state,
+      action: PayloadAction<{ title: string; price: number }>
+    ) => {
       if (state.items.length === 0) {
         // If the array of items is empty initialize the array only with the item from payload
         state.items = [
           {
             title: action.payload.title,
             quantity: 1,
-            price: action.payload.price
+            price: action.payload.price,
           },
         ];
       } else {
@@ -43,7 +61,7 @@ export const orderSlice = createSlice({
             {
               title: action.payload.title,
               quantity: 1,
-              price: action.payload.price
+              price: action.payload.price,
             },
           ]);
       }
@@ -62,9 +80,13 @@ export const orderSlice = createSlice({
         }
       });
     },
+    setDetails: (state, action: PayloadAction<OrderDetails>) => {
+      state.details = action.payload
+    }
   },
 });
 export const { addItem } = orderSlice.actions;
 export const { removeItem } = orderSlice.actions;
+export const { setDetails } = orderSlice.actions;
 export const orderState = (state: RootState) => state.order;
 export default orderSlice.reducer;
