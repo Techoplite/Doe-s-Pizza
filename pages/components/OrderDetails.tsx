@@ -56,7 +56,9 @@ const TextInput = styled(TextField)({
 });
 
 
-// TODO: datetime to be dynamic
+// TODO: datetime default to be dynamic
+
+// TODO: switch to be yellow when 'on'
 
 export default function OrderDetails() {
   const orderDetails = useAppSelector(state => state.order.details)
@@ -85,6 +87,7 @@ export default function OrderDetails() {
           inputProps={{ 'aria-label': 'ant design' }}
           checked={orderDetails.isDelivery}
           onChange={toggleDelivery}
+          color="default" 
         />
         <Typography color={'white'}>Delivery</Typography>
       </div>
