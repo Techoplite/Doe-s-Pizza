@@ -10,6 +10,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { setNavBackground } from '../redux/navBackground/navBackgroundSlice'
 import { getPizzas } from "./api"
 import { setPizzas } from "../redux/pizzas/pizzasSlice";
+import ErrorBoundary from "./components/ErrorBoundary"
 
 // TODO: Add page to inform the user that needs authorization to reach the given url
 
@@ -40,20 +41,22 @@ export default function Home(props) {
 
   return (
     <>
-      <Head>
-        <title>Doe&apos;s Pizza</title>
-        <meta
-          name="description"
-          content="Order pizzas or book a table with Doe's PIzza"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Navbar />
-      <Landing setScrollDown={setScrollDown} />
-      <PopularPizzas />
-      <AboutUs />
-      <ContactUs />
-      <Footer />
+      <ErrorBoundary>
+        <Head>
+          <title>Doe&apos;s Pizza</title>
+          <meta
+            name="description"
+            content="Order pizzas or book a table with Doe's PIzza"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Navbar />
+        <Landing setScrollDown={setScrollDown} />
+        <PopularPizzas />
+        <AboutUs />
+        <ContactUs />
+        <Footer />
+      </ErrorBoundary>
     </>
   );
 }
