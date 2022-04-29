@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL
+const API_URL = process.env === 'development' ? process.env.NEXT_PUBLIC_WORDPRESS_API_URL : 'https://dev-does-pizza.pantheonsite.io/graphql'
 async function fetchAPI(query, { variables } = {}) {
     const headers = { 'Content-Type': 'application/json' }
 
