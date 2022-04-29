@@ -27,7 +27,7 @@ export default function Navbar() {
                         className={styles.hamburger}
                         onClick={() => dispatch(toggle())}>
                         <Image
-                            src="/../public/hamburger.png"
+                            src="/public/hamburger.png"
                             alt="Landscape picture"
                             width={25}
                             height={20}

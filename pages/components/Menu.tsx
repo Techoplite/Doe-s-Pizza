@@ -24,7 +24,7 @@ export default function Menu() {
           <div className={styles.row} onClick={() => dispatch(toggle())}>
             <div className={styles['left-chevrons']}>
               <Image
-                src="/../public/left-chevrons.png"
+                src="/public/left-chevrons.png"
                 alt="Landscape picture"
                 width={30}
                 height={30}
