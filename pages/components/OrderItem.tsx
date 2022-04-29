@@ -14,7 +14,7 @@ export default function OrderItem(props: {
         <div className={styles['quantity']}>{props.quantity}</div>
         <div className={styles['item-info']}>{props.name}</div>
       </div>
-      <div className={styles['item-info']}>£{props.price.toFixed(2)}</div>
+      <div className={styles['item-info']}>£{props.price && props.price.toFixed(2)}</div>
     </div>
   )
 }
