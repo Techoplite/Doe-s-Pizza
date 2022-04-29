@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react'
 import styles from "../../styles/OrderSummary.module.scss";
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import OrderDetails from './OrderDetails';
 import OrderItem from './OrderItem';
 

@@ -6,10 +6,10 @@ import PopularPizzas from "./components/PopularPizzas";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
-import { useAppDispatch } from "./redux/hooks";
-import { setNavBackground } from './redux/navBackground/navBackgroundSlice'
+import { useAppDispatch } from "../redux/hooks";
+import { setNavBackground } from '../redux/navBackground/navBackgroundSlice'
 import { getPizzas } from "./api"
-import { setPizzas } from "./redux/pizzas/pizzasSlice";
+import { setPizzas } from "../redux/pizzas/pizzasSlice";
 
 // TODO: Add page to inform the user that needs authorization to reach the given url
 

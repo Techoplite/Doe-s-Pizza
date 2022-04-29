@@ -3,11 +3,11 @@ import Navbar from '../components/Navbar'
 import styles from "../../styles/OnlineOrder.module.scss";
 import Footer from '../components/Footer';
 import DefaultBtn from '../components/DefaultBtn';
-import { store } from '../redux/store'
+import { store } from '../../redux/store'
 import { Provider } from 'react-redux'
 import MenuItem from '../components/MenuItem';
 import Link from 'next/link'
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 
 export default function OnlineOrder() {
   // TODO: on mount should populate with redux store order data

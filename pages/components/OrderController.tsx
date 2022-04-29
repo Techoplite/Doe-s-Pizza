@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from "../../styles/OrderController.module.scss";
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { addItem, removeItem } from '../redux/order/orderSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { addItem, removeItem } from '../../redux/order/orderSlice';
 
 export default function OrderController(props: {
   price: string,

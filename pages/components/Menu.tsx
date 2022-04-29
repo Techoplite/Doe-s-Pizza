@@ -2,9 +2,9 @@ import React from 'react'
 import styles from "../../styles/Menu.module.scss";
 import Image from 'next/image'
 import Link from 'next/link'
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { toggle } from '../redux/menu/menuSlice'
-import { setIsAuthenticated } from '../redux/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { toggle } from '../../redux/menu/menuSlice'
+import { setIsAuthenticated } from '../../redux/auth/authSlice';
 
 export default function Menu() {
   const menuOpen = useAppSelector(state => state.menu.open)

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "../../styles/PopularPizzas.module.scss";
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import PopPizzaItem from './PopPizzaItem';
 
 

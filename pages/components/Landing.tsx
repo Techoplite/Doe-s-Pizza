@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "../../styles/Landing.module.scss";
 import LandingBtn from './LandingBtn';
 import Image from 'next/image'
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import { useRouter } from 'next/router';
 import AlertDialog from '../components/AlertDialog'
 import { yellow } from '@mui/material/colors';

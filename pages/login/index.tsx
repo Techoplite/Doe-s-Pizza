@@ -7,11 +7,11 @@ import DefaultBtn from '../components/DefaultBtn';
 import LoginIcon from '@mui/icons-material/Login';
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-import { store } from '../redux/store'
+import { store } from '../../redux/store'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { setIsAuthenticated } from '../redux/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setIsAuthenticated } from '../../redux/auth/authSlice';
 import AlertDialog from '../components/AlertDialog';
 
 const TextInput = styled(TextField)({

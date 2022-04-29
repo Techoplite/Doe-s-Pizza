@@ -8,10 +8,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AlertDialog from '../components/AlertDialog'
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-import { store } from '../redux/store'
+import { store } from '../../redux/store'
 import { Provider } from 'react-redux'
-import { setIsAuthenticated } from '../redux/auth/authSlice';
-import { useAppDispatch } from '../redux/hooks';
+import { setIsAuthenticated } from '../../redux/auth/authSlice';
+import { useAppDispatch } from '../../redux/hooks';
 import Link from 'next/link'
 
 const TextInput = styled(TextField)({

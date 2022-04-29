@@ -3,11 +3,11 @@ import Navbar from '../components/Navbar'
 import styles from "../../styles/Checkout.module.scss";
 import Footer from '../components/Footer';
 import DefaultBtn from '../components/DefaultBtn';
-import { store } from '../redux/store'
+import { store } from '../../redux/store'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
 import OrderSummary from '../components/OrderSummary';
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 import AlertDialog from '../components/AlertDialog'
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';

@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import React from 'react'
-import { toggle } from '../redux/menu/menuSlice'
+import { toggle } from '../../redux/menu/menuSlice'
 import styles from "../../styles/Navbar.module.scss";
-import { useAppDispatch } from '../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import Menu from './Menu';
 import NavBackground from './NavBackground';
 
