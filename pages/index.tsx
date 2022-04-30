@@ -61,7 +61,7 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps() {
   let pizzas = await getPizzas();
   return {
     props: {
