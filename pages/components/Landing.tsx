@@ -49,7 +49,7 @@ export default function Landing(props) {
                 onClick={() => props.setScrollDown(true)}
             >
                 <Image
-                    src="/../public/down-chevrons.png"
+                    src="/down-chevrons.png"
                     alt="Landscape picture"
                     width={30}
                     height={30}

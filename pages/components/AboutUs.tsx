@@ -16,7 +16,7 @@ export default function AboutUs() {
                 <p data-aos="fade-up">At Doe’s Pizza we do things properly.</p>
                 <Image
                     data-aos="flip-up"
-                    src="/../public/small/about-us-pic1.png"
+                    src="/small/about-us-pic1.png"
                     alt="A pizza in front of a wood fired oven"
                     width={255.65}
                     height={141.82}
@@ -25,7 +25,7 @@ export default function AboutUs() {
                 <p data-aos="fade-up">Our wood fired oven will give your pizza a puffy crust and make it taste the way it should.</p>
                 <Image
                     data-aos="flip-up"
-                    src="/../public/small/about-us-pic2.png"
+                    src="/small/about-us-pic2.png"
                     alt="A pizza in front of a wood fired oven"
                     width={257}
                     height={195.76}

@@ -21,7 +21,7 @@ export default function ContactUs() {
                 <div className={styles['social-icons']}>
                     <Image
                         data-aos="zoom-in"
-                        src="/../public/social-icons/facebook.png"
+                        src="/social-icons/facebook.png"
                         alt="Facebook Icon"
                         width={70}
                         height={70}
@@ -29,7 +29,7 @@ export default function ContactUs() {
                     />
                     <Image
                         data-aos="zoom-in"
-                        src="/../public/social-icons/instagram.png"
+                        src="/social-icons/instagram.png"
                         alt="Facebook Icon"
                         width={70}
                         height={70}
@@ -37,7 +37,7 @@ export default function ContactUs() {
                     />
                     <Image
                         data-aos="zoom-in"
-                        src="/../public/social-icons/twitter.png"
+                        src="/social-icons/twitter.png"
                         alt="Facebook Icon"
                         width={70}
                         height={70}
@@ -53,7 +53,7 @@ export default function ContactUs() {
                 </div>
                 <div className={styles['chevs-wrap']} onClick={handleClick}>
                     <Image
-                        src="/../public/up-chevrons.png"
+                        src="/up-chevrons.png"
                         alt="Facebook Icon"
                         width={30}
                         height={30}

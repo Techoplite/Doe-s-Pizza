@@ -16,7 +16,7 @@ export default function Navbar() {
                 <nav className={styles.navbar}>
                     <div className={styles.logo}>
                         <Image
-                            src="/../public/logo-small.png"
+                            src="/logo-small.png"
                             alt="Landscape picture"
                             width={190}
                             height={30}
@@ -27,7 +27,7 @@ export default function Navbar() {
                         className={styles.hamburger}
                         onClick={() => dispatch(toggle())}>
                         <Image
-                            src="/public/hamburger.png"
+                            src="/hamburger.png"
                             alt="Landscape picture"
                             width={25}
                             height={20}

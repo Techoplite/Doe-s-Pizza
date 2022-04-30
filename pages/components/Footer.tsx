@@ -8,7 +8,7 @@ export default function Footer() {
     <section className={styles['section-footer']}>
       <div className={styles['logo-wrapper']}>
         <Image
-          src="/../public/logo-small.png"
+          src="/logo-small.png"
           alt="Facebook Icon"
           width={182}
           height={32}
