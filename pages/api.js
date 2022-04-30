@@ -8,7 +8,6 @@ async function fetchAPI(query, { variables } = {}) {
             'Authorization'
         ] = `Bearer ${process.env.NEXT_PUBLIC_WORDPRESS_AUTH_REFRESH_TOKEN}`
     }
-    console.log('query', query)
     const res = await fetch(API_URL, {
         method: 'POST',
         headers,
