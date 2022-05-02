@@ -24,7 +24,7 @@ export default function Landing(props) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [openDialog, setOpenDialog] = useState(false)
   return (
-    <section className={styles['section-landing']}>
+    <section className={styles['section-landing']} id='landing'>
       <div className={styles['bg-img']}>
         <Image
           src="/background-images/landing.jpg"

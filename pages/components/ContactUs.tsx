@@ -11,7 +11,7 @@ export default function ContactUs() {
         AOS.init({ duration: 1500 })
     }, [])
     return (
-        <section className={styles['section-contact-us']}>
+        <section className={styles['section-contact-us']} id='contact'>
             <div className={styles['main-content']}>
                 <h1>Contact Us</h1>
                 <div className={styles['text']}>

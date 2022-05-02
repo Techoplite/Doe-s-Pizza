@@ -6,7 +6,7 @@ import PopularPizzas from "./components/PopularPizzas";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setNavBackground } from '../redux/navBackground/navBackgroundSlice'
 import { getPizzas } from "./api"
 import { setPizzas } from "../redux/pizzas/pizzasSlice";
@@ -17,10 +17,21 @@ import ErrorBoundary from "./components/ErrorBoundary"
 export default function Home(props) {
   const [scrollDown, setScrollDown] = useState(false)
   const dispatch = useAppDispatch()
+  const section = useAppSelector(state => state.menu.section)
   const handleScroll = () => {
     // Toggles the navbar background if page has been scrolled down from top
     window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
   }
+  useEffect(() => {
+    const element = document.getElementById(section)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    }
+  }, [section])
   useEffect(() => {
     dispatch(setPizzas(props.pizzas))
   }, [props.pizzas, dispatch])

@@ -21,7 +21,7 @@ export default function Menu() {
     <section className={getStyleName()}>
       <div className={styles['menu-content']}>
         <Link href="/" passHref >
-          <div className={styles.row} onClick={() => dispatch(toggle())}>
+          <div className={styles.row} onClick={() => dispatch(toggle({ section: 'landing', open: true }))}>
             <div className={styles['left-chevrons']}>
               <Image
                 src="/left-chevrons.png"
@@ -38,16 +38,16 @@ export default function Menu() {
             <div>
               <div className={styles['br']} />
               <Link href="/login" passHref >
-                <h1 className={styles['nav-link']} onClick={() => dispatch(toggle())}>Log In</h1>
+                <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: null, open: false }))}>Log In</h1>
               </Link>
               <Link href="/signup" passHref>
-                <h1 className={styles['nav-link']} onClick={() => dispatch(toggle())}>Sign Up</h1>
+                <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: null, open: false }))}>Sign Up</h1>
               </Link>
             </div>
             <div>
               <div className={styles['br']} />
-              <h1 className={styles['nav-link']}>About Us</h1>
-              <h1 className={styles['nav-link']}>Contact Us</h1>
+              <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: 'about', open: false }))}>About Us</h1>
+              <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</h1>
               <div className={styles['br']} />
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function Menu() {
                 <h1
                   className={styles['nav-link']}
                   onClick={() =>
-                    dispatch(toggle()) && dispatch(setIsAuthenticated({
+                    dispatch(toggle({section:'landing', open: false})) && dispatch(setIsAuthenticated({
                       isAuthenticated: false,
                       credentials
                     }))}>

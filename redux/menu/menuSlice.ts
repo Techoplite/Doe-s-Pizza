@@ -1,17 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 
 interface MenuState {
   open: boolean
+  section: string | null
 }
 const initialState: MenuState = {
-  open: false
+  open: false,
+  section: 'landing'
 }
 export const menuSlice = createSlice({
   name: 'menu',
   initialState,
   reducers: {
-    toggle: state => {state.open = !state.open}
+    toggle: (state, action: PayloadAction<MenuState>) => {
+      state.open = !state.open
+      state.section = action.payload ? action.payload.section : null
+    }
   }
 })
 export const { toggle } = menuSlice.actions
