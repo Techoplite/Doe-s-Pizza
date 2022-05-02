@@ -41,12 +41,12 @@ export default function CheckOut() {
         <Navbar />
         <div className={styles['main-content']}>
           <OrderSummary />
+          <Link href="/checkout" passHref >
+            <div className={styles['btn']}>
+              <DefaultBtn label="Confirm" handler={() => setOpenDialog(true)} />
+            </div>
+          </Link>
         </div>
-        <Link href="/checkout" passHref >
-          <div className={styles['btn']}>
-            <DefaultBtn label="Confirm" handler={() => setOpenDialog(true)} />
-          </div>
-        </Link>
         <div className={styles['footer-wrapper']}>
           <Footer />
         </div>

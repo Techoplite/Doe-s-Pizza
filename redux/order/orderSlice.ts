@@ -6,7 +6,8 @@ interface OrderDetails
     lastName: string;
     time: string;
     isDelivery: boolean;
-    address: string | null;
+  address: string;
+  postcode: string 
   }
 
 interface OrderItem {
@@ -25,7 +26,8 @@ const initialState: OrderState = {
     lastName: "",
     time: "",
     isDelivery: true,
-    address: null,
+    address: "",
+    postcode: "",
   },
 };
 export const orderSlice = createSlice({

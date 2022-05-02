@@ -11,8 +11,28 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import { times } from '../../utils/constants';
+import InputLabel from '@mui/material/InputLabel';
 
-const CustomSelect = styled(Select)({})
+const CustomFormControl = styled(FormControl)({
+  '& .MuiFormControl-root': {
+    margin: '1rem 0',
+  },
+  '#time': {
+    background: '#935e5e4d'
+  },
+  '& .MuiFormLabel-root': {
+    color: 'white'
+  },
+  '& MuiSelect-root::before': {
+    borderBottomColor: "white",
+  },
+  '& MuiSelect-root:after': {
+    borderBottomColor: "white",
+  },
+  '& .MuiSvgIcon-root': {
+    color: 'white'
+  }
+})
 
 const TextInput = styled(TextField)({
   '& .MuiFilledInput-root': {
@@ -106,15 +126,44 @@ export default function OrderDetails() {
       </div>
       <div className={styles['input']}>
         <TextInput
-          id="lastName"
-          label="Last Name"
+          id="firstName"
+          label="First  Name"
           variant="filled"
+          fullWidth={true}
           onChange={handleChange}
         />
       </div>
       <div className={styles['input']}>
-        <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-          <CustomSelect
+        <TextInput
+          id="lastName"
+          label="Last Name"
+          variant="filled"
+          fullWidth={true}
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles['input']}>
+        <TextInput
+          id="address"
+          label="Address"
+          variant="filled"
+          fullWidth={true}
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles['input']}>
+        <TextInput
+          id="postcode"
+          label="Post Code"
+          variant="filled"
+          fullWidth={true}
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles['input']}>
+        <CustomFormControl variant="filled" fullWidth={true}>
+          <InputLabel id="time">Time</InputLabel>
+          <Select
             labelId="Time"
             id="time"
             value={orderDetails.time}
@@ -124,8 +173,8 @@ export default function OrderDetails() {
             {times.map(time => {
               return <MenuItem value={time} key={time}>{time}</MenuItem>
             })}
-          </CustomSelect>
-        </FormControl>
+          </Select>
+        </CustomFormControl>
       </div>
     </>
   )
