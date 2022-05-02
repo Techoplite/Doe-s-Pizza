@@ -4,13 +4,15 @@
     width: 100%;
     left: 0px;
     top: 0px;
-    // background: url(../public/background-images/landing.jpg);
     background-size: cover;
     z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    .bg-img {
+        z-index: -1;
+    }
     h1 {
         font-family: "Arvo", serif;
         font-style: normal;

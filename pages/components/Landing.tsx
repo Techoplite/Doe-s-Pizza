@@ -25,13 +25,16 @@ export default function Landing(props) {
   const [openDialog, setOpenDialog] = useState(false)
   return (
     <section className={styles['section-landing']}>
-      <Image
-        src="/background-images/landing.jpg"
-        alt="A pizza on a wooden tray"
-        layout='fill'
-        objectFit='cover'
-        objectPosition='left'
-      />
+      <div className={styles['bg-img']}>
+        <Image
+          src="/background-images/landing.jpg"
+          alt="A pizza on a wooden tray"
+          layout='fill'
+          objectFit='cover'
+          objectPosition='left'
+          priority={true}
+        />
+      </div>
       <StyledDialog
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
