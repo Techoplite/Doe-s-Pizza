@@ -4,11 +4,11 @@
     grid-template-columns: auto auto auto;
     align-items: center;
     justify-content: center;
-    padding: 1rem
+    margin-top: -2rem;
+    height: 5rem;
 }
 
 .grid-item {
-    margin: 0 0.5rem;
     text-align: center;
     font-family: "Alegreya Sans";
     font-style: normal;
@@ -19,8 +19,9 @@
     align-items: center;
     color: $red;
     border-radius: 5px;
-    padding: 0.3rem 0;
-    width: 3rem;
+    padding: 0 0.5rem;
+    border-radius: 50%;
+    width: 1.5rem;
 }
 
 .symbol {

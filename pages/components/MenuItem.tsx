@@ -14,22 +14,20 @@ export default function MenuItem(props: {
   return (
     <div className={styles['item-container']}>
       <div className={styles['top']}>
-        <div className={styles['image']}>
+        <div>
           <Image
             src={props.imageSrc}
             alt="Landscape picture"
             width={150}
             height={150}
           />
+        <OrderController price={props.price} title={props.title}/>
         </div>
         <div className={styles['details']}>
           <h1 className={styles['h1']}>{props.title}</h1>
           <h2 className={styles['h2']}>Price: £{parseFloat(props.price).toFixed(2)}</h2>
           <p className={styles['p']}>{props.ingredients}</p>
         </div>
-      </div>
-      <div >
-        <OrderController price={props.price} title={props.title}/>
       </div>
     </div>
   )
