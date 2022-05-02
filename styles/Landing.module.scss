@@ -60,11 +60,12 @@
         cursor: pointer;
     }
     .businessInfo {
-        margin-bottom: 3rem;
+        margin-bottom: 8rem;
     }
     .downChevrons {
         position: absolute;
         bottom: 3rem;
+        margin-bottom: 1rem;
         @keyframes move-down {
             from {
                 bottom: 4rem;
