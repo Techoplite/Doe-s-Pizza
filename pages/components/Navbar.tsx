@@ -8,32 +8,32 @@ import NavBackground from './NavBackground';
 
 
 export default function Navbar() {
-    const dispatch = useAppDispatch()
-    return (
-            <div>
-            <Menu />
-            <NavBackground/>
-                <nav className={styles.navbar}>
-                    <div className={styles.logo}>
-                        <Image
-                            src="/logo-small.png"
-                            alt="Landscape picture"
-                            width={190}
-                            height={30}
+  const dispatch = useAppDispatch()
+  return (
+    <div>
+      <Menu />
+      <NavBackground />
+      <nav className={styles.navbar}>
+        <div className={styles.logo}>
+          <Image
+            src="/logo-small.png"
+            alt="Landscape picture"
+            width={190}
+            height={30}
 
-                        />
-                    </div>
-                    <div
-                        className={styles.hamburger}
-                        onClick={() => dispatch(toggle())}>
-                        <Image
-                            src="/hamburger.png"
-                            alt="Landscape picture"
-                            width={25}
-                            height={20}
-                        />
-                    </div>
-                </nav>
-            </div>
-    )
+          />
+        </div>
+        <div
+          className={styles.hamburger}
+          onClick={() => dispatch(toggle({ open: true, section: null }))}>
+          <Image
+            src="/hamburger.png"
+            alt="Landscape picture"
+            width={25}
+            height={20}
+          />
+        </div>
+      </nav>
+    </div>
+  )
 }

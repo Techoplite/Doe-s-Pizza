@@ -14,7 +14,7 @@ export const menuSlice = createSlice({
   initialState,
   reducers: {
     toggle: (state, action: PayloadAction<MenuState>) => {
-      state.open = !state.open
+      state.open = action.payload.open
       state.section = action.payload ? action.payload.section : null
     }
   }
