@@ -17,12 +17,13 @@
         font-family: "Arvo", serif;
         font-style: normal;
         font-weight: bolder;
-        font-size: 32px;
+        font-size: 1.5rem;
         line-height: 40px;
         color: $white;
         margin-top: 3rem;
         max-width: 18rem;
         margin-bottom: 3rem;
+        padding-left: 2rem;
     }
     h2 {
         font-family: "Andika New Basic";
@@ -63,13 +64,13 @@
     }
     .downChevrons {
         position: absolute;
-        bottom: 5rem;
+        bottom: 3rem;
         @keyframes move-down {
             from {
-                bottom: 5rem;
+                bottom: 3rem;
             }
             to {
-                bottom: 4.7rem;
+                bottom: 2.7rem;
             }
         }
         animation-name: move-down;
