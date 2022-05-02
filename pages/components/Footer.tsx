@@ -1,9 +1,13 @@
 import React from 'react'
 import styles from "../../styles/Footer.module.scss";
 import Image from 'next/image'
+import Link from 'next/link';
+import { toggle } from '../../redux/menu/menuSlice';
+import { useAppDispatch } from '../../redux/hooks';
 
 
 export default function Footer() {
+  const dispatch = useAppDispatch()
   return (
     <section className={styles['section-footer']}>
       <div className={styles['logo-wrapper']}>
@@ -16,17 +20,23 @@ export default function Footer() {
         />
       </div>
       <div className={styles['links-container']}>
-      <div className={styles['left']}>
-        <p>Text 1</p>
-        <p>Text 2</p>
-      </div>
+        <div className={styles['left']}>
+          <p>Text 1</p>
+          <p>Text 2</p>
+        </div>
         <div className={styles['right']}>
-          <p>Text 3</p>
-          <p>Text 5</p>
-          <p onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</p>
+        <Link href="/" passHref >
+            <p onClick={() => dispatch(toggle({ section: 'about', open: false }))}>About Us</p>
+          </Link>
+          <Link href="/" passHref >
+            <p onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</p>
+          </Link>
+          <Link href="/" passHref >
+            <p onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</p>
+          </Link>
         </div>
       </div>
-        <p className={styles['license']}>© 2022 Mirko Oricci. All rights reserved.</p>
+      <p className={styles['license']}>© 2022 Mirko Oricci. All rights reserved.</p>
 
     </section>
   )
