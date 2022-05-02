@@ -21,7 +21,7 @@ export default function Menu() {
     <section className={getStyleName()}>
       <div className={styles['menu-content']}>
         <Link href="/" passHref >
-          <div className={styles.row} onClick={() => dispatch(toggle({ section: 'landing', open: true }))}>
+          <div className={styles.row} onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>
             <div className={styles['left-chevrons']}>
               <Image
                 src="/left-chevrons.png"
