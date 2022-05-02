@@ -58,13 +58,13 @@
         display: flex;
         justify-content: center;
         position: relative;
-        top: 3rem;
+        top: 2rem;
         @keyframes move-up {
             from {
-                top: 3rem;
+                top: 2rem;
             }
             to {
-                top: 3.3rem;
+                top: 2.3rem;
             }
         }
         animation-name: move-up;
