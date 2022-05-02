@@ -26,7 +26,7 @@ export default function Landing(props) {
   return (
     <section className={styles['section-landing']}>
       <Image
-        src="/../public/background-images/landing.jpg"
+        src="/public/background-images/landing.jpg"
         alt="A pizza on a wooden tray"
         layout='fill'
         objectFit='cover'
