@@ -1,3 +1,4 @@
+import bookingSlice from "./booking/bookingSlice";
 import yourOrdersSlice from "./yourOrders/yourOrdersSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import menuSlice from "./menu/menuSlice";
@@ -14,6 +15,7 @@ export const store = configureStore({
     auth: authSlice,
     order: orderSlice,
     yourOrders: yourOrdersSlice,
+    booking: bookingSlice,
   },
 });
 
