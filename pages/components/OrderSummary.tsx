@@ -12,7 +12,6 @@ import { getAvailableTimes } from '../../utils/helpers';
 export default function OrderSummary(props: OrderProps) {
   // TODO: on item click should redirect to order online page
   const items = useAppSelector(state => state.order.items)
-  const isDelivery = useAppSelector(state => state.order.details.isDelivery)
   const getSubtotal = () => {
     let subtotal = 0
     items.map(item => {
@@ -20,10 +19,10 @@ export default function OrderSummary(props: OrderProps) {
     })
     return subtotal
   }
-  const deliveryFee = props.form.isDelivery ? 2.50 : 0.00
+  const deliveryFee = props.form && props.form.isDelivery ? 2.50 : 0.00
   const serviceCharge = 0.50
   const getTotal = () => {
-    return getSubtotal() + (props.form.isDelivery ? deliveryFee : 0) + serviceCharge
+    return getSubtotal() + deliveryFee + serviceCharge
   }
 
   // TODO: remove following line

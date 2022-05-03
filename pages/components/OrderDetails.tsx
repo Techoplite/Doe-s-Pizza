@@ -87,9 +87,6 @@ const TextInput = styled(TextField)({
 // TODO: switch to be yellow when 'on'
 
 export default function OrderDetails(props: { data: OrderProps }) {
-  const {
-    form, errors, toggleDelivery, handleChange, handleSelectChange
-  } = props.data
   const MenuProps = {
     PaperProps: {
       style: {
@@ -99,81 +96,86 @@ export default function OrderDetails(props: { data: OrderProps }) {
   };
   return (
     <>
-      <div className={styles['wrapper']}>
-        <Typography color={'white'}>Pick Up</Typography>
-        <Switch
-          inputProps={{ 'aria-label': 'ant design' }}
-          checked={form && form.isDelivery}
-          onChange={toggleDelivery}
-          color="default"
-        />
-        <Typography color={'white'}>Delivery</Typography>
-      </div>
-      <div className={styles['input']}>
-        <TextInput
-          id="firstName"
-          label="First  Name"
-          variant="filled"
-          fullWidth={true}
-          onChange={handleChange}
-          value={form && form.firstName}
-          helperText={errors && errors.firstName}
-        />
-      </div>
-      <div className={styles['input']}>
-        <TextInput
-          id="lastName"
-          label="Last Name"
-          variant="filled"
-          fullWidth={true}
-          onChange={handleChange}
-          value={form && form.lastName}
-          helperText={errors && errors.lastName}
-        />
-      </div>
-      {form.isDelivery &&
-        <div className={styles['input']}>
-          <TextInput
-            id="address"
-            label="Address"
-            variant="filled"
-            fullWidth={true}
-            onChange={handleChange}
-            value={form && form.address}
-            helperText={errors && errors.address}
-          />
-        </div>
+      {props.data && props.data.form &&
+        <>
+          <div className={styles['wrapper']}>
+            <Typography color={'white'}>Pick Up</Typography>
+
+            <Switch
+              inputProps={{ 'aria-label': 'ant design' }}
+              checked={props.data.form.isDelivery}
+              onChange={props.data.toggleDelivery}
+              color="default"
+            />
+            <Typography color={'white'}>Delivery</Typography>
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              id="firstName"
+              label="First  Name"
+              variant="filled"
+              fullWidth={true}
+              onChange={props.data.handleChange}
+              value={props.data.form.firstName}
+              helperText={props.data.errors.firstName}
+            />
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              id="lastName"
+              label="Last Name"
+              variant="filled"
+              fullWidth={true}
+              onChange={props.data.handleChange}
+              value={props.data.form.lastName}
+              helperText={props.data.errors.lastName}
+            />
+          </div>
+          {props.data.form.isDelivery &&
+            <div className={styles['input']}>
+              <TextInput
+                id="address"
+                label="Address"
+                variant="filled"
+                fullWidth={true}
+                onChange={props.data.handleChange}
+                value={props.data.form.address}
+                helperText={props.data.errors.address}
+              />
+            </div>
+          }
+          {props.data.form.isDelivery &&
+            <div className={styles['input']}>
+              <TextInput
+                id="postcode"
+                label="Post Code"
+                variant="filled"
+                fullWidth={true}
+                onChange={props.data.handleChange}
+                value={props.data.form.postcode}
+                helperText={props.data.errors.postcode}
+              />
+            </div>
+          }
+          <div className={styles['input']}>
+            <CustomFormControl variant="filled" fullWidth={true}>
+              <InputLabel id="time">Time</InputLabel>
+              <Select
+                MenuProps={MenuProps}
+                labelId="Time"
+                id="time"
+                value={props.data.form.time}
+                label="Age"
+                onChange={props.data.handleSelectChange}
+              >
+                {times.map(time => {
+                  return <MenuItem value={time} key={time}>{time}</MenuItem>
+                })}
+              </Select>
+            </CustomFormControl>
+          </div>
+        </>
       }
-      {form.isDelivery &&
-        <div className={styles['input']}>
-          <TextInput
-            id="postcode"
-            label="Post Code"
-            variant="filled"
-            fullWidth={true}
-            onChange={handleChange}
-            value={form && form.postcode}
-            helperText={errors && errors.postcode}
-          />
-        </div>
-      }
-      <div className={styles['input']}>
-        <CustomFormControl variant="filled" fullWidth={true}>
-          <InputLabel id="time">Time</InputLabel>
-          <Select
-            MenuProps={MenuProps}
-            labelId="Time"
-            id="time"
-            value={form && form.time}
-            label="Age"
-            onChange={handleSelectChange}
-          >
-            {times.map(time => {
-              return <MenuItem value={time} key={time}>{time}</MenuItem>
-            })}
-          </Select>
-        </CustomFormControl>
-      </div>
     </>
   )
 }
