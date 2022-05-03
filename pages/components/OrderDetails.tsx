@@ -1,17 +1,16 @@
-import React, { ChangeEvent } from 'react'
+import React, { useEffect } from 'react'
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import styles from "../../styles/AuthForms.module.scss";
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setDetails } from '../../redux/order/orderSlice';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import { times } from '../../utils/constants';
 import InputLabel from '@mui/material/InputLabel';
+import { OrderProps } from '../../types/order';
 
 const CustomFormControl = styled(FormControl)({
   '& .MuiFormControl-root': {
@@ -31,6 +30,9 @@ const CustomFormControl = styled(FormControl)({
   },
   '& .MuiSvgIcon-root': {
     color: 'white'
+  },
+  '& .MuiMenu-paper': {
+    height: '3rem'
   }
 })
 
@@ -84,41 +86,24 @@ const TextInput = styled(TextField)({
 
 // TODO: switch to be yellow when 'on'
 
-export default function OrderDetails() {
-  const orderDetails = useAppSelector(state => state.order.details)
-  const dispatch = useAppDispatch()
-  const toggleDelivery = () => {
-    const details = {
-      ...orderDetails,
-      isDelivery: !orderDetails.isDelivery
+export default function OrderDetails(props: { data: OrderProps }) {
+  const {
+    form, errors, toggleDelivery, handleChange, handleSelectChange
+  } = props.data
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: '10rem'
+      }
     }
-    dispatch(setDetails(details))
-  }
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.id;
-    const value = event.target.value;
-    const details = {
-      ...orderDetails,
-      [name]: value
-    }
-    dispatch(setDetails(details))
-  }
-  const handleSelectChange = (event: SelectChangeEvent<string>) => {
-    const value = event.target.value;
-    const details = {
-      ...orderDetails,
-      time: value
-    }
-    dispatch(setDetails(details))
-  }
-
+  };
   return (
     <>
       <div className={styles['wrapper']}>
         <Typography color={'white'}>Pick Up</Typography>
         <Switch
           inputProps={{ 'aria-label': 'ant design' }}
-          checked={orderDetails.isDelivery}
+          checked={form && form.isDelivery}
           onChange={toggleDelivery}
           color="default"
         />
@@ -131,6 +116,8 @@ export default function OrderDetails() {
           variant="filled"
           fullWidth={true}
           onChange={handleChange}
+          value={form && form.firstName}
+          helperText={errors && errors.firstName}
         />
       </div>
       <div className={styles['input']}>
@@ -140,33 +127,44 @@ export default function OrderDetails() {
           variant="filled"
           fullWidth={true}
           onChange={handleChange}
+          value={form && form.lastName}
+          helperText={errors && errors.lastName}
         />
       </div>
-      <div className={styles['input']}>
-        <TextInput
-          id="address"
-          label="Address"
-          variant="filled"
-          fullWidth={true}
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles['input']}>
-        <TextInput
-          id="postcode"
-          label="Post Code"
-          variant="filled"
-          fullWidth={true}
-          onChange={handleChange}
-        />
-      </div>
+      {form.isDelivery &&
+        <div className={styles['input']}>
+          <TextInput
+            id="address"
+            label="Address"
+            variant="filled"
+            fullWidth={true}
+            onChange={handleChange}
+            value={form && form.address}
+            helperText={errors && errors.address}
+          />
+        </div>
+      }
+      {form.isDelivery &&
+        <div className={styles['input']}>
+          <TextInput
+            id="postcode"
+            label="Post Code"
+            variant="filled"
+            fullWidth={true}
+            onChange={handleChange}
+            value={form && form.postcode}
+            helperText={errors && errors.postcode}
+          />
+        </div>
+      }
       <div className={styles['input']}>
         <CustomFormControl variant="filled" fullWidth={true}>
           <InputLabel id="time">Time</InputLabel>
           <Select
+            MenuProps={MenuProps}
             labelId="Time"
             id="time"
-            value={orderDetails.time}
+            value={form && form.time}
             label="Age"
             onChange={handleSelectChange}
           >
