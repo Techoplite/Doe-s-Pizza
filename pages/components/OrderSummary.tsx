@@ -5,6 +5,7 @@ import { useAppSelector } from '../../redux/hooks';
 import OrderDetails from './OrderDetails';
 import OrderItem from './OrderItem';
 import { OrderProps } from '../../types/order';
+import { getAvailableTimes } from '../../utils/helpers';
 
 
 
@@ -24,6 +25,9 @@ export default function OrderSummary(props: OrderProps) {
   const getTotal = () => {
     return getSubtotal() + (props.form.isDelivery ? deliveryFee : 0) + serviceCharge
   }
+
+  // TODO: remove following line
+  getAvailableTimes()
 
 
 
