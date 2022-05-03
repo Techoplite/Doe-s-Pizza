@@ -13,6 +13,7 @@ import { styled } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setDetails } from '../../redux/order/orderSlice';
 import { SelectChangeEvent } from '@mui/material/Select';
+import { addOrder } from '../../redux/yourOrders/yourOrdersSlice';
 
 const StyledDialog = styled(AlertDialog)({
   '& .MuiDialog-paper': {
@@ -25,7 +26,7 @@ const StyledDialog = styled(AlertDialog)({
 export default function CheckOut() {
   const dispatch = useAppDispatch()
   const toggleDelivery = () => {
-    setForm(values => ({...values, isDelivery: !values.isDelivery}))
+    setForm(values => ({ ...values, isDelivery: !values.isDelivery }))
   }
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.id;
@@ -34,15 +35,15 @@ export default function CheckOut() {
   }
   const handleSelectChange = (event: SelectChangeEvent<string>) => {
     console.log('event.target.value', event.target.value)
-    setForm(prevState => ({...prevState, time: event.target.value}))
+    setForm(prevState => ({ ...prevState, time: event.target.value }))
   }
 
   const [openDialog, setOpenDialog] = useState(false)
-  const orderDetails = useAppSelector(state => state.order.details)
+  const order = useAppSelector(state => state.order)
   const getOrderInfo = () => {
-    return orderDetails.isDelivery ?
-      `Your food will be with you by ${orderDetails.time}` :
-      `Your food will be ready to be picked up by ${orderDetails.time}`
+    return order.details.isDelivery ?
+      `Your food will be with you by ${order.details.time}` :
+      `Your food will be ready to be picked up by ${order.details.time}`
   }
   const initialState = {
     firstName: '',
@@ -111,7 +112,11 @@ export default function CheckOut() {
     return isValid
   }
   const handleSubmitForm = () => {
-    isFormValid() && dispatch(setDetails(form)) && setOpenDialog(true)
+    if (isFormValid()) {
+      dispatch(setDetails(form))
+      setOpenDialog(true)
+      dispatch(addOrder(order))
+    }
   }
   return (
     <Provider store={store}>

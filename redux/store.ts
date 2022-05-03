@@ -1,3 +1,4 @@
+import yourOrdersSlice from "./yourOrders/yourOrdersSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import menuSlice from "./menu/menuSlice";
 import navBackgroundSlice from "./navBackground/navBackgroundSlice";
@@ -12,6 +13,7 @@ export const store = configureStore({
     pizzas: pizzasSlice,
     auth: authSlice,
     order: orderSlice,
+    yourOrders: yourOrdersSlice,
   },
 });
 
