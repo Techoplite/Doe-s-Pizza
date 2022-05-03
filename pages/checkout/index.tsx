@@ -34,7 +34,6 @@ export default function CheckOut() {
     setForm(values => ({ ...values, [name]: value }))
   }
   const handleSelectChange = (event: SelectChangeEvent<string>) => {
-    console.log('event.target.value', event.target.value)
     setForm(prevState => ({ ...prevState, time: event.target.value }))
   }
 

@@ -8,7 +8,6 @@ export const getAvailableTimes = () => {
   
   const availableTimes = times.filter(t => {
     let tHours = 0
-    console.log();
     if (t.includes('.')) {
       tHours = parseInt(t.slice(0, t.indexOf('.')))
     } else if (t.includes('am')) {

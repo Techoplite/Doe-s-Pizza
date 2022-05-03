@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { yellow } from '@mui/material/colors';
-import { styled } from '@mui/material/styles';
+import {  styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import styles from "../../styles/AuthForms.module.scss";
 import Switch from '@mui/material/Switch';
@@ -11,13 +11,15 @@ import MenuItem from '@mui/material/MenuItem';
 import { times } from '../../utils/constants';
 import InputLabel from '@mui/material/InputLabel';
 import { OrderProps } from '../../types/order';
+import { makeStyles } from '@mui/styles';
 
 const CustomFormControl = styled(FormControl)({
   '& .MuiFormControl-root': {
     margin: '1rem 0',
   },
   '#time': {
-    background: '#935e5e4d'
+    background: '#935e5e4d',
+    color: 'white'
   },
   '& .MuiFormLabel-root': {
     color: 'white'
@@ -82,10 +84,30 @@ const TextInput = styled(TextField)({
 });
 
 
+
+
 // TODO: datetime default to be dynamic
 
 // TODO: switch to be yellow when 'on'
 
+const useStyles = makeStyles({
+  select: {
+    '&:before': {
+      borderColor: 'white',
+      color:'white'
+    },
+    '&:after': {
+      borderColor: 'white',
+      color:'yellow'
+    },
+    '&:not(.Mui-disabled):hover::before': {
+      borderColor: 'white',
+    },
+    '&MuiSelect-nativeInput': {
+      color: 'white',
+    },
+  },
+})
 export default function OrderDetails(props: { data: OrderProps }) {
   const MenuProps = {
     PaperProps: {
@@ -94,6 +116,7 @@ export default function OrderDetails(props: { data: OrderProps }) {
       }
     }
   };
+  const classes = useStyles()
   return (
     <>
       {props.data && props.data.form &&
@@ -161,6 +184,7 @@ export default function OrderDetails(props: { data: OrderProps }) {
             <CustomFormControl variant="filled" fullWidth={true}>
               <InputLabel id="time">Time</InputLabel>
               <Select
+                className={classes.select}
                 MenuProps={MenuProps}
                 labelId="Time"
                 id="time"
