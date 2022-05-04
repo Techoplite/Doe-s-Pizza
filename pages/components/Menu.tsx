@@ -66,7 +66,14 @@ export default function Menu() {
                   Log Out
                 </h1>
               </Link>
-
+              <Link href="/your-orders" passHref >
+                <h1
+                  className={styles['nav-link']}
+                  onClick={() =>
+                    dispatch(toggle({ section: 'landing', open: false }))}>
+                  Your Orders
+                </h1>
+              </Link>
             </div>
             <div>
               <div className={styles['br']} />
@@ -77,11 +84,6 @@ export default function Menu() {
           </div>
         )
         }
-        <Link href="/your-orders" passHref >
-          <h1>
-            Your Orders
-          </h1>
-        </Link>
       </div>
 
 
