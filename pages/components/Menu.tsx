@@ -59,7 +59,7 @@ export default function Menu() {
                 <h1
                   className={styles['nav-link']}
                   onClick={() =>
-                    dispatch(toggle({section:'landing', open: false})) && dispatch(setIsAuthenticated({
+                    dispatch(toggle({ section: 'landing', open: false })) && dispatch(setIsAuthenticated({
                       isAuthenticated: false,
                       credentials
                     }))}>
@@ -77,6 +77,11 @@ export default function Menu() {
           </div>
         )
         }
+        <Link href="/your-orders" passHref >
+          <h1>
+            Your Orders
+          </h1>
+        </Link>
       </div>
 
 
