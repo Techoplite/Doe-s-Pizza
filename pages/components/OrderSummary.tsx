@@ -10,27 +10,19 @@ import { getAvailableTimes } from '../../utils/helpers';
 
 
 export default function OrderSummary(props: OrderProps) {
-  // TODO: on item click should redirect to order online page
   const items = useAppSelector(state => state.order.items)
-  const getSubtotal = () => {
-    let subtotal = 0
-    items.map(item => {
-      subtotal += item.price * item.quantity
-    })
-    return subtotal
-  }
-  const deliveryFee = props.form && props.form.isDelivery ? 2.50 : 0.00
-  const serviceCharge = 0.50
-  const getTotal = () => {
-    return getSubtotal() + deliveryFee + serviceCharge
-  }
-
   // TODO: remove following line
+  const formatSubtotal = (props) => {
+    if (props.getSubtotal) {
+      return props.getSubtotal().toFixed(2)
+    }
+  }
+  const formatTotal = (props) => {
+    if (props.getTotal) {
+      return props.getTotal().toFixed(2)
+    }
+  }
   getAvailableTimes()
-
-
-
-
   return (
     <div className={styles['main-content']}>
       <div className={styles['container']}>
@@ -50,19 +42,19 @@ export default function OrderSummary(props: OrderProps) {
         <hr className={styles['hr']} />
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['h2']}>Subtotal</h2>
-          <p className={styles['p']}>£{getSubtotal().toFixed(2)}</p>
+          <p className={styles['p']}>£{formatSubtotal(props)}</p>
         </div>
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['p']}>Delivery Fee</h2>
-          <p className={styles['p']}>£{deliveryFee.toFixed(2)}</p>
+          <p className={styles['p']}>£{props && props.deliveryFee}</p>
         </div>
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['p']}>Service Charge</h2>
-          <p className={styles['p']}>£{serviceCharge.toFixed(2)}</p>
+          <p className={styles['p']}>£{props && props.serviceCharge}</p>
         </div>
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['h2']}>Total</h2>
-          <p className={styles['p']}>£{getTotal().toFixed(2)}</p>
+          <p className={styles['p']}>£{formatTotal(props)}</p>
         </div>
         <Link href="/online-order" passHref >Go back to order</Link>
       </div>

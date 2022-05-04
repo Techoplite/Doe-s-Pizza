@@ -134,17 +134,6 @@ export default function OrderDetails(props: { data: OrderProps }) {
           </div>
           <div className={styles['input']}>
             <TextInput
-              id="firstName"
-              label="First  Name"
-              variant="filled"
-              fullWidth={true}
-              onChange={props.data.handleChange}
-              value={props.data.form.firstName}
-              helperText={props.data.errors.firstName}
-            />
-          </div>
-          <div className={styles['input']}>
-            <TextInput
               id="lastName"
               label="Last Name"
               variant="filled"

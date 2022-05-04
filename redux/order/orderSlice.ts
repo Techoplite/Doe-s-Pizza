@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
+import { v4 as uuidv4 } from "uuid";
 
-interface OrderDetails 
-  {
-    lastName: string;
-    time: string;
-    isDelivery: boolean;
+interface OrderDetails {
+  lastName: string;
+  time: string;
+  date: string
+  isDelivery: boolean;
   address: string;
-  postcode: string 
-  }
+  postcode: string;
+  total: number
+}
 
 interface OrderItem {
   title: string;
@@ -17,17 +19,21 @@ interface OrderItem {
 }
 
 export interface OrderState {
+  id: string;
   items: OrderItem[];
   details: OrderDetails;
 }
 const initialState: OrderState = {
+  id: uuidv4(),
   items: [],
   details: {
     lastName: "",
     time: "",
+    date: "",
     isDelivery: true,
     address: "",
     postcode: "",
+    total: 0
   },
 };
 export const orderSlice = createSlice({
@@ -83,8 +89,8 @@ export const orderSlice = createSlice({
       });
     },
     setDetails: (state, action: PayloadAction<OrderDetails>) => {
-      state.details = action.payload
-    }
+      state.details = action.payload;
+    },
   },
 });
 export const { addItem } = orderSlice.actions;

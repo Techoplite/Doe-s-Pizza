@@ -7,6 +7,10 @@ export interface OrderProps {
   toggleDelivery: () => void,
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void,
   handleSelectChange: (event: SelectChangeEvent<string>) => void
+  getTotal: () => number
+  getSubtotal: () => number
+  deliveryFee: number
+  serviceCharge: number
 }
 
 export interface OrderForm {

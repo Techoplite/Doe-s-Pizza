@@ -50,7 +50,9 @@ export default function CheckOut() {
     address: '',
     postcode: '',
     isDelivery: false,
-    time: ''
+    date: new Date().getDate().toString(),
+    time: '',
+    total: 0
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [form, setForm] = useState(initialState)
@@ -64,20 +66,9 @@ export default function CheckOut() {
   const [errors, setErrors] = useState(initialErrors)
   const isFormValid = () => {
     let isValid = true
-    if (!form.firstName) {
-      isValid = false
-      // Username cannot be empty
-      setErrors(prevErrors => {
-        return { ...prevErrors, firstName: 'This field is required.' }
-      })
-    } else {
-      setErrors((prevErrors => {
-        return { ...prevErrors, firstName: '' }
-      }))
-    }
     if (!form.lastName) {
       isValid = false
-      // Username cannot be empty
+      // Last Name cannot be empty
       setErrors(prevErrors => {
         return { ...prevErrors, lastName: 'This field is required.' }
       })
@@ -88,7 +79,7 @@ export default function CheckOut() {
     }
     if (!form.address && form.isDelivery) {
       isValid = false
-      // Username cannot be empty
+      // Address cannot be empty if delivery
       setErrors(prevErrors => {
         return { ...prevErrors, address: 'This field is required.' }
       })
@@ -99,7 +90,7 @@ export default function CheckOut() {
     }
     if (!form.postcode && form.isDelivery) {
       isValid = false
-      // Username cannot be empty
+      // Postcode cannot be empty if delivery
       setErrors(prevErrors => {
         return { ...prevErrors, postcode: 'This field is required.' }
       })
@@ -110,12 +101,27 @@ export default function CheckOut() {
     }
     return isValid
   }
+  const items = useAppSelector(state => state.order.items)
   const handleSubmitForm = () => {
     if (isFormValid()) {
+      form.total = getTotal()
       dispatch(setDetails(form))
       setOpenDialog(true)
       dispatch(addOrder(order))
     }
+  }
+  const getSubtotal = () => {
+    let subtotal = 0
+    items.map(item => {
+      subtotal += item.price * item.quantity
+    })
+    return subtotal
+  }
+  
+  const deliveryFee = form.isDelivery ? 2.50 : 0.00
+  const serviceCharge = 0.50
+  const getTotal = () => {
+    return getSubtotal() + deliveryFee + serviceCharge
   }
   return (
     <Provider store={store}>
@@ -135,6 +141,10 @@ export default function CheckOut() {
             toggleDelivery={toggleDelivery}
             handleChange={handleChange}
             handleSelectChange={handleSelectChange}
+            getTotal={getTotal}
+            getSubtotal={getSubtotal}
+            deliveryFee={deliveryFee}
+            serviceCharge={serviceCharge}
           />
           <Link href="/checkout" passHref >
             <div className={styles['btn']}>
