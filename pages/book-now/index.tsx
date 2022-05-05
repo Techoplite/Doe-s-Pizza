@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/BookNow.module.scss";
 import Footer from '../components/Footer';
@@ -51,15 +51,16 @@ const TextInput = styled(TextField)({
 // TODO: AlertDialog background color not working 
 const StyledDialog = styled(AlertDialog)({
   '& .MuiDialog-paper': {
-      backgroundColor: yellow[200]
+    backgroundColor: yellow[200]
   }
 });
 
 
 export default function BookNow() {
+  const datetimeDefault = dayjs().add(1, 'hour').format('YYYY-MM-DDThh:mm')
   // TODO: datetime to be dynamic
   const initialState = {
-    dateTime: dayjs().add(1, 'hour').format('YYYY-MM-DDThh:mm'),
+    dateTime: datetimeDefault,
     partySize: 0,
     firstName: '',
     lastName: '',
@@ -95,7 +96,7 @@ export default function BookNow() {
       })
     } else {
       setErrors((prevErrors => {
-        return { ...prevErrors, dateTime: ''}
+        return { ...prevErrors, dateTime: '' }
       }))
     }
     if (!form.partySize) {
@@ -157,16 +158,21 @@ export default function BookNow() {
 
   }
 
+  useEffect(() => {
+    // Force a default value if user clears the field
+    !form.dateTime && setForm(values => ({ ...values, dateTime: datetimeDefault }))
+  }, [form.dateTime, datetimeDefault])
+
   return (
     <Provider store={store}>
       <div className={styles['container']}>
         <StyledDialog
-                    openDialog={openDialog}
-                    setOpenDialog={setOpenDialog}
-                    title="Booking Successful"
-                    message={`You have successfully booked for ${form.partySize} people on the ${form.dateTime}`}
-                    successRedirect='/'
-                />
+          openDialog={openDialog}
+          setOpenDialog={setOpenDialog}
+          title="Booking Successful"
+          message={`You have successfully booked for ${form.partySize} people on the ${form.dateTime}`}
+          successRedirect='/'
+        />
         <Navbar />
         <div className={styles['card']}>
           <LoginIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
