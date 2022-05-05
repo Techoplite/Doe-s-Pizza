@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/Checkout.module.scss";
 import Footer from '../components/Footer';
@@ -26,15 +26,22 @@ const StyledDialog = styled(AlertDialog)({
 export default function CheckOut() {
   const dispatch = useAppDispatch()
   const toggleDelivery = () => {
-    setForm(values => ({ ...values, isDelivery: !values.isDelivery }))
+    let details = JSON.parse(JSON.stringify(order.details))
+    details.isDelivery = !details.isDelivery
+    dispatch(setDetails(details))
   }
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.id;
     const value = event.target.value;
-    setForm(values => ({ ...values, [name]: value }))
+    let details = JSON.parse(JSON.stringify(order.details))
+
+    details[name] = value
+    dispatch(setDetails(details))
   }
   const handleSelectChange = (event: SelectChangeEvent<string>) => {
-    setForm(prevState => ({ ...prevState, time: event.target.value }))
+    let details = JSON.parse(JSON.stringify(order.details))
+    details.time = event.target.value
+    dispatch(setDetails(details))
   }
 
   const [openDialog, setOpenDialog] = useState(false)
@@ -44,18 +51,8 @@ export default function CheckOut() {
       `Your food will be with you by ${order.details.time}` :
       `Your food will be ready to be picked up by ${order.details.time}`
   }
-  const initialState = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    postcode: '',
-    isDelivery: false,
-    date: new Date().getDate().toString(),
-    time: '',
-    total: 0
-  }
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [form, setForm] = useState(initialState)
   const initialErrors = {
     firstName: '',
     lastName: '',
@@ -66,7 +63,7 @@ export default function CheckOut() {
   const [errors, setErrors] = useState(initialErrors)
   const isFormValid = () => {
     let isValid = true
-    if (!form.lastName) {
+    if (!order.details.lastName) {
       isValid = false
       // Last Name cannot be empty
       setErrors(prevErrors => {
@@ -77,7 +74,7 @@ export default function CheckOut() {
         return { ...prevErrors, lastName: '' }
       }))
     }
-    if (!form.address && form.isDelivery) {
+    if (!order.details.address && order.details.isDelivery) {
       isValid = false
       // Address cannot be empty if delivery
       setErrors(prevErrors => {
@@ -88,7 +85,7 @@ export default function CheckOut() {
         return { ...prevErrors, address: '' }
       }))
     }
-    if (!form.postcode && form.isDelivery) {
+    if (!order.details.postcode && order.details.isDelivery) {
       isValid = false
       // Postcode cannot be empty if delivery
       setErrors(prevErrors => {
@@ -104,25 +101,40 @@ export default function CheckOut() {
   const items = useAppSelector(state => state.order.items)
   const handleSubmitForm = () => {
     if (isFormValid()) {
-      form.total = getTotal()
-      dispatch(setDetails(form))
       setOpenDialog(true)
       dispatch(addOrder(order))
     }
   }
-  const getSubtotal = () => {
+  // const getSubtotal = () => {
+  //   let subtotal = 0
+  //   items.map(item => {
+  //     subtotal += item.price * item.quantity
+  //   })
+  //   return subtotal
+  // }
+
+  const [deliveryFee, setDeliveryFee] = useState(0)
+  useEffect(() => {
+    setDeliveryFee(order.details.isDelivery ? 2.50 : 0.00)
+  }, [order.details.isDelivery])
+
+  const serviceCharge = 0.50
+  const [subtotal, setSubtotal] = useState(0)
+  useEffect(() => {
     let subtotal = 0
     items.map(item => {
       subtotal += item.price * item.quantity
     })
-    return subtotal
-  }
-  
-  const deliveryFee = form.isDelivery ? 2.50 : 0.00
-  const serviceCharge = 0.50
-  const getTotal = () => {
-    return getSubtotal() + deliveryFee + serviceCharge
-  }
+    setSubtotal(subtotal)
+  }, [items])
+  useEffect(() => {
+    let details = JSON.parse(JSON.stringify(order.details))
+    details.total = subtotal + deliveryFee + serviceCharge
+    dispatch(setDetails(details))
+  }, [subtotal, deliveryFee])
+  // const getTotal = () => {
+  //   return getSubtotal() + deliveryFee + serviceCharge
+  // }
   return (
     <Provider store={store}>
       <div className={styles['container']}>
@@ -136,13 +148,12 @@ export default function CheckOut() {
         <Navbar />
         <div className={styles['main-content']}>
           <OrderSummary
-            form={form}
             errors={errors}
             toggleDelivery={toggleDelivery}
             handleChange={handleChange}
             handleSelectChange={handleSelectChange}
-            getTotal={getTotal}
-            getSubtotal={getSubtotal}
+            total={order.details.total}
+            subtotal={subtotal}
             deliveryFee={deliveryFee}
             serviceCharge={serviceCharge}
           />

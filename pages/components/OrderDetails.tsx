@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { yellow } from '@mui/material/colors';
-import {  styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import styles from "../../styles/AuthForms.module.scss";
 import Switch from '@mui/material/Switch';
@@ -12,6 +12,7 @@ import { times } from '../../utils/constants';
 import InputLabel from '@mui/material/InputLabel';
 import { OrderProps } from '../../types/order';
 import { makeStyles } from '@mui/styles';
+import { useAppSelector } from '../../redux/hooks';
 
 const CustomFormControl = styled(FormControl)({
   '& .MuiFormControl-root': {
@@ -94,11 +95,11 @@ const useStyles = makeStyles({
   select: {
     '&:before': {
       borderColor: 'white',
-      color:'white'
+      color: 'white'
     },
     '&:after': {
       borderColor: 'white',
-      color:'yellow'
+      color: 'yellow'
     },
     '&:not(.Mui-disabled):hover::before': {
       borderColor: 'white',
@@ -116,79 +117,76 @@ export default function OrderDetails(props: { data: OrderProps }) {
       }
     }
   };
+  const details = useAppSelector(state => state.order.details)
   const classes = useStyles()
   return (
     <>
-      {props.data && props.data.form &&
-        <>
-          <div className={styles['wrapper']}>
-            <Typography color={'white'}>Pick Up</Typography>
+      <div className={styles['wrapper']}>
+        <Typography color={'white'}>Pick Up</Typography>
 
-            <Switch
-              inputProps={{ 'aria-label': 'ant design' }}
-              checked={props.data.form.isDelivery}
-              onChange={props.data.toggleDelivery}
-              color="default"
-            />
-            <Typography color={'white'}>Delivery</Typography>
-          </div>
-          <div className={styles['input']}>
-            <TextInput
-              id="lastName"
-              label="Last Name"
-              variant="filled"
-              fullWidth={true}
-              onChange={props.data.handleChange}
-              value={props.data.form.lastName}
-              helperText={props.data.errors.lastName}
-            />
-          </div>
-          {props.data.form.isDelivery &&
-            <div className={styles['input']}>
-              <TextInput
-                id="address"
-                label="Address"
-                variant="filled"
-                fullWidth={true}
-                onChange={props.data.handleChange}
-                value={props.data.form.address}
-                helperText={props.data.errors.address}
-              />
-            </div>
-          }
-          {props.data.form.isDelivery &&
-            <div className={styles['input']}>
-              <TextInput
-                id="postcode"
-                label="Post Code"
-                variant="filled"
-                fullWidth={true}
-                onChange={props.data.handleChange}
-                value={props.data.form.postcode}
-                helperText={props.data.errors.postcode}
-              />
-            </div>
-          }
-          <div className={styles['input']}>
-            <CustomFormControl variant="filled" fullWidth={true}>
-              <InputLabel id="time">Time</InputLabel>
-              <Select
-                className={classes.select}
-                MenuProps={MenuProps}
-                labelId="Time"
-                id="time"
-                value={props.data.form.time}
-                label="Age"
-                onChange={props.data.handleSelectChange}
-              >
-                {times.map(time => {
-                  return <MenuItem value={time} key={time}>{time}</MenuItem>
-                })}
-              </Select>
-            </CustomFormControl>
-          </div>
-        </>
+        <Switch
+          inputProps={{ 'aria-label': 'ant design' }}
+          checked={details.isDelivery}
+          onChange={props.data.toggleDelivery}
+          color="default"
+        />
+        <Typography color={'white'}>Delivery</Typography>
+      </div>
+      <div className={styles['input']}>
+        <TextInput
+          id="lastName"
+          label="Last Name"
+          variant="filled"
+          fullWidth={true}
+          onChange={props.data.handleChange}
+          value={details.lastName}
+          helperText={props.data.errors.lastName}
+        />
+      </div>
+      {details.isDelivery &&
+        <div className={styles['input']}>
+          <TextInput
+            id="address"
+            label="Address"
+            variant="filled"
+            fullWidth={true}
+            onChange={props.data.handleChange}
+            value={details.address}
+            helperText={props.data.errors.address}
+          />
+        </div>
       }
+      {details.isDelivery &&
+        <div className={styles['input']}>
+          <TextInput
+            id="postcode"
+            label="Post Code"
+            variant="filled"
+            fullWidth={true}
+            onChange={props.data.handleChange}
+            value={details.postcode}
+            helperText={props.data.errors.postcode}
+          />
+        </div>
+      }
+      <div className={styles['input']}>
+        <CustomFormControl variant="filled" fullWidth={true}>
+          <InputLabel id="time">Time</InputLabel>
+          <Select
+            className={classes.select}
+            MenuProps={MenuProps}
+            labelId="Time"
+            id="time"
+            value={details.time}
+            label="Age"
+            onChange={props.data.handleSelectChange}
+          >
+            {times.map(time => {
+              return <MenuItem value={time} key={time}>{time}</MenuItem>
+            })}
+          </Select>
+        </CustomFormControl>
+      </div>
     </>
   )
 }

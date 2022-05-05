@@ -6,22 +6,13 @@ import OrderDetails from './OrderDetails';
 import OrderItem from './OrderItem';
 import { OrderProps } from '../../types/order';
 import { getAvailableTimes } from '../../utils/helpers';
+import { PriceCheckTwoTone } from '@mui/icons-material';
 
 
 
 export default function OrderSummary(props: OrderProps) {
   const items = useAppSelector(state => state.order.items)
-  // TODO: remove following line
-  const formatSubtotal = (props) => {
-    if (props.getSubtotal) {
-      return props.getSubtotal().toFixed(2)
-    }
-  }
-  const formatTotal = (props) => {
-    if (props.getTotal) {
-      return props.getTotal().toFixed(2)
-    }
-  }
+  const formatPrice = (price: number) => price.toFixed(2)
   getAvailableTimes()
   return (
     <div className={styles['main-content']}>
@@ -42,19 +33,19 @@ export default function OrderSummary(props: OrderProps) {
         <hr className={styles['hr']} />
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['h2']}>Subtotal</h2>
-          <p className={styles['p']}>£{formatSubtotal(props)}</p>
+          <p className={styles['p']}>£{formatPrice(props.subtotal)}</p>
         </div>
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['p']}>Delivery Fee</h2>
-          <p className={styles['p']}>£{props && props.deliveryFee}</p>
+          <p className={styles['p']}>£{formatPrice(props.deliveryFee)}</p>
         </div>
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['p']}>Service Charge</h2>
-          <p className={styles['p']}>£{props && props.serviceCharge}</p>
+          <p className={styles['p']}>£{formatPrice(props.serviceCharge)}</p>
         </div>
         <div className={styles['price-summary-entry']}>
           <h2 className={styles['h2']}>Total</h2>
-          <p className={styles['p']}>£{formatTotal(props)}</p>
+          <p className={styles['p']}>£{formatPrice(props.total)}</p>
         </div>
         <Link href="/online-order" passHref >Go back to order</Link>
       </div>

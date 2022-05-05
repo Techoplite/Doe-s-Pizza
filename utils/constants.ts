@@ -25,3 +25,5 @@ export const times = [
   "10.30pm",
   "11pm",
 ];
+
+export const serviceCharge = 0.50

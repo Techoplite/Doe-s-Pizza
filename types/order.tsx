@@ -2,13 +2,12 @@ import { ChangeEvent } from "react";
 import { SelectChangeEvent } from '@mui/material/Select';
 
 export interface OrderProps {
-  form: OrderForm,
   errors: Errors,
   toggleDelivery: () => void,
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void,
   handleSelectChange: (event: SelectChangeEvent<string>) => void
-  getTotal: () => number
-  getSubtotal: () => number
+  total: number
+  subtotal: number
   deliveryFee: number
   serviceCharge: number
 }

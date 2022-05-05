@@ -29,7 +29,7 @@ const initialState: OrderState = {
   details: {
     lastName: "",
     time: "",
-    date: "",
+    date: new Date().getDate().toString(),
     isDelivery: true,
     address: "",
     postcode: "",
