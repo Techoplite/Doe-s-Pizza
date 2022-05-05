@@ -9,6 +9,7 @@ import { setIsAuthenticated } from '../../redux/auth/authSlice';
 export default function Menu() {
   const menuOpen = useAppSelector(state => state.menu.open)
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
+  const username = useAppSelector(state => state.auth.credentials.username)
   const credentials = useAppSelector(state => state.auth.credentials)
   const dispatch = useAppDispatch()
   const getStyleName = () => {
@@ -31,31 +32,21 @@ export default function Menu() {
           </div>
           <h1 className={styles.h1}>Back</h1>
         </div>
+        <h2  className={styles['h2']}>{username}</h2>
+        <div className={styles['br']} />
+        <Link href="/" passHref >
+          <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</h1>
+        </Link>
         {!isAuthenticated ? (
           <div>
             <div>
               <div className={styles['br']} />
-              <Link href="/" passHref >
-                <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</h1>
-              </Link>
               <Link href="/login" passHref >
                 <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: null, open: false }))}>Log In</h1>
               </Link>
               <Link href="/signup" passHref>
                 <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: null, open: false }))}>Sign Up</h1>
               </Link>
-            </div>
-            <div>
-              <div className={styles['br']} />
-              <Link href="/" passHref >
-                <h1 className={styles['nav-link']} onClick={() =>
-                    dispatch(toggle({ section: 'about', open: false }))}>About Us</h1>
-              </Link>
-              <Link href="/" passHref >
-                <h1 className={styles['nav-link']} onClick={() =>
-                    dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</h1>
-              </Link>
-              <div className={styles['br']} />
             </div>
           </div>
         ) : (
@@ -82,21 +73,21 @@ export default function Menu() {
                 </h1>
               </Link>
             </div>
-            <div>
-              <div className={styles['br']} />
-              <Link href="/" passHref >
-                <h1 className={styles['nav-link']} onClick={() =>
-                    dispatch(toggle({ section: 'about', open: false }))}>About Us</h1>
-              </Link>
-              <Link href="/" passHref >
-                <h1 className={styles['nav-link']} onClick={() =>
-                    dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</h1>
-              </Link>
-              <div className={styles['br']} />
-            </div>
           </div>
         )
         }
+        <div>
+          <div className={styles['br']} />
+          <Link href="/" passHref >
+            <h1 className={styles['nav-link']} onClick={() =>
+              dispatch(toggle({ section: 'about', open: false }))}>About Us</h1>
+          </Link>
+          <Link href="/" passHref >
+            <h1 className={styles['nav-link']} onClick={() =>
+              dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</h1>
+          </Link>
+          <div className={styles['br']} />
+        </div>
       </div>
 
 

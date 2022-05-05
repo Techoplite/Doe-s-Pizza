@@ -10,6 +10,21 @@
     cursor: pointer;
 }
 
+.h2 {
+    font-family: "Alegreya Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: center;
+    color: $white;
+    background: rgb(106, 18, 18);
+    background: linear-gradient(101deg, rgba(106, 18, 18, 1) 0%, rgba(180, 86, 72, 1) 100%);
+    margin: 0;
+    padding: 1rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 .section-menu {
     height: 100vh;
     width: 100%;
@@ -34,7 +49,7 @@
 
 .menu-content {
     margin: auto;
-    width: 60%
+    width: 60%;
 }
 
 .row {
@@ -66,7 +81,7 @@
 }
 
 .nav-link {
-    font-family: 'Alegreya Sans';
+    font-family: "Alegreya Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 1.5rem;
