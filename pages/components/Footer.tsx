@@ -19,25 +19,7 @@ export default function Footer() {
           layout="fixed"
         />
       </div>
-      <div className={styles['links-container']}>
-        <div className={styles['left']}>
-          <p>Text 1</p>
-          <p>Text 2</p>
-        </div>
-        <div className={styles['right']}>
-        <Link href="/" passHref >
-            <p onClick={() => dispatch(toggle({ section: 'about', open: false }))}>About Us</p>
-          </Link>
-          <Link href="/" passHref >
-            <p onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</p>
-          </Link>
-          <Link href="/" passHref >
-            <p onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</p>
-          </Link>
-        </div>
-      </div>
       <p className={styles['license']}>© 2022 Mirko Oricci. All rights reserved.</p>
-
     </section>
   )
 }
