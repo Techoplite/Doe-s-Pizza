@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import { v4 as uuidv4 } from "uuid";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 interface OrderDetails {
   lastName: string;
   time: string;
-  date: string
+  date: string;
   isDelivery: boolean;
   address: string;
   postcode: string;
-  total: number
+  total: number;
 }
 
 interface OrderItem {
@@ -22,7 +22,7 @@ interface OrderItem {
 export interface OrderState {
   id: string;
   items: OrderItem[];
-  isCompleted: boolean
+  isCompleted: boolean;
   details: OrderDetails;
 }
 const initialState: OrderState = {
@@ -32,11 +32,11 @@ const initialState: OrderState = {
   details: {
     lastName: "",
     time: "",
-    date: dayjs().format('DD/MM/YY'),
+    date: dayjs().format("DD/MM/YY"),
     isDelivery: true,
     address: "",
     postcode: "",
-    total: 0
+    total: 0,
   },
 };
 export const orderSlice = createSlice({
@@ -94,10 +94,25 @@ export const orderSlice = createSlice({
     setDetails: (state, action: PayloadAction<OrderDetails>) => {
       state.details = action.payload;
     },
+    resetOrder: (state) => {
+      state.id =   uuidv4()
+      state.items = []
+      state.details = {
+        lastName: "",
+        time: "",
+        date: dayjs().format("DD/MM/YY"),
+        isDelivery: true,
+        address: "",
+        postcode: "",
+        total: 0,
+      }
+      state.isCompleted = false
+    },
   },
 });
 export const { addItem } = orderSlice.actions;
 export const { removeItem } = orderSlice.actions;
 export const { setDetails } = orderSlice.actions;
+export const { resetOrder } = orderSlice.actions;
 export const orderState = (state: RootState) => state.order;
 export default orderSlice.reducer;

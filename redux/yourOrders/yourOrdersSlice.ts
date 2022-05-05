@@ -57,6 +57,9 @@ export const yourOrdersSlice = createSlice({
     addOrder: (state: YourOrdersState, action: PayloadAction<OrderState>) => {
       state.orders = [...state.orders, action.payload];
     },
+    resetYourOrders: (state) => {
+      state.orders = [];
+    },
   },
 });
 export const { addOrder } = yourOrdersSlice.actions;

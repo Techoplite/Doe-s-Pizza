@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggle } from '../../redux/menu/menuSlice'
 import { setIsAuthenticated } from '../../redux/auth/authSlice';
+import { resetOrder } from '../../redux/order/orderSlice';
+import { addBooking, resetBooking } from '../../redux/booking/bookingSlice';
 
 export default function Menu() {
   const menuOpen = useAppSelector(state => state.menu.open)
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
   const username = useAppSelector(state => state.auth.credentials.username)
-  const credentials = useAppSelector(state => state.auth.credentials)
   const dispatch = useAppDispatch()
   const getStyleName = () => {
     if (menuOpen) {
@@ -18,6 +19,20 @@ export default function Menu() {
     }
     return styles['section-menu']
   }
+  const handleLogout = () => {
+    // Should reset every single store
+    dispatch(toggle({ section: 'landing', open: false }))
+    dispatch(setIsAuthenticated({
+      isAuthenticated: false, credentials: {
+        username: '',
+        password: ''
+      }
+    }))
+    dispatch(resetBooking())
+    dispatch(resetOrder())
+    dispatch(resetYourOrders())
+  }
+
   return (
     <section className={getStyleName()}>
       <div className={styles['menu-content']}>
@@ -56,11 +71,7 @@ export default function Menu() {
               <Link href="/" passHref >
                 <h1
                   className={styles['nav-link']}
-                  onClick={() =>
-                    dispatch(toggle({ section: 'landing', open: false })) && dispatch(setIsAuthenticated({
-                      isAuthenticated: false,
-                      credentials
-                    }))}>
+                  onClick={() => handleLogout()}>
                   Log Out
                 </h1>
               </Link>
@@ -94,3 +105,9 @@ export default function Menu() {
     </section>
   )
 }
+
+
+function resetYourOrders(): any {
+  throw new Error('Function not implemented.');
+}
+

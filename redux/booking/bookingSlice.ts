@@ -27,8 +27,16 @@ export const bookingSlice = createSlice({
       state.lastName = action.payload.lastName;
       state.contactNumber = action.payload.contactNumber;
     },
+    resetBooking: (state) => {
+      state.dateTime = ''
+      state.partySize = 0
+      state.firstName =''
+      state.lastName = ''
+      state.contactNumber = ''
+    }
   },
 });
 export const { addBooking } = bookingSlice.actions;
+export const { resetBooking } = bookingSlice.actions;
 export const bookingState = (state: RootState) => state.booking;
 export default bookingSlice.reducer;
