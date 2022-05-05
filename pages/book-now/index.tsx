@@ -12,6 +12,7 @@ import { Provider } from 'react-redux'
 import { useAppDispatch } from '../../redux/hooks';
 import { addBooking } from '../../redux/booking/bookingSlice';
 import AlertDialog from '../components/AlertDialog';
+import dayjs from 'dayjs';
 
 
 const TextInput = styled(TextField)({
@@ -94,7 +95,7 @@ export default function LogIn() {
       })
     } else {
       setErrors((prevErrors => {
-        return { ...prevErrors, dateTime: '' }
+        return { ...prevErrors, dateTime: ''}
       }))
     }
     if (!form.partySize) {
