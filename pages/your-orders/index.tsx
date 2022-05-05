@@ -9,6 +9,7 @@ import YourOrdersItem from '../components/YourOrdersItem';
 export default function index() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const orders = useAppSelector(state => state.yourOrders.orders)
+  const reversedOrders = [...orders].reverse()
 
   return (
     <div className={styles['main-content']}>
@@ -18,7 +19,7 @@ export default function index() {
           <h1 className={styles['h1']}>Your Orders</h1>
           <hr className={styles['hr']} />
           <>
-            {orders.map(o => {
+            {reversedOrders.map(o => {
               return <div key={o.id}><YourOrdersItem item={o} /></div>
             })}
           </>
