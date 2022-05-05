@@ -4,7 +4,7 @@ import styles from "../../styles/BookNow.module.scss";
 import Footer from '../components/Footer';
 import TextField from '@mui/material/TextField';
 import DefaultBtn from '../components/DefaultBtn';
-import LoginIcon from '@mui/icons-material/Login';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { store } from '../../redux/store'
@@ -175,7 +175,7 @@ export default function BookNow() {
         />
         <Navbar />
         <div className={styles['card']}>
-          <LoginIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
+          <MenuBookIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
           <div className={styles['input']}>
             <TextInput
               id="dateTime"
