@@ -121,72 +121,75 @@ export default function OrderDetails(props: { data: OrderProps }) {
   const classes = useStyles()
   return (
     <>
-      <div className={styles['wrapper']}>
-        <Typography color={'white'}>Pick Up</Typography>
-
-        <Switch
-          inputProps={{ 'aria-label': 'ant design' }}
-          checked={details.isDelivery}
-          onChange={props.data.toggleDelivery}
-          color="default"
-        />
-        <Typography color={'white'}>Delivery</Typography>
-      </div>
-      <div className={styles['input']}>
-        <TextInput
-          id="lastName"
-          label="Last Name"
-          variant="filled"
-          fullWidth={true}
-          onChange={props.data.handleChange}
-          value={details.lastName}
-          helperText={props.data.errors.lastName}
-        />
-      </div>
-      {details.isDelivery &&
-        <div className={styles['input']}>
-          <TextInput
-            id="address"
-            label="Address"
-            variant="filled"
-            fullWidth={true}
-            onChange={props.data.handleChange}
-            value={details.address}
-            helperText={props.data.errors.address}
-          />
-        </div>
+      {props.data && props.data.errors &&
+        <>
+          <div className={styles['wrapper']}>
+            <Typography color={'white'}>Pick Up</Typography>
+            <Switch
+              inputProps={{ 'aria-label': 'ant design' }}
+              checked={details.isDelivery}
+              onChange={props.data.toggleDelivery}
+              color="default"
+            />
+            <Typography color={'white'}>Delivery</Typography>
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              id="lastName"
+              label="Last Name"
+              variant="filled"
+              fullWidth={true}
+              onChange={props.data.handleChange}
+              value={details.lastName}
+              helperText={props.data.errors.lastName}
+            />
+          </div>
+          {details.isDelivery &&
+            <div className={styles['input']}>
+              <TextInput
+                id="address"
+                label="Address"
+                variant="filled"
+                fullWidth={true}
+                onChange={props.data.handleChange}
+                value={details.address}
+                helperText={props.data.errors.address}
+              />
+            </div>
+          }
+          {details.isDelivery &&
+            <div className={styles['input']}>
+              <TextInput
+                id="postcode"
+                label="Post Code"
+                variant="filled"
+                fullWidth={true}
+                onChange={props.data.handleChange}
+                value={details.postcode}
+                helperText={props.data.errors.postcode}
+              />
+            </div>
+          }
+          <div className={styles['input']}>
+            <CustomFormControl variant="filled" fullWidth={true}>
+              <InputLabel id="time">Time</InputLabel>
+              <Select
+                className={classes.select}
+                MenuProps={MenuProps}
+                labelId="Time"
+                id="time"
+                value={details.time}
+                label="Age"
+                onChange={props.data.handleSelectChange}
+              >
+                {times.map(time => {
+                  return <MenuItem value={time} key={time}>{time}</MenuItem>
+                })}
+              </Select>
+            </CustomFormControl>
+          </div>
+        </>
       }
-      {details.isDelivery &&
-        <div className={styles['input']}>
-          <TextInput
-            id="postcode"
-            label="Post Code"
-            variant="filled"
-            fullWidth={true}
-            onChange={props.data.handleChange}
-            value={details.postcode}
-            helperText={props.data.errors.postcode}
-          />
-        </div>
-      }
-      <div className={styles['input']}>
-        <CustomFormControl variant="filled" fullWidth={true}>
-          <InputLabel id="time">Time</InputLabel>
-          <Select
-            className={classes.select}
-            MenuProps={MenuProps}
-            labelId="Time"
-            id="time"
-            value={details.time}
-            label="Age"
-            onChange={props.data.handleSelectChange}
-          >
-            {times.map(time => {
-              return <MenuItem value={time} key={time}>{time}</MenuItem>
-            })}
-          </Select>
-        </CustomFormControl>
-      </div>
     </>
   )
 }

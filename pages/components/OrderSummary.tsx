@@ -12,7 +12,7 @@ import { PriceCheckTwoTone } from '@mui/icons-material';
 
 export default function OrderSummary(props: OrderProps) {
   const items = useAppSelector(state => state.order.items)
-  const formatPrice = (price: number) => price.toFixed(2)
+  const formatPrice = (price: number) => price && price.toFixed(2)
   getAvailableTimes()
   return (
     <div className={styles['main-content']}>
