@@ -20,8 +20,7 @@ export default function Menu() {
   return (
     <section className={getStyleName()}>
       <div className={styles['menu-content']}>
-        <Link href="/" passHref >
-          <div className={styles.row} onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>
+          <div className={styles.row} onClick={() => dispatch(toggle({ section: null, open: false }))}>
             <div className={styles['left-chevrons']}>
               <Image
                 src="/left-chevrons.png"
@@ -30,13 +29,15 @@ export default function Menu() {
                 height={30}
               />
             </div>
-            <h1 className={styles.h1}>Home</h1>
+            <h1 className={styles.h1}>Back</h1>
           </div>
-        </Link>
         {!isAuthenticated ? (
           <div>
             <div>
               <div className={styles['br']} />
+              <Link href="/" passHref >
+                <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</h1>
+              </Link>
               <Link href="/login" passHref >
                 <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: null, open: false }))}>Log In</h1>
               </Link>
