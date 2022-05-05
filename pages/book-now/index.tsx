@@ -59,7 +59,7 @@ const StyledDialog = styled(AlertDialog)({
 export default function BookNow() {
   // TODO: datetime to be dynamic
   const initialState = {
-    dateTime: dayjs().format('YYYYY-MM-DDTHH:mm'),
+    dateTime: dayjs().add(1, 'hour').format('YYYY-MM-DDThh:mm'),
     partySize: 0,
     firstName: '',
     lastName: '',
