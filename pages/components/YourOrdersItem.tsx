@@ -24,7 +24,9 @@ export default function YourOrdersItem(props: { item: OrderState }) {
             }
           </div>
           <div className={`${styles['detail']} ${styles['bold']}`}>
-            <AccessTimeFilledIcon color='warning' />
+            {props.item.isCompleted ?
+              <CheckCircleIcon color="success" /> : <AccessTimeFilledIcon color='warning' />
+            }
           </div>
         </div>
       }

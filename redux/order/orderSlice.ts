@@ -21,11 +21,13 @@ interface OrderItem {
 export interface OrderState {
   id: string;
   items: OrderItem[];
+  isCompleted: boolean
   details: OrderDetails;
 }
 const initialState: OrderState = {
   id: uuidv4(),
   items: [],
+  isCompleted: false,
   details: {
     lastName: "",
     time: "",
