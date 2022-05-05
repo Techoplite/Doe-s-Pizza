@@ -175,7 +175,10 @@ export default function BookNow() {
         />
         <Navbar />
         <div className={styles['card']}>
-          <MenuBookIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
+          <div className={styles['page-title-wrapper']}>
+            <MenuBookIcon sx={{ color: yellow[200], fontSize: 50 }} />
+            <h1 className={styles['page-title']}>Book Table</h1>
+          </div>
           <div className={styles['input']}>
             <TextInput
               id="dateTime"

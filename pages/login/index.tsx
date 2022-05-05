@@ -165,7 +165,10 @@ export default function LogIn() {
         />
         <Navbar />
         <div className={styles['card']}>
-          <LoginIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
+          <div className={styles['page-title-wrapper']}>
+            <LoginIcon sx={{ color: yellow[200], fontSize: 50}} />
+            <h1 className={styles['page-title']}>Log In</h1>
+          </div>
           <div className={styles['input']}>
             <TextInput
               id="username"

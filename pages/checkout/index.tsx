@@ -14,14 +14,13 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setDetails } from '../../redux/order/orderSlice';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { addOrder } from '../../redux/yourOrders/yourOrdersSlice';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 const StyledDialog = styled(AlertDialog)({
   '& .MuiDialog-paper': {
     backgroundColor: yellow[200]
   }
 });
-
-
 
 export default function CheckOut() {
   const dispatch = useAppDispatch()
@@ -51,7 +50,6 @@ export default function CheckOut() {
       `Your food will be with you by ${order.details.time}` :
       `Your food will be ready to be picked up by ${order.details.time}`
   }
-
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const initialErrors = {
     firstName: '',
@@ -105,14 +103,6 @@ export default function CheckOut() {
       dispatch(addOrder(order))
     }
   }
-  // const getSubtotal = () => {
-  //   let subtotal = 0
-  //   items.map(item => {
-  //     subtotal += item.price * item.quantity
-  //   })
-  //   return subtotal
-  // }
-
   const [deliveryFee, setDeliveryFee] = useState(0)
   useEffect(() => {
     setDeliveryFee(order.details.isDelivery ? 2.50 : 0.00)
@@ -132,9 +122,6 @@ export default function CheckOut() {
     details.total = subtotal + deliveryFee + serviceCharge
     dispatch(setDetails(details))
   }, [subtotal, deliveryFee])
-  // const getTotal = () => {
-  //   return getSubtotal() + deliveryFee + serviceCharge
-  // }
   return (
     <Provider store={store}>
       <div className={styles['container']}>
@@ -147,6 +134,10 @@ export default function CheckOut() {
         />
         <Navbar />
         <div className={styles['main-content']}>
+          <div className={styles['page-title-wrapper']}>
+            <ShoppingCartCheckoutIcon sx={{ color: yellow[200], fontSize: 50 }} />
+            <h1 className={styles['page-title']}>Checkout</h1>
+          </div>
           <OrderSummary
             errors={errors}
             toggleDelivery={toggleDelivery}
@@ -160,7 +151,7 @@ export default function CheckOut() {
           <Link href="/checkout" passHref >
             <div className={styles['btn']}>
               <DefaultBtn
-                label="Confirm"
+                label="Confirm Order"
                 handler={handleSubmitForm}
               />
             </div>

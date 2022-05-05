@@ -8,6 +8,9 @@ import { Provider } from 'react-redux'
 import MenuItem from '../components/MenuItem';
 import Link from 'next/link'
 import { useAppSelector } from '../../redux/hooks';
+import BookOnlineIcon from '@mui/icons-material/BookOnline';
+import { yellow } from '@mui/material/colors';
+
 
 export default function OnlineOrder() {
   // TODO: on mount should populate with redux store order data
@@ -17,6 +20,10 @@ export default function OnlineOrder() {
       <div className={styles['container']}>
         <Navbar />
         <div className={styles['main-content']}>
+          <div className={styles['page-title-wrapper']}>
+            <BookOnlineIcon sx={{ color: yellow[200], fontSize: 50 }} />
+            <h1 className={styles['page-title']}>Order Online</h1>
+          </div>
           <ul>
             {pizzas.data.nodes && pizzas.data.nodes.map(pizza =>
               <li key={pizza.title}>

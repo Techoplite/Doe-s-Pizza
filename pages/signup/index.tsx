@@ -15,233 +15,236 @@ import { useAppDispatch } from '../../redux/hooks';
 import Link from 'next/link'
 
 const TextInput = styled(TextField)({
-    '& .MuiFilledInput-root': {
-        color: yellow[200],
-        overflow: 'hidden',
-        backgroundColor: '#935e5e4d',
-        '&:hover': {
-            backgroundColor: '#935e5e4d',
-        },
-        '&.Mui-focused': {
-            backgroundColor: '#935e5e4d',
-            borderColor: yellow[200],
-        },
-        "& .MuiFilledInput-underline": {
-            borderBottomColor: yellow[200]
-        }
+  '& .MuiFilledInput-root': {
+    color: yellow[200],
+    overflow: 'hidden',
+    backgroundColor: '#935e5e4d',
+    '&:hover': {
+      backgroundColor: '#935e5e4d',
     },
-    '& .MuiFilledInput-root:before': {
-        borderBottomColor: "white",
+    '&.Mui-focused': {
+      backgroundColor: '#935e5e4d',
+      borderColor: yellow[200],
+    },
+    "& .MuiFilledInput-underline": {
+      borderBottomColor: yellow[200]
+    }
+  },
+  '& .MuiFilledInput-root:before': {
+    borderBottomColor: "white",
 
-    },
-    '& .MuiFilledInput-root:after': {
-        borderBottomColor: "white",
+  },
+  '& .MuiFilledInput-root:after': {
+    borderBottomColor: "white",
 
+  },
+  '& .MuiFilledInput-root.Mui-error::after': {
+    borderBottomColor: 'orange'
+  },
+  "& label": {
+    color: 'white',
+    "&.Mui-focused": {
+      color: 'white'
     },
-    '& .MuiFilledInput-root.Mui-error::after': {
-        borderBottomColor: 'orange'
-    },
-    "& label": {
-        color: 'white',
-        "&.Mui-focused": {
-            color: 'white'
-        },
-        "&.Mui-error": {
-            color: 'orange'
-        }
-    },
-    '& .MuiFormHelperText-root.Mui-error': {
-        color: 'orange'
-    },
+    "&.Mui-error": {
+      color: 'orange'
+    }
+  },
+  '& .MuiFormHelperText-root.Mui-error': {
+    color: 'orange'
+  },
 });
 // TODO: AlertDialog background color not working 
 const StyledDialog = styled(AlertDialog)({
-    '& .MuiDialog-paper': {
-        backgroundColor: yellow[200]
-    }
+  '& .MuiDialog-paper': {
+    backgroundColor: yellow[200]
+  }
 });
 
 export default function index() {
-    const initialState = {
-        username: '',
-        password: '',
-        confirmPassword: '',
+  const initialState = {
+    username: '',
+    password: '',
+    confirmPassword: '',
+  }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [form, setForm] = useState(initialState)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [openDialog, setOpenDialog] = useState(false)
+  const initialErrors = {
+    username: '',
+    password: '',
+    confirmPassword: ''
+  }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [errors, setErrors] = useState(initialErrors)
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.id;
+    const value = event.target.value;
+    setForm(values => ({ ...values, [name]: value }))
+  }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useAppDispatch()
+  const isFormValid = () => {
+    let isValid = true
+    if (!form.username) {
+      isValid = false
+      // Username cannot be empty
+      setErrors(prevErrors => {
+        return { ...prevErrors, username: 'This field is required.' }
+      })
+    } else {
+      setErrors((prevErrors => {
+        return { ...prevErrors, username: '' }
+      }))
     }
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [form, setForm] = useState(initialState)
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [openDialog, setOpenDialog] = useState(false)
-    const initialErrors = {
-        username: '',
-        password: '',
-        confirmPassword: ''
+    if (!form.password) {
+      // Password cannot be empty
+      isValid = false
+      setErrors(prevErrors => {
+        return { ...prevErrors, password: 'This field is required.' }
+      })
+    } else {
+      setErrors(prevErrors => {
+        return { ...prevErrors, password: '' }
+      })
     }
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [errors, setErrors] = useState(initialErrors)
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const name = event.target.id;
-        const value = event.target.value;
-        setForm(values => ({ ...values, [name]: value }))
-    }
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const dispatch = useAppDispatch()
-    const isFormValid = () => {
-        let isValid = true
-        if (!form.username) {
-            isValid = false
-            // Username cannot be empty
-            setErrors(prevErrors => {
-                return { ...prevErrors, username: 'This field is required.' }
-            })
-        } else {
-            setErrors((prevErrors => {
-                return { ...prevErrors, username: '' }
-            }))
+    if (!form.confirmPassword) {
+      isValid = false
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          confirmPassword: 'This field is required.'
         }
-        if (!form.password) {
-            // Password cannot be empty
-            isValid = false
-            setErrors(prevErrors => {
-                return { ...prevErrors, password: 'This field is required.' }
-            })
-        } else {
-            setErrors(prevErrors => {
-                return { ...prevErrors, password: '' }
-            })
-        }
-        if (!form.confirmPassword) {
-            isValid = false
-            setErrors(prevErrors => {
-                return {
-                    ...prevErrors,
-                    confirmPassword: 'This field is required.'
-                }
-            })
+      })
 
-        } else {
-            setErrors(prevErrors => {
-                return {
-                    ...prevErrors,
-                    confirmPassword: ''
-                }
-            })
+    } else {
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          confirmPassword: ''
         }
-        if (form.password.length < 8) {
-            isValid = false
-            // Password must be at least 8 characters
-            setErrors(prevErrors => {
-                return {
-                    ...prevErrors,
-                    password: 'Passwords must be at least 8 characters.',
-                }
-            })
-        } else {
-            setErrors(prevErrors => {
-                return {
-                    ...prevErrors,
-                    password: '',
-                }
-            })
-        }
-        if (form.password !== form.confirmPassword) {
-            isValid = false
-            // Passwords must be same
-            setErrors(prevErrors => {
-                return {
-                    ...prevErrors,
-                    password: 'Passwords must match.',
-                    confirmPassword: 'Passwords must match.'
-                }
-            })
-        }
-        return isValid
+      })
     }
-    const getInputError = (inputId: string) => {
-        for (const [key, value] of Object.entries(errors)) {
-            if (key === inputId && value !== '') {
-                return true
-            }
+    if (form.password.length < 8) {
+      isValid = false
+      // Password must be at least 8 characters
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          password: 'Passwords must be at least 8 characters.',
         }
+      })
+    } else {
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          password: '',
+        }
+      })
     }
-    const handleSubmitForm = () => {
-        const authData = {
-            isAuthenticated: true,
-            credentials: {
-                username: form.username,
-                password: form.password,
-            }
+    if (form.password !== form.confirmPassword) {
+      isValid = false
+      // Passwords must be same
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          password: 'Passwords must match.',
+          confirmPassword: 'Passwords must match.'
         }
-        isFormValid() &&
-            dispatch(setIsAuthenticated(authData)) &&
-            setOpenDialog(true)
+      })
+    }
+    return isValid
+  }
+  const getInputError = (inputId: string) => {
+    for (const [key, value] of Object.entries(errors)) {
+      if (key === inputId && value !== '') {
+        return true
+      }
+    }
+  }
+  const handleSubmitForm = () => {
+    const authData = {
+      isAuthenticated: true,
+      credentials: {
+        username: form.username,
+        password: form.password,
+      }
+    }
+    isFormValid() &&
+      dispatch(setIsAuthenticated(authData)) &&
+      setOpenDialog(true)
 
-    }
-    return (
-        <Provider store={store}>
-            <div className={styles['container']}>
-                <StyledDialog
-                    openDialog={openDialog}
-                    setOpenDialog={setOpenDialog}
-                    title="Sign Up Successful"
-                    message="You have successfully signed up."
-                    successRedirect='/'
-                />
-                <Navbar />
-                <div className={styles['card']}>
-                    <AccountCircleIcon sx={{ color: yellow[200], fontSize: 50, marginBottom: '1rem' }} />
-                    <div className={styles['input']}>
-                        <TextInput
-                            error={getInputError('username')}
-                            id="username"
-                            label="Username"
-                            variant="filled"
-                            value={form.username}
-                            onChange={handleChange}
-                            helperText={errors.username}
-                        />
-                    </div>
-                    <div className={styles['input']}>
-                        <TextInput
-                            error={getInputError('password')}
-                            id="password"
-                            label="Password"
-                            variant="filled"
-                            type="password"
-                            value={form.password}
-                            onChange={handleChange}
-                            helperText={errors.password}
+  }
+  return (
+    <Provider store={store}>
+      <div className={styles['container']}>
+        <StyledDialog
+          openDialog={openDialog}
+          setOpenDialog={setOpenDialog}
+          title="Sign Up Successful"
+          message="You have successfully signed up."
+          successRedirect='/'
+        />
+        <Navbar />
+        <div className={styles['card']}>
+          <div className={styles['page-title-wrapper']}>
+            <AccountCircleIcon sx={{ color: yellow[200], fontSize: 50 }} />
+            <h1 className={styles['page-title']}>Sign Up</h1>
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              error={getInputError('username')}
+              id="username"
+              label="Username"
+              variant="filled"
+              value={form.username}
+              onChange={handleChange}
+              helperText={errors.username}
+            />
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              error={getInputError('password')}
+              id="password"
+              label="Password"
+              variant="filled"
+              type="password"
+              value={form.password}
+              onChange={handleChange}
+              helperText={errors.password}
 
-                        />
-                    </div>
-                    <div className={styles['input']}>
-                        <TextInput
-                            error={getInputError('confirmPassword')}
-                            id="confirmPassword"
-                            label="Confirm Password"
-                            variant="filled"
-                            type="password"
-                            value={form.confirmPassword}
-                            onChange={handleChange}
-                            helperText={errors.confirmPassword}
-                        />
-                    </div>
-                    <DefaultBtn
-                        label="Sign Up"
-                        className={styles['icon']}
-                        handler={handleSubmitForm}
-                    />
-                    <div className={styles['wrapper']}>
-                        <Link href="/login" passHref >
-                            <a className={styles['a']}>
-                                Or go to login.
-                            </a>
-                        </Link>
-                    </div>
-                </div>
-                <div className={styles['footer-wrapper']}>
-                    <Footer />
-                </div>
-            </div>
-        </Provider>
-    )
+            />
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              error={getInputError('confirmPassword')}
+              id="confirmPassword"
+              label="Confirm Password"
+              variant="filled"
+              type="password"
+              value={form.confirmPassword}
+              onChange={handleChange}
+              helperText={errors.confirmPassword}
+            />
+          </div>
+          <DefaultBtn
+            label="Sign Up"
+            className={styles['icon']}
+            handler={handleSubmitForm}
+          />
+          <div className={styles['wrapper']}>
+            <Link href="/login" passHref >
+              <a className={styles['a']}>
+                Or go to login.
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className={styles['footer-wrapper']}>
+          <Footer />
+        </div>
+      </div>
+    </Provider>
+  )
 }
