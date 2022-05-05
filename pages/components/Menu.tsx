@@ -32,7 +32,7 @@ export default function Menu() {
           </div>
           <h1 className={styles.h1}>Back</h1>
         </div>
-        <h2  className={styles['h2']}>{username}</h2>
+        {isAuthenticated && <h2 className={styles['h2']}>{username}</h2>}
         <div className={styles['br']} />
         <Link href="/" passHref >
           <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</h1>
