@@ -1,31 +1,32 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-
-
+import dayjs from "dayjs";
 
 export interface BookingState {
-  dateTime: string,
-  partySize: number,
-  firstName: string,
-  lastName: string,
-  
+  dateTime: string;
+  partySize: number;
+  firstName: string;
+  lastName: string;
+  contactNumber: string;
 }
 const initialState: BookingState = {
-  dateTime: '',
+  dateTime: "",
   partySize: 0,
-  firstName: '',
-  lastName: '',
+  firstName: "",
+  lastName: "",
+  contactNumber: "",
 };
 export const bookingSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
     addBooking: (state, action: PayloadAction<BookingState>) => {
-      state.dateTime = action.payload.dateTime
-      state.partySize = action.payload.partySize
-      state.firstName = action.payload.firstName
-      state.lastName = action.payload.lastName
-    } 
+      state.dateTime = dayjs(action.payload.dateTime).format('DD/MM/YY');
+      state.partySize = action.payload.partySize;
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
+      state.contactNumber = action.payload.contactNumber;
+    },
   },
 });
 export const { addBooking } = bookingSlice.actions;

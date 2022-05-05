@@ -62,6 +62,7 @@ export default function LogIn() {
     partySize: 0,
     firstName: '',
     lastName: '',
+    contactNumber: '',
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [form, setForm] = useState(initialState)
@@ -72,6 +73,7 @@ export default function LogIn() {
     partySize: '',
     firstName: '',
     lastName: '',
+    contactNumber: '',
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [errors, setErrors] = useState(initialErrors)
@@ -213,6 +215,18 @@ export default function LogIn() {
               onChange={handleChange}
               helperText={errors.lastName}
               error={getInputError('lastName')}
+            />
+          </div>
+          <div className={styles['input']}>
+            <TextInput
+              id="contactNumber"
+              label="Contact Number"
+              variant="filled"
+              type="text"
+              value={form.contactNumber}
+              onChange={handleChange}
+              helperText={errors.contactNumber}
+              error={getInputError('contactNumber')}
             />
           </div>
           <DefaultBtn
