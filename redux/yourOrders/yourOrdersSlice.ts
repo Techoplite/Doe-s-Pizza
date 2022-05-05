@@ -19,7 +19,7 @@ const initialState: YourOrdersState = {
         },
       ],
       details: {
-        date: "21/2/89",
+        date: "23/02/22",
         lastName: "",
         time: "",
         isDelivery: true,
@@ -39,7 +39,7 @@ const initialState: YourOrdersState = {
         },
       ],
       details: {
-        date: "43/43/76",
+        date: "03/03/22",
         lastName: "t",
         address: "t",
         postcode: "t",

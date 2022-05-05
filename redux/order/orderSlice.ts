@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import { v4 as uuidv4 } from "uuid";
+import dayjs from 'dayjs';
 
 interface OrderDetails {
   lastName: string;
@@ -31,7 +32,7 @@ const initialState: OrderState = {
   details: {
     lastName: "",
     time: "",
-    date: new Date().getDate().toString(),
+    date: dayjs().format('DD/MM/YY'),
     isDelivery: true,
     address: "",
     postcode: "",
