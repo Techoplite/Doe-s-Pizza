@@ -64,6 +64,7 @@
         margin-bottom: 8rem;
     }
     .downChevrons {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         position: relative;
         bottom: 3rem;
         @keyframes move-down {
