@@ -69,7 +69,7 @@ export default function Home(props) {
           <link rel="manifest" href="/manifest.json" />
         </Head>
         {mobile && <Navbar />}
-        <Landing setScrollDown={setScrollDown} />
+        <Landing/>
         <PopularPizzas />
         <AboutUs />
         <ContactUs />

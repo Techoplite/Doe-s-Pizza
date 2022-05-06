@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import styles from "../../styles/Landing.module.scss";
 import LandingBtn from './LandingBtn';
 import Image from 'next/image'
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useRouter } from 'next/router';
 import AlertDialog from '../components/AlertDialog'
 import { yellow } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
+import { toggle } from '../../redux/menu/menuSlice';
 
 // TODO: AlertDialog background color not working 
 const StyledDialog = styled(AlertDialog)({
@@ -15,8 +16,9 @@ const StyledDialog = styled(AlertDialog)({
   }
 });
 
-export default function Landing(props) {
+export default function Landing() {
   const router = useRouter();
+  const dispatch = useAppDispatch()
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
   const handleClick = () => {
     isAuthenticated ? router.push('/online-order') : setOpenDialog(true)
@@ -52,7 +54,7 @@ export default function Landing(props) {
       </div>
       <div
         className={styles.downChevrons}
-        onClick={() => props.setScrollDown(true)}
+        onClick={() => dispatch(toggle({ section: 'popular-pizzas', open: false }))}
       >
         <Image
           src="/down-chevrons.png"
