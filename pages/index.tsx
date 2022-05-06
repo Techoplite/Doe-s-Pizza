@@ -11,10 +11,12 @@ import { setNavBackground } from '../redux/navBackground/navBackgroundSlice'
 import { getPizzas } from "./api"
 import { setPizzas } from "../redux/pizzas/pizzasSlice";
 import ErrorBoundary from "./components/ErrorBoundary"
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 // TODO: Add page to inform the user that needs authorization to reach the given url
 
 export default function Home(props) {
+  const mobile = useMediaQuery('(max-width:850px)');
   const [scrollDown, setScrollDown] = useState(false)
   const dispatch = useAppDispatch()
   const section = useAppSelector(state => state.menu.section)
@@ -66,7 +68,7 @@ export default function Home(props) {
           <link rel="apple-touch-icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
-        <Navbar />
+        {mobile && <Navbar />}
         <Landing setScrollDown={setScrollDown} />
         <PopularPizzas />
         <AboutUs />

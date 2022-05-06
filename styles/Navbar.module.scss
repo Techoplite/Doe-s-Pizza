@@ -1,6 +1,6 @@
 .navbar {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: right;
     align-items: center;
     position: fixed;
@@ -13,6 +13,12 @@
 
 .logo {
     grid-column: 2 / 3;
+}
+
+@media only screen and (min-width: 400px) {
+    .logo {
+        grid-column: 1 / 2;
+    }
 }
 
 .hamburger {

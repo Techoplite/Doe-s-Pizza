@@ -21,7 +21,7 @@
         line-height: 40px;
         color: $white;
         margin-top: 3rem;
-        max-width: 18rem;
+        width: 18rem;
         margin-bottom: 3rem;
         padding-left: 2rem;
     }
@@ -80,5 +80,37 @@
         animation-direction: alternate;
         animation-timing-function: ease-in-out;
         cursor: pointer;
+    }
+    .buttons-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    @media only screen and (min-width: 400px) {
+        h1 {
+            width: auto;
+            margin-top: 5rem;
+            padding-left: 0;
+        }
+        .buttons-wrapper {
+            flex-direction: row;
+        }
+        button {
+            margin: 0 1rem 3rem 1rem;
+        }
+        .downChevrons {
+            margin-bottom: -1rem;
+            margin-left: 13rem;
+        }
+        .businessInfo {
+            margin-bottom: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 30rem;
+        }
+        .accountRequired {
+            margin-top: -3rem;
+            margin-right: 5rem;
+        }
     }
 }

@@ -43,16 +43,22 @@ export default function Landing(props) {
         successRedirect={null}
       />
       <h1>LIKE MAMMA USED TO MAKE...</h1>
-      <LandingBtn label="Book Now" linkRef='/book-now' handler={null} />
-      <LandingBtn
-        label="Order Online*"
-        handler={handleClick}
-        linkRef={null}
-      />
+      <div className={styles['buttons-wrapper']}>
+        <LandingBtn label="Book Now" linkRef='/book-now' handler={null} />
+        <LandingBtn
+          label="Order Online*"
+          handler={handleClick}
+          linkRef={null}
+        />
+      </div>
       <div className={styles.businessInfo}>
-        <h2>Open from 11am to 11pm</h2>
-        <h2>Tuesday closed</h2>
-        <h3>*Account required</h3>
+        <div className={styles.openingHours}>
+          <h2>Open from 11am to 11pm</h2>
+          <h2>Tuesday closed</h2>
+        </div>
+        <div className={styles.accountRequired}>
+          <h3>*Account required</h3>
+        </div>
       </div>
       <div
         className={styles.downChevrons}

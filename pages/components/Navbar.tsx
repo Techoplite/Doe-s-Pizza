@@ -20,7 +20,7 @@ export default function Navbar() {
             alt="Landscape picture"
             width={190}
             height={30}
-
+            layout="fixed"
           />
         </div>
         <div
