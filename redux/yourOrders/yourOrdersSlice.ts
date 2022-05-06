@@ -63,5 +63,6 @@ export const yourOrdersSlice = createSlice({
   },
 });
 export const { addOrder } = yourOrdersSlice.actions;
+export const { resetYourOrders } = yourOrdersSlice.actions;
 export const yourOrdersState = (state: RootState) => state.yourOrders;
 export default yourOrdersSlice.reducer;

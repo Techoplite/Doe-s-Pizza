@@ -7,6 +7,7 @@ import { toggle } from '../../redux/menu/menuSlice'
 import { setIsAuthenticated } from '../../redux/auth/authSlice';
 import { resetOrder } from '../../redux/order/orderSlice';
 import { addBooking, resetBooking } from '../../redux/booking/bookingSlice';
+import { resetYourOrders } from '../../redux/yourOrders/yourOrdersSlice';
 
 export default function Menu() {
   const menuOpen = useAppSelector(state => state.menu.open)
@@ -104,10 +105,5 @@ export default function Menu() {
 
     </section>
   )
-}
-
-
-function resetYourOrders(): any {
-  throw new Error('Function not implemented.');
 }
 
