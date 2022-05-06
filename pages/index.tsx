@@ -12,6 +12,7 @@ import { getPizzas } from "./api"
 import { setPizzas } from "../redux/pizzas/pizzasSlice";
 import ErrorBoundary from "./components/ErrorBoundary"
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { toggle } from "../redux/menu/menuSlice";
 
 // TODO: Add page to inform the user that needs authorization to reach the given url
 
@@ -27,6 +28,7 @@ export default function Home(props) {
   useEffect(() => {
     setTimeout(() => {
       const element = document.getElementById(section)
+      console.log('element', element)
       if (element) {
         element.scrollIntoView({
           behavior: 'smooth',
@@ -35,7 +37,7 @@ export default function Home(props) {
         });
       }
     }, 500)
-
+    dispatch(toggle({ section: null, open: false }))
   }, [section, props])
   useEffect(() => {
     dispatch(setPizzas(props.pizzas))
