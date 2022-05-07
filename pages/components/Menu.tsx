@@ -54,9 +54,9 @@ export default function Menu() {
           <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</h1>
         </Link>
         {!isAuthenticated ? (
-          <div>
-            <div>
-              <div className={styles['br']} />
+          <div >
+            <div className={styles['br']} />
+            <div className={styles['links-container']}>
               <Link href="/login" passHref >
                 <h1 className={styles['nav-link']} onClick={() => dispatch(toggle({ section: null, open: false }))}>Log In</h1>
               </Link>
@@ -66,9 +66,9 @@ export default function Menu() {
             </div>
           </div>
         ) : (
-          <div>
             <div>
-              <div className={styles['br']} />
+            <div className={styles['br']} />
+            <div className={styles['links-container']}>
               <Link href="/" passHref >
                 <h1
                   className={styles['nav-link']}
@@ -85,19 +85,22 @@ export default function Menu() {
                 </h1>
               </Link>
             </div>
+            <div className={styles['br']} />
           </div>
         )
         }
         <div>
-          <div className={styles['br']} />
-          <Link href="/" passHref >
-            <h1 className={styles['nav-link']} onClick={() =>
-              dispatch(toggle({ section: 'about', open: false }))}>About Us</h1>
-          </Link>
-          <Link href="/" passHref >
-            <h1 className={styles['nav-link']} onClick={() =>
-              dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</h1>
-          </Link>
+        <div className={styles['br']} />
+          <div className={styles['links-container']}>
+            <Link href="/" passHref >
+              <h1 className={styles['nav-link']} onClick={() =>
+                dispatch(toggle({ section: 'about', open: false }))}>About Us</h1>
+            </Link>
+            <Link href="/" passHref >
+              <h1 className={styles['nav-link']} onClick={() =>
+                dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</h1>
+            </Link>
+          </div>
           <div className={styles['br']} />
         </div>
       </div>
