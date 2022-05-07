@@ -30,3 +30,14 @@
         flex-direction: column;
     }
 }
+
+@media screen and (min-width: 800px) {
+    // Tablet
+    .section-popular-pizzas {
+        ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+    }
+}
