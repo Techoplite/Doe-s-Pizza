@@ -85,7 +85,6 @@ export default function Menu() {
                 </h1>
               </Link>
             </div>
-            <div className={styles['br']} />
           </div>
         )
         }
