@@ -9,6 +9,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    .flex-container {
+        width: 100%;
+    }
     .main-content {
         padding: 0 2rem;
         display: flex;
@@ -35,21 +38,48 @@
             color: $white;
             margin: 2rem 0;
         }
+        img {
+            border-radius: 20px;
+        }
     }
 }
 
 @media screen and (min-width: 400px) {
     .section-about-us {
-        .wrapper {
-            width: 50%;
+        .main-content {
+            width: 100%;
+            p {
+                margin: auto;
+                font-size: 1.5rem;
+            }
+            h1 {
+                font-size: 3rem;
+                margin-bottom: 3rem;
+            }
+        }
+        .flex-container {
+            width: auto;
+            margin-top: 3rem;
+            padding: 0 2rem;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            flex-direction: row;
             p {
                 text-align: start;
+                padding: 0 3rem;
+            }
+            .img-wrapper {
+                width: 100%;
             }
         }
-        p {
+        .flex-container:nth-child(even) {
+            flex-direction: row-reverse;
+            .img-wrapper {
+                justify-content: end;
+            }
+        }
+        .flex-container p {
             text-align: center;
         }
     }
