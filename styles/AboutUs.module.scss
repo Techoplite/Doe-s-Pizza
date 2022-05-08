@@ -24,6 +24,7 @@
             color: $yellow;
             max-width: 18rem;
             text-align: center;
+            margin: auto;
         }
         p {
             font-family: "Alegreya Sans";
@@ -33,6 +34,23 @@
             line-height: 26px;
             color: $white;
             margin: 2rem 0;
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .section-about-us {
+        .wrapper {
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            p {
+                text-align: start;
+            }
+        }
+        p {
+            text-align: center;
         }
     }
 }
