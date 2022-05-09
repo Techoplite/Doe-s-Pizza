@@ -31,6 +31,13 @@ $black: rgba(0, 0, 0, 0.322);
     margin-bottom: 2rem
 }
 
+// Desktop
+@media screen and (min-width: 1080px) {
+    .card {
+        width: 25rem
+    }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Arvo:wght@700&wght500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Andika+New+Basic:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700;800&display=swap');
