@@ -7,7 +7,10 @@ import PopPizzaItem from './PopPizzaItem';
 export default function PopularPizzas() {
     const pizzas = useAppSelector(state => state.pizzas)
     return (
-        <section className={styles['section-popular-pizzas']} id='popular-pizzas'>
+      <section
+        className={styles['section-popular-pizzas']}
+        id='popular-pizzas'
+      >
             <>
                 <div className={styles['top-spacer']}></div>
                 <h1>Popular Pizzas</h1>

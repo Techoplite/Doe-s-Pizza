@@ -1,6 +1,5 @@
 @import "globals.scss";
 .section-popular-pizzas {
-    min-height: 100vh;
     width: 100%;
     background: url(../public/background-images/popular-pizzas.png);
     background-size: cover;
@@ -22,22 +21,25 @@
     }
     li {
         list-style: none;
+        margin: auto;
     }
     ul {
         margin: 0;
         padding: 0;
         display: flex;
         flex-direction: column;
+        margin-bottom: 8rem;
     }
 }
 
+// Tablet
 @media screen and (min-width: 400px) {
-    // Tablet
     .section-popular-pizzas {
         ul {
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-around;
+            width: 80vw;
         }
     }
 }
