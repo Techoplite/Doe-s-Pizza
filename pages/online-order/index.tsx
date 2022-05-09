@@ -40,7 +40,7 @@ export default function OnlineOrder() {
         </div>
         <Link href="/checkout" passHref >
           <div className={styles['btn']}>
-            <DefaultBtn label="Checkout" />
+            <DefaultBtn label="Checkout" maxWidth='none'/>
           </div>
         </Link>
         <div className={styles['footer-wrapper']}>
