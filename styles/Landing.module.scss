@@ -86,12 +86,18 @@
         display: flex;
         flex-direction: column;
     }
-    @media only screen and (min-width: 400px) {
+}
+
+// Tablet
+@media screen and (min-width: 650px) {
+    .section-landing {
+        min-height: 1000px;
         h1 {
-            width: 36rem;
+            margin-top: 0;
+            width: 30rem;
             margin-bottom: 10rem;
             padding-left: 0;
-            font-size: 4rem;
+            font-size: 3rem;
             line-height: 65px;
         }
         .buttons-wrapper {
@@ -99,9 +105,9 @@
         }
         button {
             margin: 0 1rem 3rem 1rem;
-            font-size: 1.7rem;
-            width: 17rem;
-            padding: 1.5rem;
+            font-size: 1.2rem;
+            width: 14rem;
+            padding: 1.2rem;
         }
         .businessInfo {
             margin-top: 4rem;
@@ -121,22 +127,12 @@
     }
 }
 
-// Tablet
-@media screen and (min-width: 400px) {
-    .section-landing {
-        min-height: 1000px;
-        h1 {
-            margin-top: 0;
-        }
-    }
-}
-
 // Desktop
 @media screen and (min-width: 1080px) {
     .section-landing {
         h1 {
             margin-top: 0;
-            width: 100%;
+            width: 80%;
             text-align: center;
         }
         button {
@@ -150,7 +146,7 @@
         }
         .buttons-wrapper {
             justify-content: space-between;
-            width: 45rem;
+            width: 35rem;
         }
     }
 }

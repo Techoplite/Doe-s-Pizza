@@ -1,3 +1,4 @@
+@import "globals.scss";
 .navbar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -15,6 +16,10 @@
     grid-column: 2 / 3;
 }
 
+.menu-links {
+    display: none;
+}
+
 @media only screen and (min-width: 400px) {
     .logo {
         grid-column: 1 / 2;
@@ -26,12 +31,59 @@
     margin-top: 0.5rem;
 }
 
-@media screen and (min-width:600px) {
-    .hamburger {
-        display: none;
-    }
+@media screen and (min-width: 1080px) {
     .navbar {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         position: absolute;
-        background-color: transparent;
+        .logo {
+            grid-column: 1 / 2;
+        }
+        .hamburger {
+            display: none;
+        }
+        .navbar {
+            position: absolute;
+            background-color: transparent;
+        }
+        .menu-links {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-content: center;
+            grid-column: 3 / 5;
+            color: $white;
+            width: 100%;
+            font-family: "Alegreya Sans";
+            font-style: normal;
+            font-weight: 400;
+            li {
+                list-style: none;
+                margin: 0;
+                cursor: pointer;
+                &:hover {
+                    color: $yellow;
+                }
+            }
+        }
+        .auth-links {
+            grid-column: 5 / 6;
+            color: $yellow;
+            justify-content: flex-end;
+            align-items: center;
+            li {
+                margin: 0 1rem;
+                &:hover {
+                    color: $white
+                }
+            }
+            .sign-up {
+                background-color: $red;
+                padding: 0.5rem;
+                border-radius: 2px;
+                &:hover {
+                    background-color: $lightRed;
+                }
+            }
+        }
     }
 }
