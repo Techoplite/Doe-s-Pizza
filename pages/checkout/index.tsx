@@ -151,6 +151,7 @@ export default function CheckOut() {
           <Link href="/checkout" passHref >
             <div className={styles['btn']}>
               <DefaultBtn
+                maxWidth='14rem'
                 label="Confirm Order"
                 handler={handleSubmitForm}
               />
