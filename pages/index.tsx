@@ -17,7 +17,6 @@ import { toggle } from "../redux/menu/menuSlice";
 // TODO: Add page to inform the user that needs authorization to reach the given url
 
 export default function Home(props) {
-  const mobile = useMediaQuery('(max-width:850px)');
   const [scrollDown, setScrollDown] = useState(false)
   const dispatch = useAppDispatch()
   const section = useAppSelector(state => state.menu.section)
@@ -70,8 +69,8 @@ export default function Home(props) {
           <link rel="apple-touch-icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
-        {mobile && <Navbar />}
-        <Landing/>
+        <Navbar />
+        <Landing />
         <PopularPizzas />
         <AboutUs />
         <ContactUs />
