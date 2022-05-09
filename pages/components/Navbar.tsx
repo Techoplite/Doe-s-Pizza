@@ -21,7 +21,7 @@ export default function Navbar() {
             src="/logo-small.png"
             alt="Landscape picture"
             width={190}
-            height={30}
+            height={34}
             layout="fixed"
           />
         </div>
