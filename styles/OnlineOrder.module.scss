@@ -26,9 +26,12 @@
 }
 
 .btn {
-    width: 80%;
+    width: 20rem;
     margin: auto;
     margin-bottom: 2rem;
+    button {
+        width: 20rem;
+    }
 }
 
 .footer-wrapper {
