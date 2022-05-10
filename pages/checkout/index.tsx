@@ -141,7 +141,7 @@ export default function CheckOut() {
     let details = JSON.parse(JSON.stringify(order.details))
     details.total = subtotal + deliveryFee + serviceCharge
     dispatch(setDetails(details))
-  }, [subtotal, deliveryFee])
+  }, [subtotal, deliveryFee]) // TODO: Will cause max depth error
   return (
     <Provider store={store}>
       <div className={styles['container']}>
