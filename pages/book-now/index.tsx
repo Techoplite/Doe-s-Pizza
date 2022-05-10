@@ -155,6 +155,7 @@ export default function BookNow() {
               value={form.dateTime}
               onChange={handleChange}
               helperText={errors.dateTime}
+              fullWidth
               error={getInputError('dateTime')}
             />
           </div>
