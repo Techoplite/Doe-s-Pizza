@@ -27,7 +27,6 @@ export default function Home(props) {
   useEffect(() => {
     setTimeout(() => {
       const element = document.getElementById(section)
-      console.log('element', element)
       if (element) {
         element.scrollIntoView({
           behavior: 'smooth',
