@@ -36,7 +36,7 @@ export default function Home(props) {
       }
     }, 200)
     dispatch(toggle({ section: null, open: false }))
-  }, [section, props])
+  }, [section, props, dispatch])
   useEffect(() => {
     dispatch(setPizzas(props.pizzas))
   }, [props.pizzas, dispatch])
