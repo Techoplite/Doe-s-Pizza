@@ -49,3 +49,10 @@
     padding: 1rem 0.5rem;
     text-align: right;
 }
+
+@media screen and (min-width:1080px) {
+    .item-container {
+        height: 12rem;
+        width: 19rem;
+    }
+}
