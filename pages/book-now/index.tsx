@@ -186,6 +186,7 @@ export default function BookNow() {
               variant="filled"
               type='datetime-local'
               value={form.dateTime}
+              fullWidth
               onChange={handleChange}
               helperText={errors.dateTime}
               error={getInputError('dateTime')}
