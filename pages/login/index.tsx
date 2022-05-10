@@ -44,11 +44,11 @@ const TextInput = styled(TextField)({
       color: 'white'
     },
     "&.Mui-error": {
-      color: 'orange'
+      color: '#ffa531'
     }
   },
   '& .MuiFormHelperText-root.Mui-error': {
-    color: 'orange'
+    color: '#ffa531'
   },
 
   // TODO: setting the correct padding here will prevent inputs from bumping layout, but custom setting not working

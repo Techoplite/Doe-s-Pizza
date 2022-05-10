@@ -56,6 +56,7 @@ export default function CheckOut() {
     lastName: '',
     address: '',
     postcode: '',
+    time: ''
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [errors, setErrors] = useState(initialErrors)
@@ -81,6 +82,17 @@ export default function CheckOut() {
     } else {
       setErrors((prevErrors => {
         return { ...prevErrors, address: '' }
+      }))
+    }
+    if (!order.details.time && order.details.isDelivery) {
+      isValid = false
+      // Time cannot be empty
+      setErrors(prevErrors => {
+        return { ...prevErrors, time: 'This field is required.' }
+      })
+    } else {
+      setErrors((prevErrors => {
+        return { ...prevErrors, time: '' }
       }))
     }
     if (!order.details.postcode && order.details.isDelivery) {

@@ -13,47 +13,9 @@ import { Provider } from 'react-redux'
 import { setIsAuthenticated } from '../../redux/auth/authSlice';
 import { useAppDispatch } from '../../redux/hooks';
 import Link from 'next/link'
+import { TextInput } from '../../styles/styled/constants';
 
-const TextInput = styled(TextField)({
-  '& .MuiFilledInput-root': {
-    color: yellow[200],
-    overflow: 'hidden',
-    backgroundColor: '#935e5e4d',
-    '&:hover': {
-      backgroundColor: '#935e5e4d',
-    },
-    '&.Mui-focused': {
-      backgroundColor: '#935e5e4d',
-      borderColor: yellow[200],
-    },
-    "& .MuiFilledInput-underline": {
-      borderBottomColor: yellow[200]
-    }
-  },
-  '& .MuiFilledInput-root:before': {
-    borderBottomColor: "white",
 
-  },
-  '& .MuiFilledInput-root:after': {
-    borderBottomColor: "white",
-
-  },
-  '& .MuiFilledInput-root.Mui-error::after': {
-    borderBottomColor: 'orange'
-  },
-  "& label": {
-    color: 'white',
-    "&.Mui-focused": {
-      color: 'white'
-    },
-    "&.Mui-error": {
-      color: 'orange'
-    }
-  },
-  '& .MuiFormHelperText-root.Mui-error': {
-    color: 'orange'
-  },
-});
 // TODO: AlertDialog background color not working 
 const StyledDialog = styled(AlertDialog)({
   '& .MuiDialog-paper': {
@@ -132,7 +94,7 @@ export default function index() {
       setErrors(prevErrors => {
         return {
           ...prevErrors,
-          password: 'Passwords must be at least 8 characters.',
+          password: 'Must be at least 8 characters.',
         }
       })
     } else {

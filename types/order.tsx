@@ -26,4 +26,5 @@ export interface Errors {
   lastName: string;
   address: string;
   postcode: string;
+  time: string
 }

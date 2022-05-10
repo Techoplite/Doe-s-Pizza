@@ -13,6 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { OrderProps } from '../../types/order';
 import { makeStyles } from '@mui/styles';
 import { useAppSelector } from '../../redux/hooks';
+import { TextInput } from '../../styles/styled/constants';
 
 const CustomFormControl = styled(FormControl)({
   '& .MuiFormControl-root': {
@@ -39,52 +40,6 @@ const CustomFormControl = styled(FormControl)({
   }
 })
 
-const TextInput = styled(TextField)({
-  '& .MuiFilledInput-root': {
-    color: yellow[200],
-    overflow: 'hidden',
-    backgroundColor: '#935e5e4d',
-    '&:hover': {
-      backgroundColor: '#935e5e4d',
-    },
-    '&.Mui-focused': {
-      backgroundColor: '#935e5e4d',
-      borderColor: yellow[200],
-    },
-    "& .MuiFilledInput-underline": {
-      borderBottomColor: yellow[200]
-    }
-  },
-  '& .MuiFilledInput-root:before': {
-    borderBottomColor: "white",
-
-  },
-  '& .MuiFilledInput-root:after': {
-    borderBottomColor: "white",
-
-  },
-  "& label": {
-    color: 'white',
-    "&.Mui-focused": {
-      color: 'white'
-    },
-    "&.Mui-error": {
-      color: 'orange'
-    }
-  },
-  '& .MuiFormHelperText-root.Mui-error': {
-    color: 'orange'
-  },
-
-  // TODO: setting the correct padding here will prevent inputs from bumping layout, but custom setting not working
-  '& .MuiFormControl-root': {
-    '&.MuiTextField-root': {
-      minHeight: '700px'
-    }
-  },
-});
-
-
 
 
 // TODO: datetime default to be dynamic
@@ -109,6 +64,7 @@ const useStyles = makeStyles({
     },
   },
 })
+
 export default function OrderDetails(props: { data: OrderProps }) {
   const MenuProps = {
     PaperProps: {
@@ -142,6 +98,7 @@ export default function OrderDetails(props: { data: OrderProps }) {
               onChange={props.data.handleChange}
               value={details.lastName}
               helperText={props.data.errors.lastName}
+              error={props.data.errors.lastName && true}
             />
           </div>
           {details.isDelivery &&
@@ -154,6 +111,8 @@ export default function OrderDetails(props: { data: OrderProps }) {
                 onChange={props.data.handleChange}
                 value={details.address}
                 helperText={props.data.errors.address}
+                error={props.data.errors.address && true}
+
               />
             </div>
           }
@@ -167,6 +126,8 @@ export default function OrderDetails(props: { data: OrderProps }) {
                 onChange={props.data.handleChange}
                 value={details.postcode}
                 helperText={props.data.errors.postcode}
+                error={props.data.errors.postcode && true}
+
               />
             </div>
           }
@@ -181,6 +142,7 @@ export default function OrderDetails(props: { data: OrderProps }) {
                 value={details.time}
                 label="Age"
                 onChange={props.data.handleSelectChange}
+                error={props.data.errors.time && true}
               >
                 {times.map(time => {
                   return <MenuItem value={time} key={time}>{time}</MenuItem>

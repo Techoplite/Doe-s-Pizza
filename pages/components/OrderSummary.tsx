@@ -6,8 +6,6 @@ import OrderDetails from './OrderDetails';
 import OrderItem from './OrderItem';
 import { OrderProps } from '../../types/order';
 import { getAvailableTimes } from '../../utils/helpers';
-import { PriceCheckTwoTone } from '@mui/icons-material';
-
 
 
 export default function OrderSummary(props: OrderProps) {
@@ -49,7 +47,7 @@ export default function OrderSummary(props: OrderProps) {
         </div>
         <Link href="/online-order" passHref >Go back to order</Link>
       </div>
-      <OrderDetails data={props} />
+      <OrderDetails data={props}/>
     </div>
   )
 }
