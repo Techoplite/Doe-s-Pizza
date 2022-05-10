@@ -158,25 +158,25 @@ export default function CheckOut() {
             <ShoppingCartCheckoutIcon sx={{ color: yellow[200], fontSize: 50 }} />
             <h1 className={styles['page-title']}>Checkout</h1>
           </div>
-          <OrderSummary
-            errors={errors}
-            toggleDelivery={toggleDelivery}
-            handleChange={handleChange}
-            handleSelectChange={handleSelectChange}
-            total={order.details.total}
-            subtotal={subtotal}
-            deliveryFee={deliveryFee}
-            serviceCharge={serviceCharge}
-          />
-          <Link href="/checkout" passHref >
-            <div className={styles['btn']}>
-              <DefaultBtn
-                maxWidth='none'
-                label="Confirm Order"
-                handler={handleSubmitForm}
-              />
-            </div>
-          </Link>
+            <OrderSummary
+              errors={errors}
+              toggleDelivery={toggleDelivery}
+              handleChange={handleChange}
+              handleSelectChange={handleSelectChange}
+              total={order.details.total}
+              subtotal={subtotal}
+              deliveryFee={deliveryFee}
+              serviceCharge={serviceCharge}
+            />
+            <Link href="/checkout" passHref >
+              <div className={styles['btn']}>
+                <DefaultBtn
+                  maxWidth='none'
+                  label="Confirm Order"
+                  handler={handleSubmitForm}
+                />
+              </div>
+            </Link>
         </div>
         <div className={styles['footer-wrapper']}>
           <Footer />

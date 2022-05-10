@@ -28,3 +28,12 @@
     justify-content: center;
     width: 100%;
 }
+
+@media screen and (min-width: 1080px) {
+    .btn {
+        button {
+            margin-left: 121px;
+            width: 285px;
+        }
+    }
+}

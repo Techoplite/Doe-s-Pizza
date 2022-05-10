@@ -47,7 +47,9 @@ export default function OrderSummary(props: OrderProps) {
         </div>
         <Link href="/online-order" passHref >Go back to order</Link>
       </div>
-      <OrderDetails data={props}/>
+      <div>
+        <OrderDetails data={props} />
+      </div>
     </div>
   )
 }
