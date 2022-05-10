@@ -41,6 +41,9 @@
         img {
             border-radius: 20px;
         }
+        .img-wrapper {
+            margin: 2rem 0;
+        }
         .text-on-img {
             position: absolute;
             top: 25%;
@@ -120,11 +123,14 @@
 @media screen and (min-width: 1080px) {
     .section-about-us {
         .flex-container {
+            width: 60%;
+            margin: 3rem auto;
             p {
-                padding: 0 3rem;
+                padding: 0 2rem;
+                font-size: 1.5rem;
             }
-            .img-wrapper {
-                width: 50%;
+            .text-on-img {
+                margin-top: 5%;
             }
         }
     }
