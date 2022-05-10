@@ -31,6 +31,10 @@ $black: rgba(0, 0, 0, 0.322);
     margin-bottom: 2rem
 }
 
+.card {
+    width: fit-content;
+}
+
 // Desktop
 @media screen and (min-width: 1080px) {
     .card {
