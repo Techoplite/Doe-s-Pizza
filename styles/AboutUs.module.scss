@@ -41,19 +41,27 @@
         img {
             border-radius: 20px;
         }
+        .text-on-img {
+            position: absolute;
+            top: 25%;
+        }
+        .shaped-container {
+            position: relative;
+        }
     }
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
     .section-about-us {
         .main-content {
-            width: 100%;
+            width: 80%;
+            margin-top: 0;
             p {
                 margin: auto;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
             h1 {
-                font-size: 3rem;
+                font-size: 2rem;
                 margin-bottom: 3rem;
             }
         }
@@ -67,46 +75,52 @@
             flex-direction: row;
             p {
                 text-align: start;
-                padding: 0 3rem;
             }
             .img-wrapper {
                 width: 100%;
             }
         }
-        .flex-container:nth-child(even) {
-            flex-direction: row-reverse;
-            .img-wrapper {
-                justify-content: end;
+        .flex-container {
+            &:nth-child(even) {
+                flex-direction: row-reverse;
+                .shaped-container {
+                    justify-content: end;
+                    margin-right: 3rem;
+                }
+            }
+            &:nth-child(odd) {
+                .shaped-container {
+                    margin-left: 3rem;
+                }
             }
         }
         .flex-container p {
             text-align: center;
         }
+        .text-on-img {
+            position: absolute;
+        }
+        .shaped-container {
+            position: relative;
+            width: 100%;
+        }
     }
 }
 
-// Tablet
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 800px) {
     .section-about-us {
-        .main-content {
-            width: 70vw;
-            h1 {
-                font-size: 2rem;
-            }
-            p {
-                font-size: 1rem;
+        .flex-container {
+            .text-on-img {
+                margin-top: 13%;
             }
         }
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .section-about-us {
         .flex-container {
-            width: auto;
-            margin-top: 3rem;
-            padding: 0 2rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-direction: row;
             p {
-                text-align: start;
                 padding: 0 3rem;
             }
             .img-wrapper {
