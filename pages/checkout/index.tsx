@@ -15,6 +15,7 @@ import { setDetails } from '../../redux/order/orderSlice';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { addOrder } from '../../redux/yourOrders/yourOrdersSlice';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import { setNavBackground } from '../../redux/navBackground/navBackgroundSlice';
 
 const StyledDialog = styled(AlertDialog)({
   '& .MuiDialog-paper': {
@@ -23,6 +24,13 @@ const StyledDialog = styled(AlertDialog)({
 });
 
 export default function CheckOut() {
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  })
+  const handleScroll = () => {
+    // Toggles the navbar background if page has been scrolled down from top
+    window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
+  }
   const dispatch = useAppDispatch()
   const toggleDelivery = () => {
     let details = JSON.parse(JSON.stringify(order.details))

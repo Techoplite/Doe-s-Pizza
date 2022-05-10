@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/AuthForms.module.scss";
 import Footer from '../components/Footer';
@@ -14,6 +14,7 @@ import { setIsAuthenticated } from '../../redux/auth/authSlice';
 import { useAppDispatch } from '../../redux/hooks';
 import Link from 'next/link'
 import { TextInput } from '../../styles/styled/constants';
+import { setNavBackground } from '../../redux/navBackground/navBackgroundSlice';
 
 
 // TODO: AlertDialog background color not working 
@@ -24,6 +25,14 @@ const StyledDialog = styled(AlertDialog)({
 });
 
 export default function index() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  })
+  const handleScroll = () => {
+    // Toggles the navbar background if page has been scrolled down from top
+    window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
+  }
   const initialState = {
     username: '',
     password: '',

@@ -14,6 +14,7 @@ import { addBooking } from '../../redux/booking/bookingSlice';
 import AlertDialog from '../components/AlertDialog';
 import dayjs from 'dayjs';
 import { TextInput } from '../../styles/styled/constants';
+import { setNavBackground } from '../../redux/navBackground/navBackgroundSlice';
 
 // TODO: AlertDialog background color not working 
 const StyledDialog = styled(AlertDialog)({
@@ -24,6 +25,13 @@ const StyledDialog = styled(AlertDialog)({
 
 
 export default function BookNow() {
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  })
+  const handleScroll = () => {
+    // Toggles the navbar background if page has been scrolled down from top
+    window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
+  }
   const datetimeDefault = dayjs().add(1, 'hour').format('YYYY-MM-DDThh:mm')
   // TODO: datetime to be dynamic
   const initialState = {

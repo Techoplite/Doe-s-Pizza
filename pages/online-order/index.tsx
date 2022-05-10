@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/OnlineOrder.module.scss";
 import Footer from '../components/Footer';
@@ -7,12 +7,22 @@ import { store } from '../../redux/store'
 import { Provider } from 'react-redux'
 import MenuItem from '../components/MenuItem';
 import Link from 'next/link'
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import { yellow } from '@mui/material/colors';
+import { setNavBackground } from '../../redux/navBackground/navBackgroundSlice';
 
 
 export default function OnlineOrder() {
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  })
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useAppDispatch()
+  const handleScroll = () => {
+    // Toggles the navbar background if page has been scrolled down from top
+    window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
+  }
   // TODO: on mount should populate with redux store order data
   const pizzas = useAppSelector(state => state.pizzas)
   return (
