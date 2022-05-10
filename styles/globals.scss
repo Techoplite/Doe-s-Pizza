@@ -34,7 +34,8 @@ $black: rgba(0, 0, 0, 0.322);
 // Desktop
 @media screen and (min-width: 1080px) {
     .card {
-        width: 25rem
+        width: 25rem;
+        margin: 8rem auto 5rem auto;
     }
 }
 
