@@ -69,6 +69,11 @@ export default function Footer() {
           <Link href="/" passHref >
             <p onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</p>
           </Link>
+          {isAuthenticated &&
+            <Link href="/your-orders" passHref >
+              <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Your Orders</p>
+            </Link>
+          }
         </div>
       </div>
       <p className={styles['license']}>© 2022 Mirko Oricci. All rights reserved.</p>

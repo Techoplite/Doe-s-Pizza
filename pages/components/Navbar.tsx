@@ -53,6 +53,11 @@ export default function Navbar() {
           <Link href="/" passHref >
             <li onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</li>
           </Link>
+          {isAuthenticated &&
+            <Link href="/your-orders" passHref >
+              <li onClick={() => dispatch(toggle({ section: '', open: false }))}>Your Orders</li>
+            </Link>
+          }
         </div>
         <div className={`${styles['menu-links']} ${styles['auth-links']}`}>
           {!isAuthenticated ?
