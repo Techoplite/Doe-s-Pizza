@@ -34,7 +34,7 @@ export default function Home(props) {
           inline: 'nearest',
         });
       }
-    }, 200)
+    }, 400)
     dispatch(toggle({ section: null, open: false }))
   }, [section, props, dispatch])
   useEffect(() => {
