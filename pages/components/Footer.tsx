@@ -69,9 +69,11 @@ export default function Footer() {
           <Link href="/" passHref >
             <p onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</p>
           </Link>
-          <Link href="/online-order" passHref >
-            <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Order Online</p>
-          </Link>
+          {isAuthenticated &&
+            <Link href="/online-order" passHref >
+              <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Order Online</p>
+            </Link>
+          }
           <Link href="/book-now" passHref >
             <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Book Now</p>
           </Link>
