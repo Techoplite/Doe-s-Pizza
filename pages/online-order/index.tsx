@@ -25,6 +25,7 @@ export default function OnlineOrder() {
   }
   // TODO: on mount should populate with redux store order data
   const pizzas = useAppSelector(state => state.pizzas)
+  const order = useAppSelector(state => state.order)
   return (
     <Provider store={store}>
       <div className={styles['container']}>
@@ -50,7 +51,7 @@ export default function OnlineOrder() {
         </div>
         <Link href="/checkout" passHref >
           <div className={styles['btn']}>
-            <DefaultBtn label="Checkout" maxWidth='18rem'/>
+            <DefaultBtn label="Checkout" maxWidth='18rem' disabled={order.items.length === 0} />
           </div>
         </Link>
         <div className={styles['footer-wrapper']}>

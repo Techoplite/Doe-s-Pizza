@@ -23,4 +23,11 @@
     .icon {
         color: $yellow;
     }
+    &:disabled {
+        color: $lightRed;
+        border-color: $lightRed;
+        &:hover {
+            background-color: transparent;
+        }
+    }
 }
