@@ -22,7 +22,7 @@ The live version can be accessed at https://doe-s-pizza.vercel.app/
 - Writing test with Cypress (I am learning this library now)
 
 ## Next to come
-- Optimise landing page background loading (will have to make it a next/image element with priority set tu 'true' rather than using CSS)
+- Optimise landing page background loading (will have to make it a next/image element with priority set to 'true' rather than using CSS)
 
 ## N.B.
 At the current stage, the authentication process is nothing but some data saved in the Redux store, and will therefore persist only for the given session. In the future, this will make use of the WordPress authentication system, saving accounts and related data in the DB.
