@@ -33,7 +33,7 @@ export default function index() {
           <h1 className={styles['page-title']}>Your Orders</h1>
         </div>
         <div className={styles['container']}>
-          {reversedOrders.length > 1 ?
+          {reversedOrders.length > 0 ?
           <>
             {reversedOrders.map(o => {
               return <div key={o.id}><YourOrdersItem item={o} /></div>

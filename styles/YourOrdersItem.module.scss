@@ -20,3 +20,9 @@
 .bold {
     font-weight: 700;
 }
+
+@media screen and (min-width:1080px) {
+    .detail {
+        margin: 0.5rem 2rem;
+    }
+}
