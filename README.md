@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Overview
 
-## Getting Started
+This is a headless WordPress project with Next JS, meaning that the backend runs on the WordPress server whereas the frontend is served from Vercel. Please note that it is a Beta version, and that the full version should be available by the end of May 2022.
 
-First, run the development server:
+## Technologies involved
+- Next JS 
+- Sass 
+- Redux
+- GitHub
+- Material UI
+- Typescript
+- WordPress
+- Vercel
+- Figma
+- VS Code
+- XAMP (development phase)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Currently busy...
+- Writing test with Cypress (I am learning this library now)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Next to come
+- Optimise landing page background loading (will have to make it a next/image element with priority set tu 'true' rather than using CSS)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## N.B.
+At the current stage, the authentication process is nothing but some data saved in the Redux store, and will therefore persist only for the given session. In the future, this will make use of the WordPress authentication system, saving accounts and related data in the DB.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
