@@ -23,8 +23,9 @@
         }
     }
     .license {
+        color: $white;
         text-align: center;
-        font-size: 16px;
+        font-size: 0.8rem;
         &:hover {
             cursor: default;
         }
