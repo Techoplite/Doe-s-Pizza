@@ -12,8 +12,9 @@ import { times } from '../../utils/constants';
 import InputLabel from '@mui/material/InputLabel';
 import { OrderProps } from '../../types/order';
 import { makeStyles } from '@mui/styles';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { TextInput } from '../../styles/styled/constants';
+import { setPreventScroll } from '../../redux/scroll/scrollSlice';
 
 const CustomFormControl = styled(FormControl)({
   '& .MuiFormControl-root': {
@@ -75,6 +76,7 @@ export default function OrderDetails(props: { data: OrderProps }) {
   };
   const details = useAppSelector(state => state.order.details)
   const classes = useStyles()
+  const dispatch = useAppDispatch()
   return (
     <>
       {props.data && props.data.errors &&
@@ -135,6 +137,8 @@ export default function OrderDetails(props: { data: OrderProps }) {
             <CustomFormControl variant="filled" fullWidth={true}>
               <InputLabel id="time">Time</InputLabel>
               <Select
+                onOpen={() => dispatch(setPreventScroll(true))}
+                onClose={() => dispatch(setPreventScroll(false))}
                 className={classes.select}
                 MenuProps={MenuProps}
                 labelId="Time"

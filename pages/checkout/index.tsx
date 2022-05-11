@@ -142,6 +142,15 @@ export default function CheckOut() {
     details.total = subtotal + deliveryFee + serviceCharge
     dispatch(setDetails(details))
   }, [subtotal, deliveryFee]) // TODO: Will cause max depth error
+  const preventScroll = useAppSelector(state => state.scroll.preventScroll)
+  useEffect(() => {
+    if (preventScroll) {
+      document.getElementsByTagName("html")[0].style.overflowY = 'hidden'
+    } else {
+      document.getElementsByTagName("html")[0].style.overflowY = 'scroll'
+
+    }
+  })
   return (
     <Provider store={store}>
       <div className={styles['container']}>
