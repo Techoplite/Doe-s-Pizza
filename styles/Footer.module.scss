@@ -4,6 +4,8 @@
     height: 18rem;
     border-top: 2px solid $yellow;
     width: 100%;
+    height: fit-content;
+    padding-bottom: 1rem;
     .logo-wrapper {
         width: 100%;
         display: flex;
@@ -12,7 +14,7 @@
         height: 5rem;
     }
     p {
-        font-family: 'Alegreya Sans';
+        font-family: "Alegreya Sans";
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
