@@ -8,11 +8,13 @@ import { setIsAuthenticated } from '../../redux/auth/authSlice';
 import { resetBooking } from '../../redux/booking/bookingSlice';
 import { resetOrder } from '../../redux/order/orderSlice';
 import { resetYourOrders } from '../../redux/yourOrders/yourOrdersSlice';
+import { useRouter } from 'next/router';
 
 
 export default function Footer() {
   const dispatch = useAppDispatch()
   const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
+  const router = useRouter();
   const handleLogout = () => {
     // Should reset every single store
     dispatch(toggle({ section: 'landing', open: false }))
@@ -47,12 +49,16 @@ export default function Footer() {
           {!isAuthenticated ?
             (
               <>
-                <Link href="/signup" passHref >
-                  <p>Sign Up</p>
-                </Link>
-                <Link href="/login" passHref >
-                  <p>Log In</p>
-                </Link>
+                {router.pathname !== '/signup' &&
+                  <Link href="/signup" passHref >
+                    <p>Sign Up</p>
+                  </Link>
+                }
+                {router.pathname !== '/login' &&
+                  <Link href="/login" passHref >
+                    <p>Log In</p>
+                  </Link>
+                }
               </>
             ) : (
               <>
@@ -74,10 +80,12 @@ export default function Footer() {
               <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Order Online</p>
             </Link>
           }
-          <Link href="/book-now" passHref >
-            <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Book Now</p>
-          </Link>
-          {isAuthenticated &&
+          {router.pathname !== '/book-now' &&
+            <Link href="/book-now" passHref >
+              <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Book Now</p>
+            </Link>
+          }
+          {isAuthenticated && router.pathname !== '/your-orders' &&
             <Link href="/your-orders" passHref >
               <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Your Orders</p>
             </Link>
