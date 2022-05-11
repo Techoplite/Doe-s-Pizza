@@ -27,6 +27,7 @@ export default function Landing() {
   const [openDialog, setOpenDialog] = useState(false)
   return (
     <section className={styles['section-landing']} id='landing'>
+      {/* TODO: must use next js image for background loading optimization */}
       <StyledDialog
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
