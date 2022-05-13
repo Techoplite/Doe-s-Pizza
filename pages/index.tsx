@@ -11,7 +11,6 @@ import { setNavBackground } from '../redux/navBackground/navBackgroundSlice'
 import { getPizzas } from "./api"
 import { setPizzas } from "../redux/pizzas/pizzasSlice";
 import ErrorBoundary from "./components/ErrorBoundary"
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { toggle } from "../redux/menu/menuSlice";
 
 // TODO: Add page to inform the user that needs authorization to reach the given url

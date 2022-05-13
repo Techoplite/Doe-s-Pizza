@@ -78,6 +78,7 @@ export default function Navbar() {
         </div>
         <div
           className={styles.hamburger}
+          id='hamburger'
           onClick={() => dispatch(toggle({ open: true, section: null }))}>
           <Image
             src="/hamburger.png"

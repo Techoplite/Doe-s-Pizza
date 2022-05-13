@@ -35,7 +35,7 @@ export default function Menu() {
   }
 
   return (
-    <section className={getStyleName()}>
+    <section className={getStyleName()} id='menu'>
       <div className={styles['menu-content']}>
         <div className={styles.row} onClick={() => dispatch(toggle({ section: null, open: false }))}>
           <div className={styles['left-chevrons']}>
