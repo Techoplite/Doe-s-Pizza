@@ -25,13 +25,14 @@ const landingSectionTests = (width, height, orientation) =>
     })
 
 describe('Landing Section', () => {
-    describe('mobile', () => {
-        landingSectionTests(365, 812, 'portrait')
-        landingSectionTests(812, 365, 'landscape')
+    const devices = [
+        { name: 'mobile', width: 367, height: 812, orientation: 'portrait' },
+        { name: 'mobile', width: 812, height: 375, orientation: 'landscape' },
+        { name: 'tablet', width: 810, height: 1080, orientation: 'portrait' },
+    ]
+    devices.map(d => {
+        describe(`${d.name}`, () => {
+            landingSectionTests(d.width, d.height, d.orientation)
+        })
     })
-    describe('tablet', () => {
-        landingSectionTests(810, 1080, 'portrait')
-            // Landscape orientated tablet will not display the hamburger
-    })
-
 })
