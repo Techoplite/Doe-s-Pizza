@@ -6,7 +6,7 @@ const landingSectionTests = (device) =>
             cy.visit('')
 
         })
-        describe('Sliding ', () => {
+        describe('Sliding Menu', () => {
             it('slides hidden menu in when click on hamburger', () => {
                 cy.get('#menu').then($menu => {
                     expect($menu.is(":visible")).to.be.false
