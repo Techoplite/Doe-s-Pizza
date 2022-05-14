@@ -54,6 +54,7 @@ export default function Landing() {
         </div>
       </div>
       <div
+        id='down-chevs'
         className={styles.downChevrons}
         onClick={() => dispatch(toggle({ section: 'popular-pizzas', open: false }))}
       >
