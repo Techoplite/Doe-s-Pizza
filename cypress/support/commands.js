@@ -23,3 +23,31 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('isNotInViewport', element => {
+    cy.get(element).then($el => {
+        const bottom = Cypress.$(cy.state('window')).height()
+        const rect = $el[0].getBoundingClientRect()
+
+        cy.wrap(rect.top).should('be.gte', bottom)
+        cy.wrap(rect.bottom).should('be.gte', bottom)
+    })
+})
+
+Cypress.Commands.add('isInViewport', element => {
+    cy.get(element).then($el => {
+        const bottom = Cypress.$(cy.state('window')).height()
+        const rect = $el[0].getBoundingClientRect()
+
+        if (rect.bottom > bottom) {
+            // top is within viewport and bottom is overflowing
+            cy.wrap(rect.top).should('not.be.gt', bottom)
+
+        } else if (rect.top < bottom) {
+            // bottom is within viewport and top is overflowing
+            cy.wrap(rect.bottom).should('not.be.gt', bottom)
+        }
+
+    })
+})
