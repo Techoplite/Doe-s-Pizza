@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggle } from '../../redux/menu/menuSlice'
 import { setIsAuthenticated } from '../../redux/auth/authSlice';
 import { resetOrder } from '../../redux/order/orderSlice';
-import { addBooking, resetBooking } from '../../redux/booking/bookingSlice';
+import { resetBooking } from '../../redux/booking/bookingSlice';
 import { resetYourOrders } from '../../redux/yourOrders/yourOrdersSlice';
 
 export default function Menu() {
@@ -35,10 +35,10 @@ export default function Menu() {
   }
 
   return (
-    <section className={getStyleName()} id='menu'>
+    <section className={getStyleName()} data-test='menu'>
       <div className={styles['menu-content']}>
         <div
-          id='back-btn'
+          data-test='back-btn'
           className={styles.row}
           onClick={() => dispatch(toggle({ section: null, open: false }))}
         >

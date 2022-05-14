@@ -9,7 +9,7 @@ export default function PopularPizzas() {
     return (
       <section
         className={styles['section-popular-pizzas']}
-        id='popular-pizzas'
+        data-test='popular-pizzas'
       >
             <>
                 <div className={styles['top-spacer']}></div>

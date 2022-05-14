@@ -37,7 +37,11 @@ export default function Landing() {
       />
       <h1>LIKE MAMMA USED TO MAKE...</h1>
       <div className={styles['buttons-wrapper']}>
-        <LandingBtn label="Book Now" linkRef='/book-now' handler={null} />
+        <LandingBtn
+          dataTest='book-now-btn'
+          label="Book Now"
+          linkRef='/book-now'
+          handler={null} />
         <LandingBtn
           label="Order Online*"
           handler={handleClick}
@@ -54,7 +58,7 @@ export default function Landing() {
         </div>
       </div>
       <div
-        id='down-chevs'
+        data-test='down-chevs'
         className={styles.downChevrons}
         onClick={() => dispatch(toggle({ section: 'popular-pizzas', open: false }))}
       >
