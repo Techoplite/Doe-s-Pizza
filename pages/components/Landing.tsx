@@ -28,13 +28,14 @@ export default function Landing() {
   return (
     <section className={styles['section-landing']} id='landing'>
       {/* TODO: must use next js image for background loading optimization */}
-      <StyledDialog
-        openDialog={openDialog}
-        setOpenDialog={setOpenDialog}
-        title="Account Required"
-        message="You need an account in order to make an online order. Please Sign Up or Log In."
-        successRedirect={null}
-      />
+        <StyledDialog
+          data-test='account-required-dialog'
+          openDialog={openDialog}
+          setOpenDialog={setOpenDialog}
+          title="Account Required"
+          message="You need an account in order to make an online order. Please Sign Up or Log In."
+          successRedirect={null}
+        />
       <h1>LIKE MAMMA USED TO MAKE...</h1>
       <div className={styles['buttons-wrapper']}>
         <LandingBtn
@@ -43,6 +44,7 @@ export default function Landing() {
           linkRef='/book-now'
           handler={null} />
         <LandingBtn
+          dataTest='order-online-btn'
           label="Order Online*"
           handler={handleClick}
           linkRef={null}

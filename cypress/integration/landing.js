@@ -31,22 +31,28 @@ const test = (device) =>
             })
         })
         describe('"Down Chevrons" button', () => {
-            const animationTime = 500 // From index.tsx (400 + 100 otherwise causing problems on 'mobile portrait')
             it('scrolls to "Popular Pizza" when click on down chevrons', () => {
                 cy.get('[data-test=popular-pizzas]').then($popularPizzas => {
                     cy.isNotInViewport($popularPizzas)
                 })
                 cy.get('[data-test=down-chevs]').click()
-                cy.wait(animationTime)
                 cy.get('[data-test=popular-pizzas]').then($popularPizzas => {
                     cy.isInViewport($popularPizzas)
                 })
             })
         })
         describe('"Book Now" button', () => {
-            it.only('navigates to "book-now" URL', () => {
+            it('navigates to "book-now" URL', () => {
                 cy.get('[data-test=book-now-btn]').click()
                 cy.url().should('include', '/book-now')
+            })
+        })
+        describe('"Order Online*" button', () => {
+            it.only('displays dialog if user not authenticated', () => {
+                cy.contains('Account Required').should('not.exist')
+                cy.get('[data-test=order-online-btn]').click()
+                cy.contains('Account Required').should('exist')
+                cy.url().should('include', '/')
             })
         })
     })
