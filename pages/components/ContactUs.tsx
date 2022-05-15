@@ -12,7 +12,10 @@ export default function ContactUs() {
     AOS.init({ duration: 1500 })
   }, [])
   return (
-    <section className={styles['section-contact-us']} id='contact'>
+    <section
+      className={styles['section-contact-us']}
+      id='contact' data-test='contact-us'
+    >
       <div className={styles['main-content']}>
         <h1>Contact Us</h1>
         <div className={styles['text']}>
@@ -60,7 +63,11 @@ export default function ContactUs() {
             <p>HT12NG</p>
           </div>
         </div>
-        <div className={styles['chevs-wrap']} onClick={handleClick}>
+        <div
+          className={styles['chevs-wrap']}
+          onClick={handleClick}
+          data-test='up-chevs'
+        >
           <Image
             src="/up-chevrons.png"
             alt="Facebook Icon"

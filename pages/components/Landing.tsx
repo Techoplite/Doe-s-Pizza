@@ -26,7 +26,11 @@ export default function Landing() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [openDialog, setOpenDialog] = useState(false)
   return (
-    <section className={styles['section-landing']} id='landing'>
+    <section
+      className={styles['section-landing']}
+      id='landing'
+      data-test='landing'
+    >
       {/* TODO: must use next js image for background loading optimization */}
         <StyledDialog
           data-test='account-required-dialog'

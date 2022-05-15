@@ -29,9 +29,13 @@ Cypress.Commands.add('isNotInViewport', element => {
     cy.get(element).then($el => {
         const bottom = Cypress.$(cy.state('window')).height()
         const rect = $el[0].getBoundingClientRect()
-
-        cy.wrap(rect.top).should('be.gte', bottom)
-        cy.wrap(rect.bottom).should('be.gte', bottom)
+        if (rect.top < 0) {
+            // top is above the viewport so bottom should be too
+            cy.wrap(rect.bottom).should('be.lt', 0)
+        } else if (rect.bottom > bottom) {
+            // bottom is overflowing so to should too
+            cy.wrap(rect.top).should('be.gte', bottom)
+        }
     })
 })
 

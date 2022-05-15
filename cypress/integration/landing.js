@@ -1,3 +1,4 @@
+import { devices } from "../support/global_variables"
 const test = (device) =>
     describe(`${device.name}: ${device.orientation}`, () => {
         beforeEach(() => {
@@ -59,11 +60,6 @@ const test = (device) =>
 
 
 describe('Landing Section', () => {
-    const devices = [
-        { name: 'mobile', width: 367, height: 812, orientation: 'portrait' },
-        { name: 'mobile', width: 812, height: 375, orientation: 'landscape' },
-        { name: 'tablet', width: 810, height: 1080, orientation: 'portrait' },
-    ]
     devices.map(d => {
         test(d)
     })
