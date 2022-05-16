@@ -24,36 +24,40 @@ export default function ContactUs() {
         </div>
         <div className={styles['social-icons']}>
           <Link href="https://en-gb.facebook.com/" passHref >
-            <Image
-              data-aos="zoom-in"
-              src="/social-icons/facebook.png"
-              alt="Facebook Icon"
-              width={70}
-              height={70}
-              layout="fixed"
-            />
+            <a data-test='facebook-icon'>
+              <Image
+                data-aos="zoom-in"
+                src="/social-icons/facebook.png"
+                alt="Facebook Icon"
+                width={70}
+                height={70}
+                layout="fixed"
+              />
+            </a>
           </Link>
           <Link href="https://www.instagram.com/" passHref >
-
-            <Image
-              data-aos="zoom-in"
-              src="/social-icons/instagram.png"
-              alt="Instagram Icon"
-              width={70}
-              height={70}
-              layout="fixed"
-            />
+            <a data-test='instagram-icon'>
+              <Image
+                data-aos="zoom-in"
+                src="/social-icons/instagram.png"
+                alt="Instagram Icon"
+                width={70}
+                height={70}
+                layout="fixed"
+              />
+            </a>
           </Link>
           <Link href="https://twitter.com/?lang=en-gb" passHref >
-
-            <Image
-              data-aos="zoom-in"
-              src="/social-icons/twitter.png"
-              alt="Twitter Icon"
-              width={70}
-              height={70}
-              layout="fixed"
-            />
+            <a data-test='twitter-icon'>
+              <Image
+                data-aos="zoom-in"
+                src="/social-icons/twitter.png"
+                alt="Twitter Icon"
+                width={70}
+                height={70}
+                layout="fixed"
+              />
+            </a>
           </Link>
         </div>
         <div className={`${styles['address']} + ${styles['text']}`}>
@@ -77,6 +81,6 @@ export default function ContactUs() {
           />
         </div>
       </div>
-    </section>
+    </section >
   )
 }

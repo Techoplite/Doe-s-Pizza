@@ -49,7 +49,7 @@ const test = (device) =>
             })
         })
         describe('"Order Online*" button', () => {
-            it.only('displays dialog if user not authenticated', () => {
+            it('displays dialog if user not authenticated', () => {
                 cy.contains('Account Required').should('not.exist')
                 cy.get('[data-test=order-online-btn]').click()
                 cy.contains('Account Required').should('exist')
