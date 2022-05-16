@@ -1,36 +1,60 @@
-import { devices } from "../support/global_variables"
+import { devices, hasHamburger } from "../support/global_variables"
 const test = (device) =>
     describe(`${device.name}: ${device.orientation}`, () => {
         beforeEach(() => {
             cy.viewport(device.width, device.height)
             cy.visit('')
         })
-        describe('"Hamburger" button', () => {
-            // This test uses :visibility because the element is not reachable by the user through scrolling (parent has overflowX:"hidden")
-            const animationTime = 600 // from Menu.module.scss
-            it('slides hidden menu in when click on hamburger', () => {
-                cy.get('[data-test=menu]').then($menu => {
-                    cy.isInViewport($menu)
+        if (hasHamburger(device)) {
+            describe('"Hamburger" button', () => {
+                // This test uses :visibility because the element is not reachable by the user through scrolling (parent has overflowX:"hidden")
+                const animationTime = 600 // from Menu.module.scss
+                describe('slides hidden menu in when click on hamburger', () => {
+                    it('displays the menu', () => {
+                        cy.get('[data-test=menu]').then($menu => {
+                            cy.isInViewport($menu)
+                        })
+                        cy.get('[data-test=hamburger]').click()
+                        cy.wait(animationTime)
+                        cy.get('[data-test=menu]').then($menu => {
+                            expect($menu.is(":visible")).to.be.true
+                        })
+
+                    })
+                    it('correctly updates "menuSlice" in redux store', () => {
+                        cy.window().its('store').invoke('getState')
+                            .then($state => {
+                                const menu = cy.wrap($state).its('menu')
+                                menu.its('open').should('equal', false)
+                                    // section is 'null' at this point so won't be accessible
+                                cy.get('[data-test=hamburger]').click()
+                                    .then(() => {
+                                        cy.window()
+                                            .its('store')
+                                            .invoke('getState')
+                                            .then($state => {
+                                                console.log('$state.menu', $state.menu)
+                                                cy.wrap($state).its('menu').its('open').should('equal', true)
+                                                    // section is 'null' at this point so won't be accessible
+                                            })
+                                    })
+                            })
+                    })
                 })
-                cy.get('[data-test=hamburger]').click()
-                cy.wait(animationTime)
-                cy.get('[data-test=menu]').then($menu => {
-                    expect($menu.is(":visible")).to.be.true
+                it('slides displaying menu out when click on back button', () => {
+                    cy.get('[data-test=hamburger]').click()
+                    cy.wait(animationTime)
+                    cy.get('[data-test=menu]').then($menu => {
+                        expect($menu.is(":visible")).to.be.true
+                    })
+                    cy.get('[data-test=back-btn]').click()
+                    cy.wait(animationTime)
+                    cy.get('[data-test=menu]').then($menu => {
+                        expect($menu.is(":visible")).to.be.false
+                    })
                 })
             })
-            it('slides displaying menu out when click on back button', () => {
-                cy.get('[data-test=hamburger]').click()
-                cy.wait(animationTime)
-                cy.get('[data-test=menu]').then($menu => {
-                    expect($menu.is(":visible")).to.be.true
-                })
-                cy.get('[data-test=back-btn]').click()
-                cy.wait(animationTime)
-                cy.get('[data-test=menu]').then($menu => {
-                    expect($menu.is(":visible")).to.be.false
-                })
-            })
-        })
+        }
         describe('"Down Chevrons" button', () => {
             it('scrolls to "Popular Pizza" when click on down chevrons', () => {
                 cy.get('[data-test=popular-pizzas]').then($popularPizzas => {

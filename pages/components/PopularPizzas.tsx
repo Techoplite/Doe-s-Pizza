@@ -10,6 +10,7 @@ export default function PopularPizzas() {
       <section
         className={styles['section-popular-pizzas']}
         data-test='popular-pizzas'
+        id='popular-pizzas'
       >
             <>
                 <div className={styles['top-spacer']}></div>
