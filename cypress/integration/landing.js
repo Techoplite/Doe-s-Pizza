@@ -33,7 +33,6 @@ const test = (device) =>
                                             .its('store')
                                             .invoke('getState')
                                             .then($state => {
-                                                console.log('$state.menu', $state.menu)
                                                 cy.wrap($state).its('menu').its('open').should('equal', true)
                                                     // section is 'null' at this point so won't be accessible
                                             })
@@ -41,16 +40,43 @@ const test = (device) =>
                             })
                     })
                 })
-                it('slides displaying menu out when click on back button', () => {
-                    cy.get('[data-test=hamburger]').click()
-                    cy.wait(animationTime)
-                    cy.get('[data-test=menu]').then($menu => {
-                        expect($menu.is(":visible")).to.be.true
+                describe('slides displaying menu out when click on back button', () => {
+                    it('hides the menu', () => {
+                        cy.get('[data-test=hamburger]').click()
+                        cy.wait(animationTime)
+                        cy.get('[data-test=menu]').then($menu => {
+                            expect($menu.is(":visible")).to.be.true
+                        })
+                        cy.get('[data-test=back-btn]').click()
+                        cy.wait(animationTime)
+                        cy.get('[data-test=menu]').then($menu => {
+                            expect($menu.is(":visible")).to.be.false
+                        })
                     })
-                    cy.get('[data-test=back-btn]').click()
-                    cy.wait(animationTime)
-                    cy.get('[data-test=menu]').then($menu => {
-                        expect($menu.is(":visible")).to.be.false
+                    it('correctly updates "menuSlice" in redux store', () => {
+                        cy.window().its('store').invoke('getState')
+                            .then(() => {
+                                cy.get('[data-test=hamburger]').click()
+                                    .then(() => {
+                                        cy.window()
+                                            .its('store')
+                                            .invoke('getState')
+                                            .then($state => {
+                                                cy.wrap($state).its('menu').its('open').should('equal', true)
+                                                    // section is 'null' at this point so won't be accessible
+                                            })
+                                    })
+                                cy.get('[data-test=back-btn]').click()
+                                    .then(() => {
+                                        cy.window()
+                                            .its('store')
+                                            .invoke('getState')
+                                            .then($state => {
+                                                cy.wrap($state).its('menu').its('open').should('equal', false)
+                                                    // section is 'null' at this point so won't be accessible
+                                            })
+                                    })
+                            })
                     })
                 })
             })
@@ -65,6 +91,22 @@ const test = (device) =>
                     cy.isInViewport($popularPizzas)
                 })
             })
+            it('correctly updates "menuSlice" in redux store',
+                () => {
+                    cy.get('[data-test=down-chevs]').click()
+                        .then(() => {
+                            cy.window()
+                                .its('store')
+                                .invoke('getState')
+                                .then($state => {
+                                    cy.wrap($state)
+                                        .its('menu').its('open').should('equal', false)
+                                        // section is reset to 'null' after 400ms (see index.tsx)
+                                    cy.wrap($state)
+                                        .its('menu').its('section').should('be.null')
+                                })
+                        })
+                })
         })
         describe('"Book Now" button', () => {
             it('navigates to "book-now" URL', () => {
