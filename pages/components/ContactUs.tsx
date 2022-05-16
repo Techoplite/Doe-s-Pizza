@@ -14,7 +14,8 @@ export default function ContactUs() {
   return (
     <section
       className={styles['section-contact-us']}
-      id='contact' data-test='contact-us'
+      id='contact-us'
+      data-test='contact-us'
     >
       <div className={styles['main-content']}>
         <h1>Contact Us</h1>

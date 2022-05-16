@@ -24,17 +24,17 @@ export default function Home(props) {
     window.scrollY === 0 ? dispatch(setNavBackground(false)) : dispatch(setNavBackground(true))
   }
   useEffect(() => {
-    setTimeout(() => {
-      const element = document.getElementById(section)
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest',
-        });
-      }
-    }, 400)
-    dispatch(toggle({ section: null, open: false }))
+    const element = document.getElementById(section)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    }
+    // setTimeout(() => {
+    // }, 400)
+    // dispatch(toggle({ section: null, open: false }))
   }, [section, props, dispatch])
   useEffect(() => {
     dispatch(setPizzas(props.pizzas))

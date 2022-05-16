@@ -45,13 +45,19 @@ export default function Navbar() {
         </div>
         <div className={styles['menu-links']}>
           <Link href="/" passHref >
-            <li onClick={() => dispatch(toggle({ section: 'popular-pizzas', open: false }))}>Popular Pizzas</li>
+            <a data-test='popular-pizzas_nav-link' onClick={() => dispatch(toggle({ section: 'popular-pizzas', open: false }))}>
+              <li >Popular Pizzas</li>
+            </a>
           </Link>
           <Link href="/" passHref >
-            <li onClick={() => dispatch(toggle({ section: 'about', open: false }))}>About Us</li>
+          <a data-test='about-us_nav-link' onClick={() => dispatch(toggle({ section: 'about-us', open: false }))}>
+              <li >About Us</li>
+              </a>
           </Link>
           <Link href="/" passHref >
-            <li onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</li>
+            <a data-test='contact-us_nav-link' onClick={() => dispatch(toggle({ section: 'contact-us', open: false }))}>
+              <li >Contact Us</li>
+            </a>
           </Link>
           {isAuthenticated &&
             <Link href="/your-orders" passHref >

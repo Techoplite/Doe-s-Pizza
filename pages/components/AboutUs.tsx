@@ -9,7 +9,11 @@ export default function AboutUs() {
     AOS.init({ duration: 1500 })
   }, [])
   return (
-    <section className={styles['section-about-us']} id='about'>
+    <section
+      className={styles['section-about-us']}
+      id='about-us'
+      data-test='about-us'
+    >
       <div className={styles['top-spacer']}></div>
       <div className={styles['main-content']}>
         <h1>About Us</h1>
