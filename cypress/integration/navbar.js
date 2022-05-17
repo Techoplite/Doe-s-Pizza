@@ -53,6 +53,52 @@ const test = (device) =>
                         })
                     })
             })
+            it('displays auth buttons if user NOT authenticated', () => {
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', false)
+                    })
+                cy.contains('Log In')
+                cy.contains('Sign Up')
+                cy.contains('Log Out').should('not.exist')
+            })
+            it('displays "Log Out" button if user authenticated', () => {
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', false)
+                    })
+                cy.window()
+                    .its('store')
+                    .invoke('dispatch', {
+                        type: 'auth/setIsAuthenticated',
+                        payload: {
+                            isAuthenticated: true,
+                            credentials: {
+                                username: 'test',
+                                password: '11111111'
+                            }
+                        }
+                    })
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', true)
+                    })
+                cy.contains('Log In').should('not.exist')
+                cy.contains('Sign Up').should('not.exist')
+                cy.contains('Log Out')
+            })
         }
     })
 
