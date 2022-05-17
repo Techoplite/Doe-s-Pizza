@@ -40,8 +40,8 @@ const test = (device) =>
                             })
                     })
                 })
-                describe('slides displaying menu out when click on back button', () => {
-                    it('hides the menu', () => {
+                describe('slides "Menu" out when click on back button', () => {
+                    it('hides "Menu"', () => {
                         cy.get('[data-test=hamburger]').click()
                         cy.wait(animationTime)
                         cy.get('[data-test=menu]').then($menu => {
@@ -101,9 +101,8 @@ const test = (device) =>
                                 .then($state => {
                                     cy.wrap($state)
                                         .its('menu').its('open').should('equal', false)
-                                        // section is reset to 'null' after 400ms (see index.tsx)
                                     cy.wrap($state)
-                                        .its('menu').its('section').should('be.null')
+                                        .its('menu').its('section').should('popular-pizzas')
                                 })
                         })
                 })
