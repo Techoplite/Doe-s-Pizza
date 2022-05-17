@@ -30,10 +30,13 @@ export default function Footer() {
   }
   const homeLink =
     <Link href="/" passHref >
-      <p onClick={() => dispatch(toggle({ section: 'landing', open: false }))}>Home</p>
+      <p
+        onClick={() => dispatch(toggle({ section: 'landing', open: false }))}
+        data-test='footer_home_link'
+      >Home</p>
     </Link>
   return (
-    <section className={styles['section-footer']}>
+    <section className={styles['section-footer']} data-test='footer'>
       <div className={styles['logo-wrapper']}>
         <Image
           src="/logo-small.png"
@@ -46,6 +49,12 @@ export default function Footer() {
       <div className={styles['links-container']}>
         <div className={styles['left']}>
           {homeLink}
+          <Link href="/" passHref >
+            <p
+              data-test='footer_popular-pizzas_link'
+              onClick={() => dispatch(toggle({ section: 'popular-pizzas', open: false }))}
+            >Popular Pizzas</p>
+          </Link>
           {!isAuthenticated ?
             (
               <>
@@ -70,10 +79,17 @@ export default function Footer() {
         </div>
         <div className={styles['right']}>
           <Link href="/" passHref >
-            <p onClick={() => dispatch(toggle({ section: 'about', open: false }))}>About Us</p>
+            <p
+              onClick={() => dispatch(toggle({ section: 'about-us', open: false }))
+              }
+              data-test='footer_about-us_link'
+            >About Us</p>
           </Link>
           <Link href="/" passHref >
-            <p onClick={() => dispatch(toggle({ section: 'contact', open: false }))}>Contact Us</p>
+            <p
+              data-test='footer_contact-us_link'
+              onClick={() => dispatch(toggle({ section: 'contact-us', open: false }))}
+            >Contact Us</p>
           </Link>
           {isAuthenticated &&
             <Link href="/online-order" passHref >
