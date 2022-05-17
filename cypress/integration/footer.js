@@ -18,14 +18,14 @@ const test = (device) =>
                 })
             })
             sectionsOtherThanLanding.map(s => {
-                it(`scrolls to "${s.name}" when "${s.name}" is clicked`, () => {
+                it.only(`scrolls to "${s.name}" when "${s.name}" is clicked`, () => {
                     cy.get('[data-test=footer]').scrollIntoView()
                     cy.wait(800)
-                    cy.contains(`${s.name}`).then($section => {
+                    cy.get(`[data-test=${s.dataTest}`).then($section => {
                         cy.isNotInViewport($section)
                     })
                     cy.get(`[data-test=footer_${s.dataTest}_link]`).click()
-                    cy.contains(`${s.name}`).then($section => {
+                    cy.get(`[data-test=${s.dataTest}`).then($section => {
                         cy.isInViewport($section)
                     })
                 })
