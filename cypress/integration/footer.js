@@ -18,7 +18,7 @@ const test = (device) =>
                 })
             })
             sectionsOtherThanLanding.map(s => {
-                it.only(`scrolls to "${s.name}" when "${s.name}" is clicked`, () => {
+                it(`scrolls to "${s.name}" when "${s.name}" is clicked`, () => {
                     cy.get('[data-test=footer]').scrollIntoView()
                     cy.wait(800)
                     if (s.name !== 'Contact Us') {
