@@ -91,7 +91,7 @@ const test = (device) =>
                     cy.isInViewport($popularPizzas)
                 })
             })
-            it.only('correctly updates "menuSlice" in redux store',
+            it('correctly updates "menuSlice" in redux store',
                 () => {
                     cy.get('[data-test=down-chevs]').click()
                         .then(() => {
