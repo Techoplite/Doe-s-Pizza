@@ -1,4 +1,4 @@
-import { devices, hasHamburger } from "../support/global_variables"
+import { devices, hasHamburger, sectionsOtherThanLanding } from "../support/global_variables"
 
 const test = (device) =>
     describe(`${device.name}: ${device.orientation}`, () => {
@@ -7,69 +7,52 @@ const test = (device) =>
             cy.visit('')
         })
         if (!hasHamburger(device)) {
-            describe('"Popular Pizzas" link',
-                () => {
-                    it('scrolls to "Popular Pizzas" sections once clicked', () => {
-                        cy.get('[data-test=popular-pizzas]').then($popularPizzas => {
-                            cy.isNotInViewport($popularPizzas)
-                        })
-                        cy.get('[data-test=popular-pizzas_nav-link]').click()
-                            .then(() => {
-                                cy.window()
-                                    .its('store')
-                                    .invoke('getState')
-                                    .then($state => {
-                                        cy.wrap($state)
-                                            .its('menu').its('open').should('equal', false)
-                                            // section is reset to 'null' after 400ms (see index.tsx)
-                                        cy.wrap($state)
-                                            .its('menu').its('section').should('equal', 'popular-pizzas')
-                                    })
+            sectionsOtherThanLanding.map(s => {
+                describe(`"${s.name}" link`,
+                    () => {
+                        it(`scrolls to "${s.name}" sections once clicked`, () => {
+                            const animationTime = 500
+                            cy.get(`[data-test=${s.dataTest}]`).then($sectionRetrieved => {
+                                cy.isNotInViewport($sectionRetrieved)
                             })
-                    })
-                })
-            describe('"About Us" link',
-                () => {
-                    it('scrolls to "About Us" sections once clicked', () => {
-                        cy.get('[data-test=about-us]').then($aboutUs => {
-                            cy.isNotInViewport($aboutUs)
-                        })
-                        cy.get('[data-test=about-us_nav-link]').click()
-                            .then(() => {
-                                cy.window()
-                                    .its('store')
-                                    .invoke('getState')
-                                    .then($state => {
-                                        cy.wrap($state)
-                                            .its('menu').its('open').should('equal', false)
-                                            // section is reset to 'null' after 400ms (see index.tsx)
-                                        cy.wrap($state)
-                                            .its('menu').its('section').should('equal', 'about-us')
-                                    })
+                            cy.get(`[data-test=${s.dataTest}_nav-link]`).click()
+                                // TODO: Cypress claim that it automatically waits for the animation to be finished but it looks like I need to force the wait. Needs investigating further 
+                            cy.wait(animationTime)
+                            cy.get(`[data-test=${s.dataTest}]`).then($sectionRetrieved => {
+                                cy.isInViewport($sectionRetrieved)
                             })
-                    })
-                })
-            describe('"Contact Us" link',
-                () => {
-                    it('scrolls to "Contact Us" sections once clicked', () => {
-                        cy.get('[data-test=contact-us]').then($contactUs => {
-                            cy.isNotInViewport($contactUs)
+
                         })
-                        cy.get('[data-test=contact-us_nav-link]').click()
-                            .then(() => {
-                                cy.window()
-                                    .its('store')
-                                    .invoke('getState')
-                                    .then($state => {
-                                        cy.wrap($state)
-                                            .its('menu').its('open').should('equal', false)
-                                            // section is reset to 'null' after 400ms (see index.tsx)
-                                        cy.wrap($state)
-                                            .its('menu').its('section').should('equal', 'contact-us')
-                                    })
-                            })
+                        it('correctly updates "menuSlice" when clicked', () => {
+                            cy.window()
+                                .its('store')
+                                .invoke('getState')
+                                .then($state => {
+                                    cy.wrap($state)
+                                        .its('menu').its('open')
+                                        .should('equal', false)
+                                        // section is reset to 'null' after 400ms (see index.tsx)
+                                    cy.wrap($state)
+                                        .its('menu').its('section')
+                                        .should('equal', 'landing')
+                                })
+                            cy.get(`[data-test=${s.dataTest}_nav-link]`).click()
+                                .then(() => {
+                                    cy.window()
+                                        .its('store')
+                                        .invoke('getState')
+                                        .then($state => {
+                                            cy.wrap($state)
+                                                .its('menu').its('open')
+                                                .should('equal', false)
+                                                // section is reset to 'null' after 400ms (see index.tsx)
+                                            cy.wrap($state)
+                                                .its('menu').its('section').should('equal', s.dataTest)
+                                        })
+                                })
+                        })
                     })
-                })
+            })
         }
     })
 

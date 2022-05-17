@@ -11,3 +11,9 @@ export const hasHamburger = (device) => {
     const index = devices.indexOf(device)
     return index !== 3 && index !== 4
 }
+
+export const sectionsOtherThanLanding = [
+    { name: 'Popular Pizzas', dataTest: 'popular-pizzas' },
+    { name: 'About Us', dataTest: 'about-us' },
+    { name: 'Contact Us', dataTest: 'contact-us' },
+]

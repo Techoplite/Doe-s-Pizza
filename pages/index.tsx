@@ -32,9 +32,6 @@ export default function Home(props) {
         inline: 'nearest',
       });
     }
-    // setTimeout(() => {
-    // }, 400)
-    // dispatch(toggle({ section: null, open: false }))
   }, [section, props, dispatch])
   useEffect(() => {
     dispatch(setPizzas(props.pizzas))
