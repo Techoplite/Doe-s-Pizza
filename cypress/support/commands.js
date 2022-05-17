@@ -45,11 +45,13 @@ Cypress.Commands.add('isInViewport', element => {
         const rect = $el[0].getBoundingClientRect()
 
         if (rect.bottom > bottom) {
-            // top is within viewport and bottom is overflowing
+            console.log('rect.bottom ', rect.bottom)
+                // top is within viewport and bottom is overflowing
             cy.wrap(rect.top).should('not.be.gt', bottom)
 
         } else if (rect.top < bottom) {
-            // bottom is within viewport and top is overflowing
+            console.log('rect.top', rect.top)
+                // bottom is within viewport and top is overflowing
             cy.wrap(rect.bottom).should('not.be.gt', bottom)
         }
     })
