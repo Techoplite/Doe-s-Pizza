@@ -97,6 +97,16 @@ const test = (device) =>
                 cy.contains('Sign Up').should('not.exist')
                 cy.contains('Log Out')
             })
+            it('navigates to "Sign Up" page when relevant button clicked', () => {
+                cy.get('[data-test=sign-up_btn]').click()
+                cy.wait(500)
+                cy.url().should('include', '/signup')
+            })
+            it('navigates to "Log In" page when relevant button clicked', () => {
+                cy.get('[data-test=log-in_btn]').click()
+                cy.wait(500)
+                cy.url().should('include', '/login')
+            })
         }
     })
 

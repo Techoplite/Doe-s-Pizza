@@ -60,19 +60,23 @@ export default function Footer() {
               <>
                 {router.pathname !== '/signup' &&
                   <Link href="/signup" passHref >
-                    <p>Sign Up</p>
+                    <p data-test='footer_sign-up_link'>Sign Up</p>
                   </Link>
                 }
                 {router.pathname !== '/login' &&
                   <Link href="/login" passHref >
-                    <p>Log In</p>
+                    <p data-test='footer_log-in_link'>Log In</p>
                   </Link>
                 }
               </>
             ) : (
               <>
                 <Link href="/" passHref >
-                  <p onClick={() => handleLogout()}>Log Out</p>
+                  <p
+                    onClick={() => handleLogout()} data-test='footer_log-out_link'
+                  >
+                    Log Out
+                  </p>
                 </Link>
               </>)
           }

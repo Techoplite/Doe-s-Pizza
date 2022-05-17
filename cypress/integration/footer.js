@@ -4,11 +4,11 @@ const test = (device) =>
         beforeEach(() => {
             cy.viewport(device.width, device.height)
             cy.visit('')
+            cy.get('[data-test=footer]').scrollIntoView()
+            cy.wait(800)
         })
         describe('sections links', () => {
             it(`scrolls to "Landing" when "Home" is clicked`, () => {
-                cy.get('[data-test=footer]').scrollIntoView()
-                cy.wait(800)
                 cy.get('[data-test=landing]').then($landing => {
                     cy.isNotInViewport($landing)
                 })
@@ -19,8 +19,6 @@ const test = (device) =>
             })
             sectionsOtherThanLanding.map(s => {
                 it(`scrolls to "${s.name}" when "${s.name}" is clicked`, () => {
-                    cy.get('[data-test=footer]').scrollIntoView()
-                    cy.wait(800)
                     if (s.name !== 'Contact Us') {
                         // "Contact Us" sections will always be in viewport when "Footer is displaying", so needs to be excluded from this check
                         cy.get(`[data-test=${s.dataTest}`).then($section => {
@@ -35,6 +33,62 @@ const test = (device) =>
                     })
                 })
             })
+        })
+        it('displays auth link if user NOT authenticated', () => {
+            cy.window()
+                .its('store')
+                .invoke('getState')
+                .then($state => {
+                    cy.wrap($state)
+                        .its('auth').its('isAuthenticated')
+                        .should('equal', false)
+                })
+            cy.get('[data-test=footer_sign-up_link]')
+            cy.get('[data-test=footer_log-in_link]')
+            cy.get('[data-test=footer_log-out_link]').should('not.exist')
+        })
+        it('displays "Log Out" link if user authenticated', () => {
+            cy.window()
+                .its('store')
+                .invoke('getState')
+                .then($state => {
+                    cy.wrap($state)
+                        .its('auth').its('isAuthenticated')
+                        .should('equal', false)
+                })
+            cy.window()
+                .its('store')
+                .invoke('dispatch', {
+                    type: 'auth/setIsAuthenticated',
+                    payload: {
+                        isAuthenticated: true,
+                        credentials: {
+                            username: 'test',
+                            password: '11111111'
+                        }
+                    }
+                })
+            cy.window()
+                .its('store')
+                .invoke('getState')
+                .then($state => {
+                    cy.wrap($state)
+                        .its('auth').its('isAuthenticated')
+                        .should('equal', true)
+                })
+            cy.get('[data-test=footer_sign-up_link]').should('not.exist')
+            cy.get('[data-test=footer_log-in_link]').should('not.exist')
+            cy.get('[data-test=footer_log-out_link]')
+        })
+        it('navigates to "Sign Up" page when relevant link clicked', () => {
+            cy.get('[data-test=footer_sign-up_link]').click()
+            cy.wait(500)
+            cy.url().should('include', '/signup')
+        })
+        it('navigates to "Log In" page when relevant link clicked', () => {
+            cy.get('[data-test=footer_log-in_link]').click()
+            cy.wait(500)
+            cy.url().should('include', '/login')
         })
     })
 

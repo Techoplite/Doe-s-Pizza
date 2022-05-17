@@ -69,10 +69,14 @@ export default function Navbar() {
           {!isAuthenticated ?
             <>
               <Link href="/login" passHref >
-                <li>Log In</li>
+                <li data-test="log-in_btn">
+                  Log In
+                </li>
               </Link>
               <Link href="/signup" passHref >
-                <li className={styles['sign-up']}>Sign Up</li>
+                <li data-test="sign-up_btn" className={styles['sign-up']}>
+                  Sign Up
+                </li>
               </Link>
 
             </>
