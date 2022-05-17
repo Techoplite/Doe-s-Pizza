@@ -110,6 +110,7 @@ const test = (device) =>
         describe('"Book Now" button', () => {
             it('navigates to "book-now" URL', () => {
                 cy.get('[data-test=book-now-btn]').click()
+                cy.wait(500)
                 cy.url().should('include', '/book-now')
             })
         })

@@ -12,7 +12,7 @@ const test = (device) =>
                     () => {
                         it(`scrolls to "${s.name}" sections once clicked`, () => {
                             // The animation time depends on how distant (y-axis) is the section from landing section
-                            const animationTime = 700
+                            const animationTime = 800
                             cy.get(`[data-test=${s.dataTest}]`).then($sectionRetrieved => {
                                 cy.isNotInViewport($sectionRetrieved)
                             })

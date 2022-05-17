@@ -5,7 +5,7 @@ const test = (device) =>
             cy.viewport(device.width, device.height)
             cy.visit('')
         })
-        describe('Footer', () => {
+        describe('sections links', () => {
             it(`scrolls to "Landing" when "Home" is clicked`, () => {
                 cy.get('[data-test=footer]').scrollIntoView()
                 cy.wait(800)
@@ -27,9 +27,11 @@ const test = (device) =>
                             cy.isNotInViewport($section)
                         })
                     }
-                    cy.get(`[data-test=footer_${s.dataTest}_link]`).click()
-                    cy.get(`[data-test=${s.dataTest}`).then($section => {
-                        cy.isInViewport($section)
+                    cy.get('[data-test=footer]').scrollIntoView().then(() => {
+                        cy.get(`[data-test=footer_${s.dataTest}_link]`).click()
+                        cy.get(`[data-test=${s.dataTest}`).then($section => {
+                            cy.isInViewport($section)
+                        })
                     })
                 })
             })
@@ -37,7 +39,7 @@ const test = (device) =>
     })
 
 
-describe('Landing Section', () => {
+describe('Footer', () => {
     devices.map(d => {
         test(d)
     })
