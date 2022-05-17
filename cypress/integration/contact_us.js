@@ -6,7 +6,7 @@ const test = (device) =>
             cy.viewport(device.width, device.height)
             cy.visit('')
             cy.get('[data-test=contact-us]').scrollIntoView()
-            cy.wait(500)
+            cy.wait(800)
         })
         describe('"Up Chevrons" button', () => {
             it('scrolls to "Landing" (top) when click on up chevrons', () => {

@@ -33,7 +33,7 @@ Cypress.Commands.add('isNotInViewport', element => {
             // top is above the viewport so bottom should be too
             cy.wrap(rect.bottom).should('be.lt', 0)
         } else if (rect.bottom > bottom) {
-            // bottom is overflowing so to should too
+            // bottom is overflowing so top should too
             cy.wrap(rect.top).should('be.gte', bottom)
         }
     })
@@ -52,6 +52,5 @@ Cypress.Commands.add('isInViewport', element => {
             // bottom is within viewport and top is overflowing
             cy.wrap(rect.bottom).should('not.be.gt', bottom)
         }
-
     })
 })
