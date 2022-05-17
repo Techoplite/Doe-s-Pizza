@@ -11,12 +11,12 @@ const test = (device) =>
                 describe(`"${s.name}" link`,
                     () => {
                         it(`scrolls to "${s.name}" sections once clicked`, () => {
-                            const animationTime = 500
+                            // The animation time depends on how distant (y-axis) is the section from landing section
+                            const animationTime = 700
                             cy.get(`[data-test=${s.dataTest}]`).then($sectionRetrieved => {
                                 cy.isNotInViewport($sectionRetrieved)
                             })
                             cy.get(`[data-test=${s.dataTest}_nav-link]`).click()
-                                // TODO: Cypress claim that it automatically waits for the animation to be finished but it looks like I need to force the wait. Needs investigating further 
                             cy.wait(animationTime)
                             cy.get(`[data-test=${s.dataTest}]`).then($sectionRetrieved => {
                                 cy.isInViewport($sectionRetrieved)
