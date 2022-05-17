@@ -91,7 +91,7 @@ const test = (device) =>
                     cy.isInViewport($popularPizzas)
                 })
             })
-            it('correctly updates "menuSlice" in redux store',
+            it.only('correctly updates "menuSlice" in redux store',
                 () => {
                     cy.get('[data-test=down-chevs]').click()
                         .then(() => {
@@ -102,7 +102,7 @@ const test = (device) =>
                                     cy.wrap($state)
                                         .its('menu').its('open').should('equal', false)
                                     cy.wrap($state)
-                                        .its('menu').its('section').should('popular-pizzas')
+                                        .its('menu').its('section').should('equal', 'popular-pizzas')
                                 })
                         })
                 })
