@@ -121,7 +121,7 @@ const test = (device) =>
                 cy.contains('Account Required').should('exist')
                 cy.url().should('include', '/')
             })
-            it.only('navigates to "online-order" URL', () => {
+            it('navigates to "online-order" URL', () => {
                 cy.window()
                     .its('store')
                     .invoke('dispatch', {
