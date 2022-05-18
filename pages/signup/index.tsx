@@ -165,6 +165,7 @@ export default function index() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='username_input'
               error={getInputError('username')}
               id="username"
               label="Username"
@@ -176,6 +177,7 @@ export default function index() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='password_input'
               error={getInputError('password')}
               id="password"
               label="Password"
@@ -189,6 +191,7 @@ export default function index() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='confirm-password_input'
               error={getInputError('confirmPassword')}
               id="confirmPassword"
               label="Confirm Password"
@@ -200,6 +203,7 @@ export default function index() {
             />
           </div>
           <DefaultBtn
+            dataTest='form_sign-up_btn'
             label="Sign Up"
             className={styles['icon']}
             handler={handleSubmitForm}
