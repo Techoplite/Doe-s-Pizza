@@ -34,81 +34,30 @@ const test = (device) =>
                 })
             })
         })
-        it('displays auth link if user NOT authenticated', () => {
-            cy.window()
-                .its('store')
-                .invoke('getState')
-                .then($state => {
-                    cy.wrap($state)
-                        .its('auth').its('isAuthenticated')
-                        .should('equal', false)
-                })
-            cy.get('[data-test=footer_sign-up_link]')
-            cy.get('[data-test=footer_log-in_link]')
-            cy.get('[data-test=footer_log-out_link]').should('not.exist')
-        })
-        it('displays "Log Out" link if user authenticated', () => {
-            cy.window()
-                .its('store')
-                .invoke('getState')
-                .then($state => {
-                    cy.wrap($state)
-                        .its('auth').its('isAuthenticated')
-                        .should('equal', false)
-                })
-            cy.window()
-                .its('store')
-                .invoke('dispatch', {
-                    type: 'auth/setIsAuthenticated',
-                    payload: {
-                        isAuthenticated: true,
-                        credentials: {
-                            username: 'test',
-                            password: '11111111'
-                        }
-                    }
-                })
-            cy.window()
-                .its('store')
-                .invoke('getState')
-                .then($state => {
-                    cy.wrap($state)
-                        .its('auth').its('isAuthenticated')
-                        .should('equal', true)
-                })
-            cy.get('[data-test=footer_sign-up_link]').should('not.exist')
-            cy.get('[data-test=footer_log-in_link]').should('not.exist')
-            cy.get('[data-test=footer_log-out_link]')
-        })
-        it('navigates to "Sign Up" page when relevant link clicked',
-            () => {
-                cy.get('[data-test=footer_sign-up_link]').click()
-                cy.wait(500)
-                cy.url().should('include', '/signup')
+        describe('auth links', () => {
+
+            it('displays auth link if user NOT authenticated', () => {
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', false)
+                    })
+                cy.get('[data-test=footer_sign-up_link]')
+                cy.get('[data-test=footer_log-in_link]')
+                cy.get('[data-test=footer_log-out_link]').should('not.exist')
             })
-        it('navigates to "Log In" page when relevant link clicked',
-            () => {
-                cy.get('[data-test=footer_log-in_link]').click()
-                cy.wait(500)
-                cy.url().should('include', '/login')
-            })
-        it('navigates to "book-now" URL when relevant link clicked',
-            () => {
-                cy.get('[data-test=footer_book-now_link]').click()
-                cy.wait(500)
-                cy.url().should('include', '/book-now')
-            })
-        it('should NOT display "Order Online" link', () => {
-            cy.contains('Account Required').should('not.exist')
-            cy.get('[data-test=footer_order-online_link]').should('not.exist')
-            cy.url().should('include', '/')
-        })
-        it('should not display "Your Orders" link',
-            () => {
-                cy.get('[data-test=footer_your-orders_link]').should('not.exist')
-            })
-        it('navigates to "online-order" URL when relevant link clicked',
-            () => {
+            it('displays "Log Out" link if user authenticated', () => {
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', false)
+                    })
                 cy.window()
                     .its('store')
                     .invoke('dispatch', {
@@ -129,12 +78,23 @@ const test = (device) =>
                             .its('auth').its('isAuthenticated')
                             .should('equal', true)
                     })
-                cy.get('[data-test=footer_order-online_link]').click()
-                cy.wait(500)
-                cy.url().should('include', '/online-order')
+                cy.get('[data-test=footer_sign-up_link]').should('not.exist')
+                cy.get('[data-test=footer_log-in_link]').should('not.exist')
+                cy.get('[data-test=footer_log-out_link]')
             })
-        it('navigates to "your-orders" URL when relevant link clicked',
-            () => {
+            it('navigates to "Sign Up" page when relevant link clicked',
+                () => {
+                    cy.get('[data-test=footer_sign-up_link]').click()
+                    cy.wait(500)
+                    cy.url().should('include', '/signup')
+                })
+            it('navigates to "Log In" page when relevant link clicked',
+                () => {
+                    cy.get('[data-test=footer_log-in_link]').click()
+                    cy.wait(500)
+                    cy.url().should('include', '/login')
+                })
+            it('logs user out when relevant link clicked', () => {
                 cy.window()
                     .its('store')
                     .invoke('dispatch', {
@@ -155,39 +115,84 @@ const test = (device) =>
                             .its('auth').its('isAuthenticated')
                             .should('equal', true)
                     })
-                cy.get('[data-test=footer_your-orders_link]').click()
-                cy.wait(500)
-                cy.url().should('include', '/your-orders')
+                cy.get('[data-test=footer_log-out_link]').click()
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', false)
+                    })
             })
-        it.only('logs user out when relevant link clicked', () => {
-            cy.window()
-                .its('store')
-                .invoke('dispatch', {
-                    type: 'auth/setIsAuthenticated',
-                    payload: {
-                        isAuthenticated: true,
-                        credentials: {
-                            username: 'test',
-                            password: '11111111'
-                        }
-                    }
+        })
+        describe('order links', () => {
+            it('navigates to "book-now" URL when relevant link clicked',
+                () => {
+                    cy.get('[data-test=footer_book-now_link]').click()
+                    cy.wait(500)
+                    cy.url().should('include', '/book-now')
                 })
-            cy.window()
-                .its('store')
-                .invoke('getState')
-                .then($state => {
-                    cy.wrap($state)
-                        .its('auth').its('isAuthenticated')
-                        .should('equal', true)
+            it('should NOT display "Order Online" link', () => {
+                cy.contains('Account Required').should('not.exist')
+                cy.get('[data-test=footer_order-online_link]').should('not.exist')
+                cy.url().should('include', '/')
+            })
+            it('should not display "Your Orders" link',
+                () => {
+                    cy.get('[data-test=footer_your-orders_link]').should('not.exist')
                 })
-            cy.get('[data-test=footer_log-out_link]').click()
-            cy.window()
-                .its('store')
-                .invoke('getState')
-                .then($state => {
-                    cy.wrap($state)
-                        .its('auth').its('isAuthenticated')
-                        .should('equal', false)
+            it('navigates to "online-order" URL when relevant link clicked',
+                () => {
+                    cy.window()
+                        .its('store')
+                        .invoke('dispatch', {
+                            type: 'auth/setIsAuthenticated',
+                            payload: {
+                                isAuthenticated: true,
+                                credentials: {
+                                    username: 'test',
+                                    password: '11111111'
+                                }
+                            }
+                        })
+                    cy.window()
+                        .its('store')
+                        .invoke('getState')
+                        .then($state => {
+                            cy.wrap($state)
+                                .its('auth').its('isAuthenticated')
+                                .should('equal', true)
+                        })
+                    cy.get('[data-test=footer_order-online_link]').click()
+                    cy.wait(500)
+                    cy.url().should('include', '/online-order')
+                })
+            it('navigates to "your-orders" URL when relevant link clicked',
+                () => {
+                    cy.window()
+                        .its('store')
+                        .invoke('dispatch', {
+                            type: 'auth/setIsAuthenticated',
+                            payload: {
+                                isAuthenticated: true,
+                                credentials: {
+                                    username: 'test',
+                                    password: '11111111'
+                                }
+                            }
+                        })
+                    cy.window()
+                        .its('store')
+                        .invoke('getState')
+                        .then($state => {
+                            cy.wrap($state)
+                                .its('auth').its('isAuthenticated')
+                                .should('equal', true)
+                        })
+                    cy.get('[data-test=footer_your-orders_link]').click()
+                    cy.wait(500)
+                    cy.url().should('include', '/your-orders')
                 })
         })
     })
