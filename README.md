@@ -19,7 +19,7 @@ The live version can be accessed at https://doe-s-pizza.vercel.app/
 
 
 ## Currently busy...
-- Writing test with Cypress (I am learning this library now)
+- Writing tests with Cypress (I am learning this library now)
 
 ## Next to come
 - Optimise landing page background loading (will have to make it a next/image element with priority set to 'true' rather than using CSS)
