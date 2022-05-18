@@ -107,7 +107,7 @@ const test = (device) =>
             () => {
                 cy.get('[data-test=footer_your-orders_link]').should('not.exist')
             })
-        it.only('navigates to "online-order" URL when relevant link clicked',
+        it('navigates to "online-order" URL when relevant link clicked',
             () => {
                 cy.window()
                     .its('store')
@@ -133,7 +133,7 @@ const test = (device) =>
                 cy.wait(500)
                 cy.url().should('include', '/online-order')
             })
-        it.only('navigates to "your-orders" URL when relevant link clicked',
+        it('navigates to "your-orders" URL when relevant link clicked',
             () => {
                 cy.window()
                     .its('store')
@@ -159,6 +159,37 @@ const test = (device) =>
                 cy.wait(500)
                 cy.url().should('include', '/your-orders')
             })
+        it.only('logs user out when relevant link clicked', () => {
+            cy.window()
+                .its('store')
+                .invoke('dispatch', {
+                    type: 'auth/setIsAuthenticated',
+                    payload: {
+                        isAuthenticated: true,
+                        credentials: {
+                            username: 'test',
+                            password: '11111111'
+                        }
+                    }
+                })
+            cy.window()
+                .its('store')
+                .invoke('getState')
+                .then($state => {
+                    cy.wrap($state)
+                        .its('auth').its('isAuthenticated')
+                        .should('equal', true)
+                })
+            cy.get('[data-test=footer_log-out_link]').click()
+            cy.window()
+                .its('store')
+                .invoke('getState')
+                .then($state => {
+                    cy.wrap($state)
+                        .its('auth').its('isAuthenticated')
+                        .should('equal', false)
+                })
+        })
     })
 
 

@@ -64,7 +64,7 @@ const test = (device) =>
                 cy.contains('Sign Up')
                 cy.contains('Log Out').should('not.exist')
             })
-            it('displays "Log Out" button if user authenticated', () => {
+            it('displays "Log Out" button if user authenticated and hides "auth" buttons', () => {
                 cy.window()
                     .its('store')
                     .invoke('getState')
@@ -96,6 +96,37 @@ const test = (device) =>
                 cy.contains('Log In').should('not.exist')
                 cy.contains('Sign Up').should('not.exist')
                 cy.contains('Log Out')
+            })
+            it('logs user out when clicked', () => {
+                cy.window()
+                    .its('store')
+                    .invoke('dispatch', {
+                        type: 'auth/setIsAuthenticated',
+                        payload: {
+                            isAuthenticated: true,
+                            credentials: {
+                                username: 'test',
+                                password: '11111111'
+                            }
+                        }
+                    })
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', true)
+                    })
+                cy.get('[data-test=log-out_btn]').click()
+                cy.window()
+                    .its('store')
+                    .invoke('getState')
+                    .then($state => {
+                        cy.wrap($state)
+                            .its('auth').its('isAuthenticated')
+                            .should('equal', false)
+                    })
             })
             it('navigates to "Sign Up" page when relevant button clicked', () => {
                 cy.get('[data-test=sign-up_btn]').click()

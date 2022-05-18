@@ -82,7 +82,12 @@ export default function Navbar() {
             </>
             :
             <Link href="/" passHref >
-              <li onClick={() => handleLogout()}>Log Out</li>
+              <li
+                onClick={() => handleLogout()}
+                data-test="log-out_btn"
+              >
+                Log Out
+              </li>
             </Link>
           }
         </div>
