@@ -97,17 +97,23 @@ export default function Footer() {
           </Link>
           {isAuthenticated &&
             <Link href="/online-order" passHref >
-              <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Order Online</p>
+              <p
+                data-test='footer_order-online_link'
+                onClick={() => dispatch(toggle({ section: '', open: false }))}>Order Online</p>
             </Link>
           }
           {router.pathname !== '/book-now' &&
             <Link href="/book-now" passHref >
-              <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Book Now</p>
+              <p
+                data-test='footer_book-now_link'
+                onClick={() => dispatch(toggle({ section: '', open: false }))}>Book Now</p>
             </Link>
           }
           {isAuthenticated && router.pathname !== '/your-orders' &&
             <Link href="/your-orders" passHref >
-              <p onClick={() => dispatch(toggle({ section: '', open: false }))}>Your Orders</p>
+              <p
+                data-test='footer_your-orders_link'
+                onClick={() => dispatch(toggle({ section: '', open: false }))}>Your Orders</p>
             </Link>
           }
         </div>
