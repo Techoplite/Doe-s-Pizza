@@ -1,5 +1,5 @@
 import { devices } from "../support/global_variables"
-const trySignUp = (username, password, confirmPassword) => {
+const performSignUp = (username, password, confirmPassword) => {
     cy.window()
         .its('store')
         .invoke('getState')
@@ -23,7 +23,7 @@ const test = (device) =>
             cy.visit('/signup')
         })
         it('successfully signs up', () => {
-            trySignUp('johndoe', '12345678', '12345678')
+            performSignUp('johndoe', '12345678', '12345678')
             cy.window()
                 .its('store')
                 .invoke('getState')
@@ -34,7 +34,7 @@ const test = (device) =>
                 })
         })
         it('does NOT sign up if empty "username" and informs user', () => {
-            trySignUp('', '12345678', '12345678')
+            performSignUp('', '12345678', '12345678')
             cy.window()
                 .its('store')
                 .invoke('getState')
@@ -57,7 +57,7 @@ const test = (device) =>
 
         })
         it('does NOT sign up if empty "password" and informs user of action to take', () => {
-            trySignUp('johndoe', '', '12345678')
+            performSignUp('johndoe', '', '12345678')
             cy.window()
                 .its('store')
                 .invoke('getState')
@@ -80,7 +80,7 @@ const test = (device) =>
 
         })
         it('does NOT sign up if "password" less than 8 characters and informs user of action to take', () => {
-            trySignUp('johndoe', '', '12345678')
+            performSignUp('johndoe', '', '12345678')
             cy.window()
                 .its('store')
                 .invoke('getState')
@@ -103,7 +103,7 @@ const test = (device) =>
 
         })
         it('does NOT sign up if empty "confirm password" and informs user of action to take', () => {
-            trySignUp('johndoe', '12345678', '')
+            performSignUp('johndoe', '12345678', '')
             cy.window()
                 .its('store')
                 .invoke('getState')
@@ -126,7 +126,7 @@ const test = (device) =>
 
         })
         it('does NOT sign up if passwords mismatch and informs user of action to take', () => {
-            trySignUp('johndoe', '12345678', '87654321')
+            performSignUp('johndoe', '12345678', '87654321')
             cy.window()
                 .its('store')
                 .invoke('getState')
