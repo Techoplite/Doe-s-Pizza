@@ -58,6 +58,25 @@ export default function index() {
   const dispatch = useAppDispatch()
   const isFormValid = () => {
     let isValid = true
+    if (form.password !== form.confirmPassword) {
+      isValid = false
+      console.log('should log');
+      
+      // Passwords must be same
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          password: 'Passwords must match.',
+          confirmPassword: 'Passwords must match.'
+        }
+      })
+    } else {
+      setErrors((prevErrors => {
+        return { ...prevErrors, password: '', confirmPassword: '' }
+      }))
+    }
+    console.log('errors top', errors)
+
     if (!form.username) {
       isValid = false
       // Username cannot be empty
@@ -69,31 +88,27 @@ export default function index() {
         return { ...prevErrors, username: '' }
       }))
     }
-    if (!form.password) {
-      // Password cannot be empty
-      isValid = false
-      setErrors(prevErrors => {
-        return { ...prevErrors, password: 'This field is required.' }
-      })
-    } else {
-      setErrors(prevErrors => {
-        return { ...prevErrors, password: '' }
-      })
-    }
     if (!form.confirmPassword) {
       isValid = false
       setErrors(prevErrors => {
         return {
           ...prevErrors,
+          password: '',
           confirmPassword: 'This field is required.'
         }
       })
-
     } else {
       setErrors(prevErrors => {
-        return {
-          ...prevErrors,
-          confirmPassword: ''
+        console.log('detected', prevErrors);
+        if (!prevErrors.confirmPassword) {
+          console.log('should NOT log');
+          
+          return {
+            ...prevErrors,
+            confirmPassword: ''
+          }
+        } else {
+          return prevErrors
         }
       })
     }
@@ -108,30 +123,27 @@ export default function index() {
       })
     } else {
       setErrors(prevErrors => {
-        return {
-          ...prevErrors,
-          password: '',
-        }
-      })
-    }
-    if (form.password !== form.confirmPassword) {
-      isValid = false
-      // Passwords must be same
-      setErrors(prevErrors => {
-        return {
-          ...prevErrors,
-          password: 'Passwords must match.',
-          confirmPassword: 'Passwords must match.'
+        if (prevErrors && !prevErrors.password) {
+          return {
+            ...prevErrors,
+            password: '',
+          }
+        } else {
+          return prevErrors
         }
       })
     }
     return isValid
   }
   const getInputError = (inputId: string) => {
-    for (const [key, value] of Object.entries(errors)) {
-      if (key === inputId && value !== '') {
-        return true
-      }
+    if (errors) {
+  
+      for (const [key, value] of Object.entries(errors)) {
+       if (key === inputId && value !== '') {
+         return true
+       }
+       return false
+     }
     }
   }
   const handleSubmitForm = () => {
@@ -172,7 +184,7 @@ export default function index() {
               variant="filled"
               value={form.username}
               onChange={handleChange}
-              helperText={errors.username}
+              helperText={errors && errors.username}
             />
           </div>
           <div className={styles['input']}>
@@ -185,7 +197,7 @@ export default function index() {
               type="password"
               value={form.password}
               onChange={handleChange}
-              helperText={errors.password}
+              helperText={errors && errors.password}
 
             />
           </div>
@@ -199,7 +211,7 @@ export default function index() {
               type="password"
               value={form.confirmPassword}
               onChange={handleChange}
-              helperText={errors.confirmPassword}
+              helperText={errors && errors.confirmPassword}
             />
           </div>
           <DefaultBtn
