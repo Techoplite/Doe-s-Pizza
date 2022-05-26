@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/AuthForms.module.scss";
 import Footer from '../components/Footer';
-import TextField from '@mui/material/TextField';
 import DefaultBtn from '../components/DefaultBtn';
 import LoginIcon from '@mui/icons-material/Login';
 import { yellow } from '@mui/material/colors';
@@ -131,11 +130,12 @@ export default function LogIn() {
         <Navbar />
         <div className={styles['card']}>
           <div className={styles['page-title-wrapper']}>
-            <LoginIcon sx={{ color: yellow[200], fontSize: 50}} />
+            <LoginIcon sx={{ color: yellow[200], fontSize: 50 }} />
             <h1 className={styles['page-title']}>Log In</h1>
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='username_input'
               id="username"
               label="Username"
               variant="filled"
@@ -147,6 +147,7 @@ export default function LogIn() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='password_input'
               id="password"
               label="Password"
               variant="filled"
@@ -158,13 +159,14 @@ export default function LogIn() {
             />
           </div>
           <DefaultBtn
+            dataTest='form_log-in_btn'
             label="Log In"
             className={styles['icon']}
             handler={handleSubmitForm}
           />
           <div className={styles['wrapper']}>
-            <Link href="/signup" passHref >
-              <a className={styles['a']}>
+            <Link href="/signup" passHref>
+              <a className={styles['a']} data-test='signup-redirect_btn'>
                 Or go to sign up.
               </a>
             </Link>
