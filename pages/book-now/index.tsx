@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/BookNow.module.scss";
 import Footer from '../components/Footer';
-import TextField from '@mui/material/TextField';
 import DefaultBtn from '../components/DefaultBtn';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { yellow } from '@mui/material/colors';
@@ -119,6 +118,23 @@ export default function BookNow() {
         }
       })
     }
+    if (!form.contactNumber) {
+      isValid = false
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          contactNumber: 'This field is required.'
+        }
+      })
+
+    } else {
+      setErrors(prevErrors => {
+        return {
+          ...prevErrors,
+          contactNumber: ''
+        }
+      })
+    }
     return isValid
   }
   const getInputError = (inputId: string) => {
@@ -145,7 +161,7 @@ export default function BookNow() {
           openDialog={openDialog}
           setOpenDialog={setOpenDialog}
           title="Booking Successful"
-          message={`You have successfully booked for ${form.partySize} people on the ${form.dateTime}`}
+          message={`You have successfully booked for ${form.partySize} people on ${dayjs(form.dateTime).format("DD/MM/YYYY")} at ${dayjs(form.dateTime).format("HH:mm")}`}
           successRedirect='/'
         />
         <Navbar />
@@ -156,6 +172,7 @@ export default function BookNow() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='date-and-time_input'
               id="dateTime"
               label="Date and Time"
               variant="filled"
@@ -169,6 +186,7 @@ export default function BookNow() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='party-size_input'
               id="partySize"
               label="Party Size"
               variant="filled"
@@ -181,6 +199,7 @@ export default function BookNow() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='first-name_input'
               id="firstName"
               label="First Name"
               variant="filled"
@@ -193,6 +212,7 @@ export default function BookNow() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='last-name_input'
               id="lastName"
               label="Last Name"
               variant="filled"
@@ -205,6 +225,7 @@ export default function BookNow() {
           </div>
           <div className={styles['input']}>
             <TextInput
+              data-test='contact-number_input'
               id="contactNumber"
               label="Contact Number"
               variant="filled"
@@ -216,6 +237,7 @@ export default function BookNow() {
             />
           </div>
           <DefaultBtn
+            dataTest='book-now_btn'
             label="Book"
             className={styles['icon']}
             handler={handleSubmitForm}
