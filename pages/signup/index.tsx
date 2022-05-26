@@ -129,14 +129,8 @@ export default function index() {
   }
   const getInputError = (inputId: string) => {
     if (errors) {
-      console.log('errors', errors)
-      
       for (const [key, value] of Object.entries(errors)) {
-        console.log('inputId', inputId);
-
         if (key === inputId && value !== '') {
-          console.log('inputId DETECTED', inputId);
-         
          return true
        }
      }
