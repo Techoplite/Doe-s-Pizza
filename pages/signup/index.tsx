@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styles from "../../styles/AuthForms.module.scss";
 import Footer from '../components/Footer';
-import TextField from '@mui/material/TextField';
 import DefaultBtn from '../components/DefaultBtn';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AlertDialog from '../components/AlertDialog'
@@ -60,8 +59,6 @@ export default function index() {
     let isValid = true
     if (form.password !== form.confirmPassword) {
       isValid = false
-      console.log('should log');
-      
       // Passwords must be same
       setErrors(prevErrors => {
         return {
@@ -75,8 +72,6 @@ export default function index() {
         return { ...prevErrors, password: '', confirmPassword: '' }
       }))
     }
-    console.log('errors top', errors)
-
     if (!form.username) {
       isValid = false
       // Username cannot be empty
@@ -99,10 +94,7 @@ export default function index() {
       })
     } else {
       setErrors(prevErrors => {
-        console.log('detected', prevErrors);
         if (!prevErrors.confirmPassword) {
-          console.log('should NOT log');
-          
           return {
             ...prevErrors,
             confirmPassword: ''
@@ -137,12 +129,16 @@ export default function index() {
   }
   const getInputError = (inputId: string) => {
     if (errors) {
-  
+      console.log('errors', errors)
+      
       for (const [key, value] of Object.entries(errors)) {
-       if (key === inputId && value !== '') {
+        console.log('inputId', inputId);
+
+        if (key === inputId && value !== '') {
+          console.log('inputId DETECTED', inputId);
+         
          return true
        }
-       return false
      }
     }
   }
