@@ -212,7 +212,7 @@ export default function index() {
           />
           <div className={styles['wrapper']}>
             <Link href="/login" passHref >
-              <a className={styles['a']}>
+              <a className={styles['a']} data-test='login-redirect_btn'>
                 Or go to login.
               </a>
             </Link>
