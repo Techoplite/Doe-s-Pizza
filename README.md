@@ -1,6 +1,6 @@
 # Project Overview
 
-This is a headless WordPress project with Next JS, meaning that the backend runs on the WordPress server whereas the frontend is served from Vercel. Please note that it is a Beta version, and that the full version should be available by the end of May 2022.
+This is a headless WordPress project with Next JS, meaning that the backend runs on the WordPress server whereas the frontend is served from Vercel. Please note that it is a Beta version, and that the full version should be available soon.
 
 The live version can be accessed at https://doe-s-pizza.vercel.app/
 
